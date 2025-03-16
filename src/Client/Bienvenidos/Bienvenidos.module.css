@@ -1,0 +1,222 @@
+.swalPopup {
+    background-color: #011C26 !important; /* Fondo azul oscuro */
+    color: #fff; /* Blanco Estelar Tenue */
+}
+
+.swalConfirmButton {
+    background-color: #012840 !important; /* Azul Oscuro */
+    color: #fff !important; /* Blanco Estelar Tenue */
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #021826; /* Azul Verdoso Oscuro */
+}
+
+.left {
+    flex: 1;
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 150px 5px 50px;
+    flex-direction: column;
+}
+
+.welcome {
+    text-align: center;
+    color: #fff; /* Blanco Estelar Tenue */
+    flex: 6;
+}
+
+.welcome h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #0F8C8C; /* Verde Magenta */
+}
+
+.welcome p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 15%;
+    color: #fff; /* Blanco Estelar Tenue */
+}
+
+.welcome button {
+    padding: 0.5rem 1rem;
+    background-color: #012840; /* Azul Oscuro */
+    color: #fff; /* Blanco Estelar Tenue */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.welcome button:hover {
+    background-color: #025959; /* Verde Agua */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 80%;
+    max-width: 400px;
+    background-color: #011C26; /* Azul Oscuro */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #fff; /* Blanco Estelar Tenue */
+    flex: 6;
+    overflow: auto;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #fff; /* Blanco Estelar Tenue */
+}
+
+.form input {
+    padding: 0.5rem;
+    border: 1px solid #4FD3FF; /* Luz de Estrella Cian */
+    border-radius: 5px;
+    background-color: #021826; /* Azul Verdoso Oscuro */
+    color: #fff; /* Blanco Estelar Tenue */
+}
+
+.form button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background-color: #012840; /* Azul Oscuro */
+    color: #fff; /* Blanco Estelar Tenue */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+    background-color: #025959; /* Verde Agua */
+}
+
+.form h1 {
+    margin: 0 0 20px;
+}
+
+/* Personalizar la barra de desplazamiento para que sea más visible */
+.form::-webkit-scrollbar {
+    width: 12px;
+    /* Ancho de la barra de desplazamiento */
+}
+
+.form::-webkit-scrollbar-thumb {
+    background-color: #4FD3FF; /* Luz de Estrella Cian */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    transition: background-color 1s ease-in;
+    /* Efecto de transición al pasar el ratón */
+    cursor: grab;
+}
+
+.form::-webkit-scrollbar-thumb:hover {
+    background-color: #025959; /* Verde Agua */
+}
+
+.form::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+    /* Cambiar el cursor a grabbing cuando se hace clic */
+}
+
+.tip {
+    font-size: 0.9rem;
+    color: #fff; /* Blanco Estelar Tenue */
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.toggleSocialButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background-color: #012840; /* Azul Oscuro */
+    color: #fff; /* Blanco Estelar Tenue */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.toggleSocialButton:hover {
+    background-color: #025959; /* Verde Agua */
+}
+
+.socialSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .form {
+        width: 90%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .left,
+    .right {
+        flex: 1;
+    }
+
+    .form {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1025px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .left,
+    .right {
+        flex: 1;
+    }
+
+    .form {
+        width: 60%;
+    }
+}

@@ -1,0 +1,241 @@
+
+/* Sistema de variables mejorado */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@500;700&display=swap');
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+:root {
+  /* Opacidades */
+  --opacity-10: rgba(255, 255, 255, 0.1);
+  --opacity-20: rgba(255, 255, 255, 0.2);
+  --opacity-30: rgba(255, 255, 255, 0.3);
+  --opacity-40: rgba(255, 255, 255, 0.4);
+  --opacity-50: rgba(255, 255, 255, 0.5);
+  --opacity-60: rgba(255, 255, 255, 0.6);
+  --opacity-70: rgba(255, 255, 255, 0.7);
+  --opacity-80: rgba(255, 255, 255, 0.8);
+  --opacity-90: rgba(255, 255, 255, 0.9);
+  --opacity-95: rgba(255, 255, 255, 0.95);
+  
+  /* Espaciado */
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem;  /* 8px */
+  --space-md: 1rem;    /* 16px */
+  --space-lg: 1.5rem;  /* 24px */
+  --space-xl: 2rem;    /* 32px */
+  --space-xxl: 3rem;   /* 48px */
+  
+  /* Tipografía */
+  --font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-size-xs: 0.75rem;  /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem;     /* 16px */
+  --font-size-lg: 1.25rem;  /* 20px */
+  --font-size-xl: 1.5rem;   /* 24px */
+  --font-size-xxl: 2rem;    /* 32px */
+  
+  /* Font weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  
+  /* Bordes */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+  --radius-circle: 50%;
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.24);
+  --shadow-inset: inset 0 0 0 1px var(--opacity-20);
+  
+  /* Transiciones */
+  --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Container sizes */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: transparent;
+  color: #4FD3FF;
+}
+
+::-moz-selection {
+  background: transparent;
+  color: #4FD3FF;
+}
+
+::-webkit-selection {
+  background: transparent;
+  color: #4FD3FF;
+}
+
+.pin-spacer {
+  max-height: 500vh !important;
+  height: 500vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+.animated-h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 3rem 0;
+  overflow: hidden;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+.letter {
+  display: inline-block;
+  transform-origin: bottom;
+  transition: color 0.3s ease;
+}
+
+
+body {
+  letter-spacing: -1px !important;
+  cursor: default !important;
+  color: #4fd3ff !important;
+  background: #fefefe;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  transition-property: opacity, transform, filter, background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+
+.page-transition {
+  opacity: 0;
+  background: B8B8B8;
+  transform: translateY(40px);
+  filter: blur(12px);
+}
+
+/* Para usar en componentes específicos */
+.custom-text {
+  font-weight: 500;
+  /* Puedes usar cualquier peso definido: 100-900 */
+}
+
+/* Personalizar la barra de desplazamiento para que sea más visible */
+html::-webkit-scrollbar {
+  width: 12px;
+  /* font-family: ; */
+  /* Ancho de la barra de desplazamiento */
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #4FD3FF;
+  /* Luz de Estrella Cian */
+  border-radius: 10px;
+  /* Bordes redondeados */
+  transition: background-color 1s ease-in;
+  /* Efecto de transición al pasar el ratón */
+  cursor: grab;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #025959;
+  /* Verde Agua */
+}
+
+html::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
+  /* Cambiar el cursor a grabbing cuando se hace clic */
+}
+
+/* Botones */
+button {
+  background-color: #012840;
+  /* Azul Oscuro */
+  color: #fff;
+  /* Blanco Estelar Tenue */
+  border: 1px solid #4FD3FF;
+  /* Borde Luz de Estrella Cian */
+  padding: 10px 20px;
+  border-radius: 5px;
+  /* cursor: pointer; */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #025959;
+  /* Verde Agua */
+}
+
+button:active {
+  background-color: #021826;
+  /* Azul Verdoso Oscuro */
+}
+
+/* Textos */
+h1,
+h2,
+h3,
+h4,
+h5,
+span,
+h6 {
+  z-index: 1;
+  color: #fff;
+  font-family: var(--font-syne), sans-serif !important;
+}
+
+p,
+a,
+label,
+input, textarea, select, option, ul, li, ol, dl, dt, dd, blockquote, q, cite, pre, code, kbd, legend, caption, figcaption, address, time, small, strong, em, i, b, mark, sup, sub {
+  z-index: 1;
+  font-family: var(--font-inter), sans-serif !important;
+}
+
+div, section, article {
+  z-index: 1;
+}
+
+/* Bordes */
+.border {
+  border: 1px solid #4FD3FF;
+  /* Luz de Estrella Cian */
+}
+
+/* Fondos */
+.background {
+  background-color: #011C26;
+  /* Azul Oscuro */
+}
+
+.background-alt {
+  background-color: #021826;
+  /* Azul Verdoso Oscuro */
+}
+
+
+@media screen and (max-width: 768px) {}

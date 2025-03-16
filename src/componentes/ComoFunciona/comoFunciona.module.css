@@ -1,0 +1,242 @@
+.howWorks {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 120px 0;
+  display: grid;
+  place-items: center;
+
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  z-index: 1;
+}
+
+.moonWrapper {
+  position: absolute;
+  top: 5%;
+  left: -5%;
+  width: 600px;
+  height: 600px;
+  opacity: 0.9;
+  filter: blur(1px) brightness(0.8);
+  z-index: 0;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.moonImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  transform: translateZ(-100px);
+  filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.699));
+}
+
+.astronautWrapper {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  width: 400px;
+  height: 400px;
+  opacity: 1;
+  z-index: 0;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.astronautImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  transform: translateZ(-100px);
+  filter: drop-shadow(0 0 30px rgba(3, 3, 3, 0.863));
+}
+
+
+/* .titleH1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+  background: linear-gradient(135deg, #fff 0%, #4FD3FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 15px rgba(79, 211, 255, 0.3));
+} */
+
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.step {
+  position: relative;
+  padding: 2rem;
+  background: #01284014;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 3px solid rgba(79, 211, 255, 0.1);
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(79, 211, 255, 0.308),
+    transparent
+  );
+  transform: translateY(100%);
+  transition: transform 0.6s ease;
+}
+
+.step:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(79, 211, 255, 0.3);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(79, 211, 255, 0.2);
+}
+
+.step:hover::before {
+  transform: translateY(0);
+}
+
+.stepIcon {
+  font-size: 2.5rem;
+  color: #4FD3FF;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(79, 211, 255, 0.5));
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.step:hover .stepIcon {
+  transform: translateZ(20px) scale(1.1);
+  filter: drop-shadow(0 0 20px rgba(79, 211, 255, 0.8));
+}
+
+.stepTitle {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.stepDescription {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.ctaButton {
+  justify-self: center;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 211, 255, 0.2) 0%,
+    rgba(79, 211, 255, 0.1) 100%
+  );
+  border: 1px solid rgba(79, 211, 255, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(
+    135deg,
+    rgba(79, 211, 255, 0.3) 0%,
+    rgba(79, 211, 255, 0.2) 100%
+  );
+  border-color: rgba(79, 211, 255, 0.5);
+  box-shadow: 0 0 30px rgba(79, 211, 255, 0.3);
+}
+
+@media (max-width: 1200px) {
+  .moonWrapper {
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    right: -10%;
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .howWorks {
+    padding: 80px 0 10px;
+  }
+  .container {
+    padding: 0 1rem;
+    gap: 3rem;
+  }
+  
+  .astronautWrapper {
+    display: none;
+  }
+
+  .moonWrapper {
+    display: none;
+    width: 300px;
+    height: 300px;
+    top: 5%;
+    right: -20%;
+    opacity: 0.3;
+  }
+
+  .stepper {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .step {
+    padding: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moonWrapper {
+    animation: none;
+  }
+  
+  .step {
+    transition: none;
+  }
+}

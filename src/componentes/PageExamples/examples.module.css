@@ -1,0 +1,529 @@
+.projectExamples {
+  padding: 100px 40px;
+  min-height: 100vh;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.sectionTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 80px;
+  background: linear-gradient(135deg, #fff, #4FD3FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  text-shadow: 0 0 30px rgba(79, 211, 255, 0.3);
+}
+
+.projectCard {
+  margin-bottom: 120px;
+  perspective: 1000px;
+  position: relative;
+  opacity: 0;
+}
+
+
+.cardContent {
+  display: flex;
+  flex-direction: flex;
+  justify-content: space-between;
+}
+
+.cardContent .fromLeft {
+  flex-direction: row-reverse;
+}
+
+.cardContent .fromRight {
+  flex-direction: row;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 3;
+}
+
+.fromLeft {
+  flex-direction: row-reverse;
+  transform: translateX(-100px);
+}
+
+.fromRight {
+  flex-direction: row;
+  transform: translateX(100px);
+}
+
+.cardInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 40px;
+  background: linear-gradient(135deg,
+      rgba(1, 40, 64, 0.95) 0%,
+      rgba(1, 28, 38, 0.98) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(79, 211, 255, 0.1);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    inset 0 0 20px rgba(79, 211, 255, 0.05);
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.cardInner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg,
+      transparent,
+      rgba(79, 211, 255, 0.1),
+      transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.cardInner:hover::before {
+  transform: translateX(100%);
+}
+
+.cardInner:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(79, 211, 255, 0.3);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 0 30px rgba(79, 211, 255, 0.1);
+}
+
+.imageWrapper {
+  display: flex;
+  flex: 7;
+  flex-direction: row;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.projectImage {
+  width: -webkit-fill-available;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+  filter: brightness(0.9) contrast(1.1);
+}
+
+/* .imageWrapper:hover .projectImage {
+  transform: scale(1.1);
+  filter: brightness(1.1) contrast(1.2);
+} */
+
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 40, 64, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(5px);
+}
+
+.projectLink {
+  padding: 15px 40px;
+  color: #fff;
+  background: linear-gradient(135deg, #4FD3FF 0%, #012840 100%);
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(79, 211, 255, 0.3);
+  text-decoration: none;
+}
+
+.projectLink:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 20px rgba(79, 211, 255, 0.3),
+    inset 0 0 20px rgba(79, 211, 255, 0.2);
+  border-color: rgba(79, 211, 255, 0.5);
+}
+
+.projectTitle {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 25px;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.projectTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #4FD3FF, transparent);
+  transition: width 0.3s ease;
+}
+
+.cardInner:hover .projectTitle::after {
+  width: 100%;
+}
+
+.techBadge {
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: #4FD3FF;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.techBadge:hover {
+  background: rgba(79, 211, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow:
+    0 5px 15px rgba(79, 211, 255, 0.2),
+    inset 0 0 10px rgba(79, 211, 255, 0.1);
+  border-color: rgba(79, 211, 255, 0.4);
+}
+
+.techStackContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+@media (max-width: 1024px) {
+  .cardInner {
+    grid-template-columns: 1fr;
+    padding: 30px;
+  }
+
+  .projectCard {
+    margin-bottom: 80px;
+  }
+
+  .projectTitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .projectExamples {
+    padding: 60px 20px;
+  }
+
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+
+  .cardInner {
+    padding: 20px;
+  }
+}
+
+.projectCard {
+  margin-bottom: 120px;
+  perspective: 1000px;
+  position: relative;
+}
+
+.cardContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.evenCard {
+  grid-template-areas: "text image";
+}
+
+.oddCard {
+  grid-template-areas: "image text";
+}
+
+.infoContainer {
+  grid-area: text;
+  padding: 40px;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+}
+
+.infoContainer:hover {
+  border-color: rgba(79, 211, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    inset 0 0 30px rgba(79, 211, 255, 0.1);
+}
+
+.imageWrapper {
+  grid-area: image;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  /* box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(79, 211, 255, 0.1); */
+  width: -webkit-fill-available;
+  transition: all 0.5s ease;
+}
+
+.imageWrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg,
+      transparent,
+      rgba(79, 211, 255, 0.1),
+      transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+/* .imageWrapper:hover::before {
+  transform: translateX(100%);
+} */
+
+
+@media (max-width: 1024px) {
+  .cardContent {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .evenCard,
+  .oddCard {
+    grid-template-areas:
+      "image"
+      "text";
+  }
+}
+
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 40, 64, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  backdrop-filter: blur(8px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 0 solid rgba(79, 211, 255, 0.3);
+  transition: border-width 0.4s ease;
+}
+
+.overlay:hover::before {
+  border-width: 1px;
+}
+
+.link {
+  position: relative;
+  padding: 15px 40px;
+  color: #fff;
+  background: linear-gradient(135deg, #4FD3FF 0%, #012840 100%);
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(79, 211, 255, 0.3);
+  overflow: hidden;
+}
+
+.link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg,
+      transparent,
+      rgba(79, 211, 255, 0.2),
+      transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.link:hover::before {
+  transform: translateX(100%);
+}
+
+.link:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(79, 211, 255, 0.3);
+  border-color: rgba(79, 211, 255, 0.5);
+  background: linear-gradient(135deg, #fafcfd 20%, #012840 100%);
+}
+
+.link:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .link {
+    padding: 12px 30px;
+    font-size: 0.9rem;
+  }
+}
+
+
+.titleH1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #fff, #4FD3FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  text-shadow: 0 0 30px rgba(79, 211, 255, 0.3);
+}
+
+.titleH1::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4FD3FF, transparent);
+  transition: width 0.3s ease;
+}
+
+.titleH1::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4FD3FF, transparent);
+  transition: width 0.3s ease;
+}
+
+.titleH1:hover::before {
+  width: 200px;
+}
+
+.titleH1:hover::after {
+  width: 300px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #bcbcbc;
+  margin-bottom: 4rem;
+  position: relative;
+  max-width: 600px;
+  margin: 4rem auto 4rem;
+  line-height: 1.6;
+}
+
+.subtitle::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: rgba(79, 211, 255, 0.3);
+  transition: width 0.3s ease;
+}
+
+.subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: rgba(79, 211, 255, 0.3);
+  transition: width 0.3s ease;
+}
+
+.subtitle:hover::before {
+  width: 100px;
+}
+
+.subtitle:hover::after {
+  width: 150px;
+}
+
+@keyframes glowingText {
+  0% {
+    text-shadow: 0 0 10px rgba(79, 211, 255, 0.3);
+  }
+
+  50% {
+    text-shadow: 0 0 20px rgba(79, 211, 255, 0.5);
+  }
+
+  100% {
+    text-shadow: 0 0 10px rgba(79, 211, 255, 0.3);
+  }
+}
+
+.titleH1:hover {
+  animation: glowingText 2s infinite;
+  letter-spacing: 1px;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.subtitle:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .titleH1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .titleH1:hover::before,
+  .titleH1:hover::after,
+  .subtitle:hover::before,
+  .subtitle:hover::after {
+    width: 80%;
+  }
+}

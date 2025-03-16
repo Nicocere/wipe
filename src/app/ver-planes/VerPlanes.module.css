@@ -1,0 +1,170 @@
+/* VerPlanes.module.css */
+
+.container {
+    margin: 100px 50px;
+    text-align: center;
+    background-color: #011C26; /* Fondo azul oscuro */
+    padding: 20px;
+    border: 1px solid #4FD3FF; /* Borde Luz de Estrella Cian */
+    border-radius: 8px;
+    color: #fff; /* Blanco Estelar Tenue */
+}
+
+.title {
+    color: #0F8C8C; /* Verde Magenta */
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #fff; /* Blanco Estelar Tenue */
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.button {
+    background-color: #012840; /* Azul Oscuro */
+    color: #fff; /* Blanco Estelar Tenue */
+    border: 1px solid #4FD3FF; /* Borde Luz de Estrella Cian */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #025959; /* Verde Agua */
+}
+
+
+
+.titleH1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #fff, #4FD3FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  text-shadow: 0 0 30px rgba(79, 211, 255, 0.3);
+}
+
+.titleH1::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4FD3FF, transparent);
+  transition: width 0.3s ease;
+}
+
+.titleH1::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4FD3FF, transparent);
+  transition: width 0.3s ease;
+}
+
+.titleH1:hover::before {
+  width: 200px;
+}
+
+.titleH1:hover::after {
+  width: 300px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #bcbcbc;
+  margin-bottom: 4rem;
+  position: relative;
+  max-width: 600px;
+  margin: 4rem auto 4rem;
+  line-height: 1.6;
+}
+
+.subtitle::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: rgba(79, 211, 255, 0.3);
+  transition: width 0.3s ease;
+}
+
+.subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: rgba(79, 211, 255, 0.3);
+  transition: width 0.3s ease;
+}
+
+.subtitle:hover::before {
+  width: 100px;
+}
+
+.subtitle:hover::after {
+  width: 150px;
+}
+
+@keyframes glowingText {
+  0% {
+    text-shadow: 0 0 10px rgba(79, 211, 255, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(79, 211, 255, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(79, 211, 255, 0.3);
+  }
+}
+
+.titleH1:hover {
+  animation: glowingText 2s infinite;
+  letter-spacing: 1px;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.subtitle:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .titleH1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+  
+  .titleH1:hover::before,
+  .titleH1:hover::after,
+  .subtitle:hover::before,
+  .subtitle:hover::after {
+    width: 80%;
+  }
+}

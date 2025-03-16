@@ -1,0 +1,171 @@
+.skillsWrapper {
+  width: 100%;
+  padding: 2rem 0;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+}
+
+/* Contenedor principal de habilidades */
+.mobileSkillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tarjeta de habilidad individual */
+.skillCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #4fd3ff71, #0037b97a);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 1rem;
+  width: 120px;
+  height: 120px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(79, 211, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 54, 185, 0.08);
+}
+
+.skillCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(79, 211, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(79, 211, 255, 0.3);
+}
+
+/* Contenedor de imagen */
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.imageWrapper img {
+  max-width: 250px;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+.skillCard:hover .imageWrapper img {
+  transform: scale(1.1);
+}
+
+/* Nombre de la habilidad */
+.skillName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: #4FD3FF;
+  transition: color 0.3s ease;
+}
+
+.skillCard:hover .skillName {
+  color: #B1EAFF;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skillCard {
+    width: 100px;
+    height: 100px;
+    padding: 0.8rem;
+  }
+  
+  .imageWrapper {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .mobileSkillsContainer {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .skillCard {
+    width: 80px;
+    height: 80px;
+    padding: 0.5rem;
+  }
+  
+  .imageWrapper {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+  }
+  
+  .mobileSkillsContainer {
+    gap: 0.8rem;
+  }
+}
+
+/* Animaciones para Framer Motion */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación de hover para skills */
+.skillCard:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #4FD3FF, #0036B9);
+  z-index: -1;
+  border-radius: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skillCard:hover:before {
+  opacity: 0.4;
+}
+
+/* Pantalla de carga inicial */
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+}
+
+.spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 3px solid #4FD3FF;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

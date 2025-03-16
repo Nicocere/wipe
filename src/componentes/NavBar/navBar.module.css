@@ -1,0 +1,167 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 0px; /* Comienza con border-radius 0 */
+}
+
+.navBar.atTop {
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(10px);
+  box-shadow: none;
+}
+
+.navBar.hidden {
+  transform: translateY(-100%);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.brandContainer {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.brandText {
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.brandLetter {
+  display: inline-block;
+  background: linear-gradient(45deg, #4fd3ff, #1a6dff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(79, 211, 255, 0.5);
+  margin-right: 3px;
+}
+
+.sloganContainer {
+  display: flex;
+  overflow: hidden;
+}
+
+.wipeEffect {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  gap: 5px;
+}
+
+.digital {
+  color: #4fd3ff;
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.solutions {
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 300;
+}
+
+.authLinks {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navLink_login {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #c6bbb9;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.navLink_login:hover {
+  color: #ffffff;
+}
+
+.navLink_spazio {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(45deg, #4fd3ff, #1a6dff);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.navLink_spazio:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(26, 109, 255, 0.3);
+}
+
+.drawerLinks {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.avatarContainer {
+  cursor: pointer;
+}
+
+.avatar {
+  background: linear-gradient(45deg, #4fd3ff, #1a6dff) !important;
+  color: white !important;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+
+.menuIcon {
+  color: #c6bbb9;
+  font-size: 1.8rem;
+}
+
+.closeIcon {
+  color: #c6bbb9;
+  font-size: 1.8rem;
+}
+
+@media (max-width: 768px) {
+  .navBar {
+    padding: 0.8rem 1rem;
+  }
+  
+  .brandText {
+    font-size: 1.8rem;
+  }
+  
+  .digital, .solutions {
+    font-size: 0.7rem;
+  }
+}

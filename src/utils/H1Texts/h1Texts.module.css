@@ -1,0 +1,34 @@
+/* H1Text.module.css */
+
+.animated {
+  font-size: 4rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 3rem 0;
+  overflow: hidden;  /* Para que las letras que están fuera no se vean */
+  letter-spacing: 2px;
+  z-index: 10;
+  background: linear-gradient(135deg, #fff, #4FD3FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:  #4FD3FF;
+  text-shadow: 0 0 20px rgba(79, 211, 255, 0.2);
+  position: relative;
+}
+
+.letter {
+  display: inline-block;
+  transform-origin: bottom;
+  transition: color 0.3s ease;  /* Suaviza el cambio de color */
+}
+
+@media (max-width: 768px) {
+  .animated {
+    font-size: 2.5rem;
+  }
+
+  .animated:hover::before,
+  .animated:hover::after {
+    width: 80%;
+  }
+}

@@ -1,0 +1,147 @@
+.scrollContainer {
+  height: 450vh; /* Asegura un scroll vertical lo suficientemente largo */
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: -webkit-fill-available;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.titleSection {
+  position: relative;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 0%, #4FD3FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(79, 211, 255, 0.3);
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+
+/* El contenedor de los servicios se extiende horizontalmente */
+.servicesContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%; /* Se ajusta según el número de servicios */
+  height: 100vh;
+  gap: 2vw;
+  will-change: transform;
+  align-items: center;
+}
+
+/* Cada servicio ocupa toda la pantalla en ancho */
+.service {
+  background: #01284038 !important;
+  border-radius: 20px;
+  border: 5px solid transparent;
+  width: 85vw;
+  height: 75vh;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  flex-direction: row;
+  padding: 1.5rem 5rem;
+  margin-top: 50px;
+  transition: border .4s ease-in-out, background .3s ease-in-out;  
+}
+
+.service img{
+  object-fit: contain;
+  width: -webkit-fill-available !important;
+flex: 1;
+  height: 525px;
+}
+
+.service:hover {
+  background: #001b2c5b !important;
+  border: 5px solid #4FD3FF;
+}
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 5;
+  gap: 1rem;
+}
+
+.serviceTitle {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+.serviceDescription {
+  color: #4FD3FF;
+  font-size: 1.2rem;
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Estilos para versión móvil */
+@media (max-width: 768px) {
+  .scrollContainer {
+    margin: 10px 30px;
+    height: auto; /* Ajustar altura para scroll vertical */
+  }
+
+  .sticky {
+    position: relative; /* No usar sticky en móvil */
+    height: auto;
+    width: 100%;
+    display: block;
+  }
+
+  .servicesContainer {
+    display: block; /* Cambiar a bloque para scroll vertical */
+    width: 100%;
+    height: auto;
+    gap: 0;
+  }
+
+  .service {
+    width: -webkit-fill-available; /* Ajustar ancho para móvil */
+    height: auto;
+    margin: 20px auto; /* Centrar y agregar margen */
+    padding: 2rem;
+    flex-direction: column;
+  }
+
+  .serviceTitle {
+    font-size: 2rem; /* Ajustar tamaño de fuente para móvil */
+  }
+
+  .serviceDescription {
+    font-size: 1rem; /* Ajustar tamaño de fuente para móvil */
+  }
+}

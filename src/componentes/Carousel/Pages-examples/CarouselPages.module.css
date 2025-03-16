@@ -1,0 +1,132 @@
+.carouselSection {
+    width: 100%;
+    padding: 2rem 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.carouselContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow: hidden;
+}
+
+.swiperContainer {
+    width: 100%;
+    height: 150px;
+}
+
+.slideContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    align-items: center;
+}
+
+.logoWrapper {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.logoWrapper:hover {
+    transform: translateY(-5px);
+}
+
+.logoImage {
+    object-fit: contain;
+    max-width: 100%;
+    height: auto;
+    filter: brightness(0.9) contrast(1.1);
+    transition: all 0.3s ease;
+}
+
+.logoWrapper:hover .logoImage {
+    filter: brightness(1) contrast(1.2);
+}
+
+.logoImage {
+    transition: all 0.3s ease;
+    filter: grayscale(100%) brightness(1.2);
+}
+
+.logoWrapper:hover .logoImage {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .carouselContainer {
+        padding: 0 0.5rem;
+    }
+
+    .logoWrapper {
+        width: 180px;
+        height: 90px;
+    }
+
+    .swiperContainer {
+        height: 120px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carouselContainer {
+        padding: 0 2rem;
+    }
+}
+
+.carouselSection {
+    width: 100%;
+    padding: 4rem 0;
+    background: transparent;
+}
+
+.swiperContainer {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.logoContainer {
+    position: relative;
+    width: 180px;
+    height: 90px;
+    transition: all 0.3s ease;
+}
+
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .logoContainer {
+        width: 140px;
+        height: 70px;
+    }
+    
+    .carouselSection {
+        padding: 2rem 0;
+    }
+}

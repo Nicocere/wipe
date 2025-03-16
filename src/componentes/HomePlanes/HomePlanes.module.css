@@ -1,0 +1,402 @@
+/* HomePlanes.module.css */
+
+/* Estilos generales */
+.animateSection {
+  padding: 40px 20px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.title {
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+}
+
+.planes {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cardSection {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Estilos para las tarjetas */
+.card {
+  background: #012840;
+  /* Fondo con opacidad para mejor contraste */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  /* Sombra más profunda */
+  backdrop-filter: blur(15px);
+  /* Efecto de desenfoque */
+  position: relative;
+  /* Para elementos posicionales adicionales */
+  overflow: hidden;
+  /* Para elementos desbordados */
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid transparent;
+  transition: all 0.4s ease;
+}
+
+/* Efecto hover para las tarjetas */
+.card:hover {
+  border: 1px solid #4FD3FF;
+  transform: translateY(-10px);
+  cursor: pointer;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 50%);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card h3 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.card p {
+  color: #c6bbb9;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.card ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.card ul li {
+  color: #4FD3FF;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.card ul li::before {
+  content: '✔';
+  /* Icono de check */
+  position: absolute;
+  left: 0;
+  color: #4FD3FF;
+  font-weight: bold;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #fff;
+  color: #012840;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  z-index: 4;
+  border: 1px solid transparent;
+  transition: all 0.5s ease;
+}
+
+.ctaButton:hover {
+  background-color: #011C26;
+  color: #fff;
+  border: 1px solid #4FD3FF;
+}
+
+/* Botón "Ver más información" */
+.infoLink {
+  display: inline-block;
+  margin-left: 15px;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #c6bbb9;
+  text-decoration: underline;
+  z-index: 4;
+}
+
+.infoLink:hover {
+  color: #0F8C8C;
+}
+
+/* Estilos para escritorio */
+@media (min-width: 768px) {
+  .cardSection {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .card {
+    flex: 1 1 calc(33% - 20px);
+    /* Mostrar tres cards en fila */
+  }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  .card {
+    flex: 1 1 100%;
+    /* Mostrar una card por fila */
+  }
+}
+
+.plansTitle {
+  font-size: 3.2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+  /* color: #fff; */
+  background: linear-gradient(135deg, #fff, #4FD3FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4rem auto;
+  justify-content: center;
+  gap: 0.5rem;
+  text-shadow: 0 0 20px rgba(79, 211, 255, 0.2);
+}
+
+.plansTitle::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4FD3FF, transparent);
+  transition: width 0.3s ease;
+}
+
+.plansTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4FD3FF, transparent);
+  transition: width 0.3s ease;
+}
+
+.plansTitle:hover::before {
+  width: 200px;
+}
+
+.plansTitle:hover::after {
+  width: 300px;
+}
+
+
+.wordWrapper {
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(135deg, #fff, #4fd3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  text-shadow: 0 0 30px #4fd3ff4d;
+  transition: all 0.3s ease;
+}
+
+.wordWrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  transition: width 0.6s ease-in-out;
+}
+
+.wordWrapper:hover {
+  color: #4FD3FF;
+  background: linear-gradient(135deg, #4fd3ff, #4fd3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  transform: translateY(-2px);
+}
+
+.wordWrapper:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .plansTitle {
+    font-size: 2.5rem;
+    padding: 0 1rem;
+  }
+}
+
+
+
+
+@keyframes glowingText {
+  0% {
+    text-shadow: 0 0 10px rgba(79, 211, 255, 0.3);
+  }
+
+  50% {
+    text-shadow: 0 0 20px rgba(79, 211, 255, 0.5);
+  }
+
+  100% {
+    text-shadow: 0 0 10px rgba(79, 211, 255, 0.3);
+  }
+}
+
+.plansTitle:hover {
+  animation: glowingText 2s infinite;
+  letter-spacing: 1px;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+
+/* Añadir al final del archivo existente */
+
+.disabledCard {
+    opacity: 0.7;
+    position: relative;
+    /* pointer-events: none; */
+    filter: grayscale(30%);
+    transition: all 0.5s ease;
+  }
+  
+  .disabledCard:hover {
+  cursor: not-allowed;
+    transform: none;
+    border-color: transparent;
+}
+
+.comingSoonOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(1, 40, 64, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    opacity: 0;
+    transition: all 0.5s ease;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+}
+
+.disabledCard:hover .comingSoonOverlay {
+    opacity: 1;
+    animation: pulseOverlay 2s infinite;
+}
+
+.comingSoonText {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4FD3FF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transform: rotate(-5deg);
+    text-shadow: 0 0 10px rgba(79, 211, 255, 0.5);
+    animation: glowText 2s infinite;
+}
+
+@keyframes pulseOverlay {
+    0% {
+        background: rgba(1, 40, 64, 0.9);
+    }
+    50% {
+        background: rgba(1, 40, 64, 0.95);
+    }
+    100% {
+        background: rgba(1, 40, 64, 0.9);
+    }
+}
+
+@keyframes glowText {
+    0% {
+        text-shadow: 0 0 10px rgba(79, 211, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(79, 211, 255, 0.8),
+                     0 0 30px rgba(79, 211, 255, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(79, 211, 255, 0.5);
+    }
+}
+
+.disabledCard::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #4FD3FF, transparent);
+    z-index: -1;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.disabledCard:hover::before {
+    opacity: 0.3;
+    animation: borderGlow 2s infinite;
+}
+
+@keyframes borderGlow {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+@media (max-width: 768px) {
+  .plansTitle {
+    font-size: 2.5rem;
+  }
+
+
+  .plansTitle:hover::before,
+  .plansTitle:hover::after {
+    width: 80%;
+  }
+}

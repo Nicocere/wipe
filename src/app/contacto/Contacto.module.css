@@ -1,0 +1,59 @@
+/* Contacto.module.css */
+
+.container {
+    margin: 150px 80px 30px;
+    background-color: #011C26; /* Fondo azul oscuro */
+    padding: 20px;
+    border: 1px solid #4FD3FF; /* Borde Luz de Estrella Cian */
+    border-radius: 8px;
+    color: #fff; /* Blanco Estelar Tenue */
+}
+
+.title {
+    color: #0F8C8C; /* Verde Magenta */
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #fff; /* Blanco Estelar Tenue */
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form div {
+    margin-bottom: 15px;
+}
+
+.label {
+    color: #0F8C8C; /* Verde Magenta */
+    margin-bottom: 5px;
+}
+
+.input, .textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #4FD3FF; /* Borde Luz de Estrella Cian */
+    border-radius: 5px;
+    background-color: #021826; /* Fondo azul verdoso oscuro */
+    color: #fff; /* Blanco Estelar Tenue */
+}
+
+.button {
+    background-color: #012840; /* Azul Oscuro */
+    color: #fff; /* Blanco Estelar Tenue */
+    border: 1px solid #4FD3FF; /* Borde Luz de Estrella Cian */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #025959; /* Verde Agua */
+}

@@ -1,0 +1,852 @@
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+  /* Paleta de colores - Base blanca con acentos azul */
+  --color-primary: #4FD3FF;
+  --color-primary-dark: #0098D4;
+  --color-primary-light: #B1EAFF;
+  --color-accent: #0036B9;
+  --color-text: #1A202C;
+  --color-text-light: #4A5568;
+  --color-muted: #A0AEC0;
+  --color-background: #FFFFFF;
+  --color-background-alt: #F7FAFC;
+  --color-success: #48BB78;
+  --color-warning: #F59E0B;
+  --color-error: #E53E3E;
+  
+  /* Efectos y sombras */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.03);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.04), 0 4px 6px rgba(0,0,0,0.02);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.02);
+  --shadow-glow: 0 0 20px rgba(79, 211, 255, 0.4);
+  
+  /* Transiciones y animaciones */
+  --transition-fast: 180ms ease;
+  --transition-normal: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Espaciado y layout */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 5rem;
+  
+  /* Bordes y radios */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  --border-radius-full: 9999px;
+  
+  /* Tipografía */
+  --font-sans: 'Inter var', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: 'Cal Sans', 'Inter var', sans-serif;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Tamaños contenedor */
+  --container-width: 1200px;
+  --header-height: 70px;
+}
+
+/* ===== ESTILOS BASE ===== */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  /* background-color: var(--color-background); */
+  position: relative;
+}
+
+/* ===== SECCIÓN DE PRESENTACIÓN ===== */
+.presentation {
+  padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+  position: relative;
+  overflow: visible;
+}
+
+.heroSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2xl);
+  position: relative;
+  z-index: 2;
+}
+
+/* Gradiente sutil en el fondo */
+.heroSection::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 120%;
+  height: 100%;
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(
+    circle at top right,
+    rgba(79, 211, 255, 0.07) 0%,
+    rgba(79, 211, 255, 0.02) 40%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.heroSection::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(
+    circle at bottom left,
+    rgba(0, 54, 185, 0.04) 0%,
+    rgba(0, 54, 185, 0.01) 40%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.textContent {
+  flex: 1;
+  max-width: 550px;
+  padding-right: var(--spacing-xl);
+  justify-items: center;
+
+}
+
+/* Título con efecto de resaltado */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text);
+  position: relative;
+}
+
+/* Palabras individuales en el título */
+.word {
+    color: #0036B9;
+
+  display: inline-block;
+  position: relative;
+  margin: 0 10px;
+  transition: color var(--transition-normal), transform var(--transition-normal);
+}
+
+/* Efecto de subrayado en hover para palabras del título */
+.word::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
+  transition: width var(--transition-normal), opacity var(--transition-normal);
+  border-radius: var(--border-radius-full);
+  opacity: 0;
+}
+
+.word:hover {
+  color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.word:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Subtítulo con mejor legibilidad */
+.subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xl);
+  max-width: 90%;
+  font-weight: 400;
+}
+
+/* Botón de llamado a la acción */
+.btnSpazio {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.875rem 1.75rem;
+  border: none;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  -webkit-font-smoothing: antialiased;
+  z-index: 1;
+}
+
+.btnSpazio:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), 0 0 15px rgba(79, 211, 255, 0.5);
+}
+
+.btnSpazio:active {
+  transform: translateY(1px);
+}
+
+/* Efecto de brillante en el botón */
+.btnSpazio::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.7s;
+}
+
+.btnSpazio:hover::before {
+  left: 100%;
+}
+
+/* Contenedor del ícono QR en el botón */
+.rocketContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rocket {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rocketIcon {
+  filter: brightness(0) invert(1);
+  width: 24px;
+  height: 24px;
+}
+
+.rocketIconActive {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.flames {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  font-size: 1.2rem;
+}
+
+/* Contenedor del código QR */
+.qrContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  position: relative;
+}
+
+/* Marco mejorado para el QR */
+.qrFrame {
+  background: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  transform: perspective(1000px) rotateY(-5deg);
+  transform-style: preserve-3d;
+}
+
+.qrFrame:hover {
+  transform: perspective(1000px) rotateY(0deg) scale(1.02);
+  box-shadow: var(--shadow-xl), 0 0 30px rgba(79, 211, 255, 0.3);
+}
+
+/* Decoración del marco QR */
+.qrFrame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.qrFrame::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(45deg, rgba(79, 211, 255, 0.05) 25%, transparent 25%) 0 0,
+    linear-gradient(-45deg, rgba(79, 211, 255, 0.05) 25%, transparent 25%) 0 0;
+  background-size: 6px 6px;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* Código QR con mejoras visuales */
+.qrCode {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  transition: transform var(--transition-normal);
+}
+
+.qrCode:hover {
+  transform: scale(1.03);
+}
+
+/* Efecto escáner del QR - optimizado para rendimiento */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  10%, 90% {
+    transform: translateY(var(--scan-position, 0%));
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+.qrFrame:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  opacity: 0.8;
+  animation: scan 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  z-index: 2;
+  will-change: transform;
+}
+
+/* Video de la aplicación */
+.astronautWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+}
+
+.astronautImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+}
+
+/* Decoración para el video */
+.astronautWrapper::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius-md);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.astronautWrapper::before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--border-radius-md);
+  opacity: 0.2;
+  z-index: -1;
+}
+
+
+/* ===== SECCIÓN DE SERVICIOS ===== */
+
+/* Contenedor principal de la sección */
+.servicesSection {
+  padding: 6rem 2rem;
+  margin: 3rem auto;
+  position: relative;
+  max-width: 1200px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Efecto de fondo sutil */
+.servicesSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    rgba(79, 211, 255, 0), 
+    rgba(79, 211, 255, 0.5), 
+    rgba(79, 211, 255, 0));
+  z-index: -1;
+}
+
+/* Título de la sección */
+.sectionTitle {
+  font-family: var(--font-display, 'Inter', sans-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #0036B9;
+  position: relative;
+  letter-spacing: -0.03em;
+}
+
+/* Línea decorativa debajo del título */
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #4FD3FF, #0098D4);
+  border-radius: 999px;
+}
+
+/* Grid de tarjetas de servicios */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+  position: relative;
+}
+
+/* Tarjeta individual de servicio */
+.serviceCard {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  border: 1px solid rgba(79, 211, 255, 0.1);
+  isolation: isolate;
+}
+
+/* Efecto hover en tarjeta */
+.serviceCard:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+  border-color: rgba(79, 211, 255, 0.3);
+}
+
+/* Efecto de resplandor sutil en hover */
+.serviceCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(79, 211, 255, 0.07) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.serviceCard:hover::after {
+  opacity: 1;
+}
+
+/* Línea decorativa superior en tarjeta */
+.serviceCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(79, 211, 255, 0.7), transparent);
+  transform: translateY(-4px);
+  transition: transform 0.3s ease;
+}
+
+.serviceCard:hover::before {
+  transform: translateY(0);
+}
+
+/* Contenedor del ícono */
+.serviceIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 999px;
+  background: rgba(79, 211, 255, 0.1);
+  margin-bottom: 1.5rem;
+  color: #0098D4;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.serviceCard:hover .serviceIcon {
+  background: rgba(79, 211, 255, 0.2);
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Pulse effect en el ícono */
+@keyframes pulseIcon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.serviceCard:hover .serviceIcon svg {
+  animation: pulseIcon 2s infinite ease-in-out;
+}
+
+/* Título del servicio */
+.serviceCard h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 0.8rem 0;
+  color: #0036B9;
+  transition: color 0.3s ease;
+}
+
+.serviceCard:hover h3 {
+  color: #0098D4;
+}
+
+/* Descripción del servicio */
+.serviceCard p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4A5568;
+  margin: 0;
+  font-weight: 400;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Efecto de focus para accesibilidad */
+.serviceCard:focus-visible {
+  outline: 2px solid #4FD3FF;
+  outline-offset: 4px;
+}
+
+/* Responsive para tabletas */
+@media (max-width: 992px) {
+  .servicesSection {
+    padding: 4rem 1.5rem;
+    margin: 2rem auto;
+  }
+  
+  .sectionTitle {
+    margin-bottom: 3rem;
+  }
+  
+  .servicesGrid {
+    gap: 1.5rem;
+  }
+  
+  .serviceCard {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 576px) {
+  .servicesSection {
+    padding: 3rem 1rem;
+    margin: 1.5rem auto;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .sectionTitle::after {
+    width: 60px;
+    height: 3px;
+  }
+  
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .serviceCard {
+    padding: 1.75rem 1.25rem;
+  }
+  
+  .serviceIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  .serviceCard h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Optimización para dispositivos con pantalla táctil */
+@media (hover: none) {
+  .serviceCard:active {
+    transform: scale(0.98);
+  }
+  
+  .serviceIcon {
+    background: rgba(79, 211, 255, 0.15);
+  }
+}
+
+/* Optimización para dispositivos con modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .serviceCard {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .serviceCard:hover {
+    border-color: rgba(79, 211, 255, 0.4);
+  }
+  
+  .serviceCard p {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Modo de animación reducida para accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .serviceCard,
+  .serviceIcon,
+  .serviceCard::before,
+  .serviceCard::after,
+  .serviceCard h3 {
+    transition: none;
+  }
+  
+  .serviceCard:hover .serviceIcon svg {
+    animation: none;
+  }
+  
+  .serviceCard:hover {
+    transform: none;
+  }
+}
+/* Media queries para responsive */
+@media (max-width: 1100px) {
+  .heroSection {
+    gap: var(--spacing-lg);
+  }
+  
+  .textContent {
+    padding-right: var(--spacing-md);
+  }
+}
+
+@media (max-width: 900px) {
+  .heroSection {
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+  
+  .textContent {
+    max-width: 100%;
+    padding-right: 0;
+    order: 1;
+  }
+  
+  .title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    text-align: center;
+  }
+  
+  .subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  .qrContainer {
+    order: 2;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .astronautWrapper {
+    order: 3;
+    width: 100%;
+  }
+  
+  .btnSpazio {
+    margin: 0 auto var(--spacing-lg);
+  }
+}
+
+@media (max-width: 600px) {
+  .presentation {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .qrFrame {
+    padding: var(--spacing-md);
+    transform: none;
+  }
+  
+  .qrFrame:hover {
+    transform: scale(1.02);
+  }
+  
+  .astronautImage {
+    transform: none;
+  }
+  
+  .astronautImage:hover {
+    transform: none;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .word:hover {
+    transform: none;
+  }
+  
+  .btnSpazio:hover {
+    transform: none;
+  }
+  
+  .qrFrame, .qrFrame:hover, .astronautImage, .astronautImage:hover {
+    transition: none;
+    transform: none;
+    animation: none;
+  }
+  
+  .btnSpazio::before {
+    display: none;
+  }
+}
+
+/* Modo oscuro opcional - activable con una clase en el contenedor principal */
+.darkMode {
+  --color-background: #121826;
+  --color-background-alt: #1E293B;
+  --color-text: #F8FAFC;
+  --color-text-light: #CBD5E1;
+  --color-muted: #64748B;
+}
+
+/* Animaciones y enriquecimiento visual */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Optimización de rendimiento */
+.title, .subtitle, .btnSpazio, .qrFrame, .astronautImage {
+  will-change: transform;
+}
+
+/* Pequeños detalles decorativos */
+.heroSection .textContent::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 20%;
+  width: 8px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--color-primary), transparent);
+  border-radius: var(--border-radius-full);
+  opacity: 0.4;
+}
+
+.qrFrame::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234FD3FF' width='24' height='24'%3E%3Cpath d='M7 17l3-3H8V2H6v12H4l3 3zm10-7v12h-2V10h-2l3-3 3 3h-2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.1;
+  pointer-events: none;
+}
