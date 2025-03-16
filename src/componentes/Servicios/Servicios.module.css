@@ -20,7 +20,7 @@
 
 /* ===== Contenedor Base ===== */
 .container {
-  width: 100%;
+  width: -webkit-fill-available;
   max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
@@ -266,6 +266,7 @@
 @media (max-width: 768px) {
   .container {
     padding: 2rem 1rem;
+    max-width: -webkit-fill-available;
   }
   
   .servicesSection {

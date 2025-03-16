@@ -56,7 +56,7 @@
 
 /* ===== ESTILOS BASE ===== */
 .container {
-  width: 100%;
+  width: -webkit-fill-available;
   max-width: var(--container-width);
   margin: 0 auto;
   padding: var(--spacing-lg);
@@ -482,6 +482,8 @@
   overflow: hidden;
   border: 1px solid rgba(79, 211, 255, 0.1);
   isolation: isolate;
+  width: -webkit-fill-available;
+  max-width: 350px;
 }
 
 /* Efecto hover en tarjeta */
@@ -516,7 +518,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: -webkit-fill-available;
   height: 4px;
   background: linear-gradient(90deg, transparent, rgba(79, 211, 255, 0.7), transparent);
   transform: translateY(-4px);
@@ -604,6 +606,7 @@
   }
   
   .serviceCard {
+    width: -webkit-fill-available;  
     padding: 2rem 1.5rem;
   }
 }
@@ -747,7 +750,7 @@
   }
   
   .title {
-    font-size: 1.8rem;
+    font-size: 4.8rem;
   }
   
   .qrFrame {
@@ -798,26 +801,7 @@
   --color-muted: #64748B;
 }
 
-/* Animaciones y enriquecimiento visual */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
 
 /* Optimización de rendimiento */
 .title, .subtitle, .btnSpazio, .qrFrame, .astronautImage {

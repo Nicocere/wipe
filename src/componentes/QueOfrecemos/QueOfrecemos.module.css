@@ -24,7 +24,7 @@
 
 /* Estilos base */
 .container {
-  width: 100%;
+  width: -webkit-fill-available;
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
@@ -109,6 +109,7 @@
   justify-content: flex-end;
   align-items: center;
   position: relative;
+  overflow: hidden;
 }
 
 .heroImage {
@@ -461,10 +462,10 @@
 
 /* Estilos base */
 .container {
-  width: 100%;
+  width: -webkit-fill-available;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2rem .5rem;
   overflow: hidden;
 }
 
@@ -774,7 +775,7 @@
 
 /* CTA Section */
 .ctaSection {
-  padding: 5rem 0;
+  padding: 5rem 20px;
   background: linear-gradient(135deg, #0036B9 0%, #4FD3FF 100%);
   border-radius: var(--border-radius-lg);
   margin: 4rem 0;
