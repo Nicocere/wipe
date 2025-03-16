@@ -85,8 +85,7 @@ const Home = () => {
                             onHoverStart={() => setIsHovering(true)}
                             onHoverEnd={() => setIsHovering(false)}
                         >
-                            Escanea para probar la demo
-
+                            <span> Escanea para probar la demo </span>
                             <motion.div
                                 className={styles.qrContainer}
                                 initial="hidden"

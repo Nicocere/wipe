@@ -11,6 +11,7 @@ const CursorWrapper = styled.div`
   --color-primary-light: #B1EAFF;
   --color-accent: #0036B9;
   --color-glow: rgba(79, 211, 255, 0.2);
+  --color-primary-invert: #B02C00;
   
   /* Variables de tamaño */
   --cursor-size-sm: 20px;
@@ -191,7 +192,7 @@ const GsapCursor = () => {
     // Estados del cursor para diferentes elementos
     const cursorStates = {
         default: {
-            dot: { scale: 1, background: 'var(--color-primary)' },
+            dot: { mixBlendMode:'initial', scale: 1, background: 'var(--color-primary)' },
             circle: { 
                 width: 'var(--cursor-size-md)', 
                 height: 'var(--cursor-size-md)', 
@@ -258,7 +259,7 @@ const GsapCursor = () => {
         },
         
         text: {
-            dot: { scale: 0.8, background: 'var(--color-primary)' },
+            dot: { mixBlendMode:'difference', scale: 0.8, background: 'var(--color-primary-invert)' },
             circle: { 
                 width: '18px', 
                 height: '18px',
