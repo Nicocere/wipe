@@ -1,5 +1,5 @@
 /* ===== VARIABLES GLOBALES ===== */
-:root {
+.container {
   /* Paleta de colores - Base blanca con acentos azul */
   --color-primary: #4FD3FF;
   --color-primary-dark: #0098D4;

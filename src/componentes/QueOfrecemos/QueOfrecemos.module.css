@@ -1,5 +1,5 @@
 /* Variables globales */
-:root {
+.container {
   --color-primary: #4FD3FF;
   --color-primary-dark: #0098D4;
   --color-accent: #0036B9;
@@ -436,7 +436,7 @@
   }
   /* filepath: c:\Users\Usuario\Documents\PuntoMesa\src\componentes\QueOfrecemos\QueOfrecemos.module.css */
 /* Variables globales */
-:root {
+.container {
   --color-primary: #4FD3FF;
   --color-primary-dark: #0098D4;
   --color-accent: #0036B9;
