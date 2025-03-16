@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ['gsap'],
-
+  reactStrictMode: true,
+  images: {
+    domains: [
+      'firebasestorage.googleapis.com',
+      // Mantén cualquier otro dominio que ya tengas configurado aquí
+    ],
+  },
   async rewrites() {
     return [
       {

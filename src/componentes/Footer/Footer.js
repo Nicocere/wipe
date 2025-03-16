@@ -10,6 +10,7 @@ import { useMediaQuery } from '@mui/material';
 
 const Footer = () => {
   const isMobileScreen = useMediaQuery('(max-width: 768px)');
+  const logo = "https://firebasestorage.googleapis.com/v0/b/empativa-psicologia.appspot.com/o/develops%2Fspazio-logo-dark.png?alt=media&token=cb764ca3-75fd-4796-9eef-8eea5bfc8b0c";
 
   const currentYear = new Date().getFullYear();
 
@@ -53,8 +54,8 @@ const Footer = () => {
         >
           <div className={styles.logoWrapper}>
             <Image
-              src="/spazio-logo21.png"
-              alt="Spazio Logo"
+              src={logo}
+              alt="Wipe Logo"
               width={180}
               height={32}
               className={styles.logo}
