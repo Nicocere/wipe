@@ -144,6 +144,42 @@ const QueOfrecemos = () => {
 
     return (
         <div className={styles.container}>
+    
+            {/* Benefits Section */}
+            <section className={styles.benefitsSection} ref={benefitsRef}>
+                <motion.div 
+                    className={styles.sectionHeader}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isBenefitsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <h2 className={styles.sectionTitle}>Ventajas que transforman tu negocio</h2>
+                    <p className={styles.sectionSubtitle}>
+                        Nuestro sistema simplifica la operación y mejora la experiencia de tus clientes
+                    </p>
+                </motion.div>
+                
+                <div className={styles.benefitsGrid}>
+                    {benefits.map((benefit, i) => (
+                        <motion.div
+                            className={styles.benefitCard}
+                            key={i}
+                            custom={i}
+                            variants={cardVariants}
+                            initial="hidden"
+                            animate={isBenefitsInView ? "visible" : "hidden"}
+                            whileHover="hover"
+                        >
+                            <div className={styles.benefitIconContainer}>
+                                {benefit.icon}
+                            </div>
+                            <h3 className={styles.benefitTitle}>{benefit.title}</h3>
+                            <p className={styles.benefitDescription}>{benefit.description}</p>
+                        </motion.div>
+                    ))}
+                </div>
+            </section>
+
             {/* Hero Section */}
             <section className={styles.heroSection} ref={titleRef}>
                 <motion.div 
@@ -204,41 +240,7 @@ const QueOfrecemos = () => {
                 </motion.div>
             </section>
             
-            {/* Benefits Section */}
-            <section className={styles.benefitsSection} ref={benefitsRef}>
-                <motion.div 
-                    className={styles.sectionHeader}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isBenefitsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h2 className={styles.sectionTitle}>Ventajas que transforman tu negocio</h2>
-                    <p className={styles.sectionSubtitle}>
-                        Nuestro sistema simplifica la operación y mejora la experiencia de tus clientes
-                    </p>
-                </motion.div>
-                
-                <div className={styles.benefitsGrid}>
-                    {benefits.map((benefit, i) => (
-                        <motion.div
-                            className={styles.benefitCard}
-                            key={i}
-                            custom={i}
-                            variants={cardVariants}
-                            initial="hidden"
-                            animate={isBenefitsInView ? "visible" : "hidden"}
-                            whileHover="hover"
-                        >
-                            <div className={styles.benefitIconContainer}>
-                                {benefit.icon}
-                            </div>
-                            <h3 className={styles.benefitTitle}>{benefit.title}</h3>
-                            <p className={styles.benefitDescription}>{benefit.description}</p>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-            
+
             {/* Industries Section */}
             <section className={styles.industriesSection} ref={industriesRef}>
                 <motion.div 
