@@ -94,7 +94,7 @@ export default function PlanesPage(props) {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
-                ¡Crea tu Spazio <span>{plan}</span>!
+                ¡Crea tu Wipe <span>{plan}</span>!
             </motion.h1>
             {
                 plan === "gratis" ? ( 

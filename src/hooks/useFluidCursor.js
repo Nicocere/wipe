@@ -990,18 +990,19 @@ const useFluidCursor = () => {
     let dy = pointer.deltaY * config.SPLAT_FORCE;
     splat(pointer.texcoordX, pointer.texcoordY, dx, dy, pointer.color);
   }
-  function clickSplat(pointer) {
-    // Usar el color accent para efectos de clic más intensos
-    const color = {
-      r: (0/255) * 0.6, 
-      g: (54/255) * 0.6, 
-      b: (185/255) * 0.6
-    };
-    
-    let dx = 10 * (Math.random() - 0.5);
-    let dy = 30 * (Math.random() - 0.5);
-    splat(pointer.texcoordX, pointer.texcoordY, dx, dy, color);
-  }
+// Modificar también la función clickSplat para efectos más sutiles
+function clickSplat(pointer) {
+  // Color más suave para efectos de clic
+  const color = {
+    r: (180/255) * 0.5, 
+    g: (220/255) * 0.5, 
+    b: (250/255) * 0.5
+  };
+  
+  let dx = 10 * (Math.random() - 0.5);
+  let dy = 30 * (Math.random() - 0.5);
+  splat(pointer.texcoordX, pointer.texcoordY, dx, dy, color);
+}
 
   
   function splat(x, y, dx, dy, color) {
@@ -1134,10 +1135,10 @@ const useFluidCursor = () => {
   function generateColor() {
     // Colores definidos según tu paleta
     const colors = [
-      { r: 79, g: 211, b: 255 },     // #4FD3FF (primary)
-      { r: 0, g: 152, b: 212 },      // #0098D4 (primary-dark)
-      { r: 177, g: 234, b: 255 },    // #B1EAFF (primary-light)
-      { r: 0, g: 55, b: 185 }        // #0036B9 (accent)
+      { r: 206, g: 234, b: 255 },     // Celeste muy clarorgb(206, 234, 255)
+      { r: 195, g: 230, b: 252 },     // Celeste suavergb(195, 230, 255)
+      { r: 235, g: 245, b: 255 },     // Casi blanco con toque azulado #EBF5FF
+      { r: 161, g: 198, b: 226 }      // Azul muy pálidorgb(161, 198, 226)
     ];
 
      
@@ -1146,7 +1147,7 @@ const useFluidCursor = () => {
   const color = colors[colorIndex];
   
   // Modificado: Intensidad más baja para efectos más sutiles
-  const intensity = 0.2 + Math.random() * 0.25; // Intensidad entre 0.2 y 0.45
+  const intensity = 0.1 + Math.random() * 0.15; // Intensidad entre 0.1 y 0.25
   
   return {
     r: (color.r/255) * intensity,
@@ -1154,6 +1155,7 @@ const useFluidCursor = () => {
     b: (color.b/255) * intensity
   };
 }
+
   
   // Ya no necesitarás la función HSVtoRGB, pero mantenla en el código para evitar errores
   function HSVtoRGB(h, s, v) {

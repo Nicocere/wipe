@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import styles from './navBar.module.css';
-import { FaSignInAlt, FaRocket } from 'react-icons/fa';
+import { FaSignInAlt, FaUtensils } from 'react-icons/fa';
 import { useMediaQuery, SwipeableDrawer, IconButton, ListItem, ListItemText, Avatar } from '@mui/material';
 import { HiMenuAlt1 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
@@ -11,6 +11,7 @@ import { IoClose } from "react-icons/io5";
 import { useAuth } from '@/context/AuthUserContext';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const NavBar = () => {
   const [isAtTop, setIsAtTop] = useState(true);
@@ -114,7 +115,8 @@ const NavBar = () => {
             animate="visible"
             className={styles.brandContainer}
           >
-            <motion.div 
+          <Image src="/wipe.png" alt="Logo" width={250} height={120} className={styles.logo} />
+            {/* <motion.div 
               className={styles.brandText}
               initial={{ opacity: 0 }}
               animate={{ opacity: showNavBar ? 1 : 0 }}
@@ -132,7 +134,7 @@ const NavBar = () => {
                   {letter}
                 </motion.span>
               ))}
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </Link>
       </div>
@@ -153,8 +155,8 @@ const NavBar = () => {
               <Link href="/login/ingresar-al-spazio" className={styles.navLink_login}>
                 <FaSignInAlt /> Login
               </Link>
-              <Link href="/quiero-mi-spazio" className={styles.navLink_spazio}>
-                <FaRocket /> Creá tu Spazio.
+              <Link href="/login/registro" className={styles.navLink_spazio}>
+                <FaUtensils /> Creá tu Wipe.
               </Link>
             </>
           )}
@@ -190,7 +192,7 @@ const NavBar = () => {
                 <ListItemText primary="Login" />
               </ListItem>
               <ListItem component={Link} className={styles.navLink_spazio} href="/quiero-mi-spazio">
-                <FaRocket />
+                <FaUtensils />
                 <ListItemText primary="Crear tienda gratis" />
               </ListItem>
             </div>

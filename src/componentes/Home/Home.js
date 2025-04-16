@@ -12,7 +12,7 @@ const Home = () => {
     const presentationRef = useRef(null);
     const servicesRef = useRef(null);
     const [isHovering, setIsHovering] = useState(false);
-    const [qrValue] = useState('https://puntomesa.com/demo-restaurante');
+    const [qrValue] = useState('https://barapp.vercel.app/?tenant_id=856d5c03-2335-4556-829a-86b22af307a4');
 
 
 

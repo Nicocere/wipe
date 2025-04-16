@@ -44,7 +44,7 @@ export default function TextSpazio() {
       {particles}
       <motion.div className={styles.planes}>
         <motion.h1 initial="hidden" animate="visible" variants={letterAnimation} custom={2}>
-          {typingEffect("Tu Spazio. Digital no tiene límites.")}
+          {typingEffect("tu Wipe. Digital no tiene límites.")}
         </motion.h1>
       </motion.div>
     </section>

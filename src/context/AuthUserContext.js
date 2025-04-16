@@ -120,7 +120,7 @@ export const AuthUserProvider = ({ children }) => {
             Swal.fire({
                 icon: 'success',
                 title: '¡Bienvenido de nuevo!',
-                text: 'Has ingresado exitosamente a tu Spazio.',
+                text: 'Has ingresado exitosamente a tu Wipe.',
                 customClass: {
                     popup: styles.swalPopup,
                     confirmButton: styles.swalConfirmButton,

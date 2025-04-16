@@ -17,6 +17,7 @@
     "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.121.4",
     "@react-three/fiber": "^8.17.14",
+    "@supabase/supabase-js": "^2.49.3",
     "@tailwindcss/postcss": "^4.0.1",
     "@types/nodemailer": "^6.4.17",
     "@types/three": "^0.173.0",

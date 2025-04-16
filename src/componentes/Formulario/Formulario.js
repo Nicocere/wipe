@@ -5,7 +5,6 @@ import { useState, useRef } from "react";
 import styles from "./Formulario.module.css";
 import Swal from "sweetalert2";
 import { RiRestaurantFill, RiTShirtFill, RiStore3Fill, RiRocketFill } from "react-icons/ri";
-import Image from "next/image";
 
 export default function QuieroMiSpazio() {
   // Estados para el formulario

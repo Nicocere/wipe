@@ -64,7 +64,7 @@ const HomePlanes = () => {
 
                     {/* Plan Inicial */}
                     <div className={style.card}>
-                        <h3>Tu Spazio personal</h3>
+                        <h3>tu Wipe personal</h3>
                         <p>Todo lo que necesitás para emprender. Ideal para quienes están empezando.</p>
                         <ul>
                             {[
@@ -81,7 +81,7 @@ const HomePlanes = () => {
                                 <li key={index}>{feature}</li>
                             ))}
                         </ul>
-                        <Link href="/quiero-mi-spazio" className={style.ctaButton}>Crea tu Spazio</Link>
+                        <Link href="/quiero-mi-spazio" className={style.ctaButton}>Crea tu Wipe</Link>
                         <Link href="/quiero-mi-spazio" className={style.infoLink}>Ver más información</Link>
                     </div>
 

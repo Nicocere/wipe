@@ -26,32 +26,32 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://spazio-digital.vercel.app'),
+  metadataBase: new URL('https://wipe-app.vercel.app'),
   title: {
-    template: '%s | SPAZIO.',
-    default: 'SPAZIO. | Crea Tu Espacio Digital'
+    template: '%s | Wipe.',
+    default: 'Wipe. | Commercial Agility'
   },
-  description: 'Spazio Digital Solutions - Desarrollamos sitios web personalizados, e-commerce y soluciones digitales innovadoras para tu negocio. Tu presencia digital, nuestro compromiso.',
-  keywords: ['desarrollo web', 'diseño web', 'e-commerce', 'sitios web personalizados', 'spazio digital', 'soluciones digitales'],
+  description: 'Wipe - Agiliza la dinámica comercial con cartas virtuales y QR para bares y restaurantes. Optimiza procesos de atención, compra y venta con soluciones digitales únicas para comercios y clientes.',
+  keywords: ['cartas virtuales', 'QR', 'restaurantes', 'bares', 'gastronomía', 'entretenimiento', 'indumentaria', 'pedidos online', 'gestión de negocio', 'métricas', 'administración comercial', 'agilidad comercial', 'soluciones digitales'],
   openGraph: {
     type: 'website',
-    title: 'SPAZIO. | Crea Tu Espacio Digital',
-    description: 'Spazio Digital Solutions - Desarrollamos sitios web personalizados, e-commerce y soluciones digitales innovadoras para tu negocio.',
-    url: 'https://spazio-digital.vercel.app',
-    siteName: 'Spazio Digital Solutions',
+    title: 'Wipe. | Commercial Agility',
+    description: 'Wipe - Agiliza la dinámica comercial con cartas virtuales y QR para bares y restaurantes. Soluciones digitales únicas que optimizan procesos de atención, compra y venta.',
+    url: 'https://wipe-app.vercel.app',
+    siteName: 'Wipe Commercial Agility',
     locale: 'es_AR',
     images: [{
-      url: 'https://spazio-digital.vercel.app/imagenes/spazio-preview.png',
+      url: 'https://wipe-app.vercel.app/imagenes/wipe-preview.png',
       width: 800,
       height: 600,
-      alt: 'Spazio Digital Solutions - Tu espacio en la web',
+      alt: 'Wipe - Soluciones digitales para agilizar la dinámica comercial',
     }],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@SpazioDigital',
-    creator: '@SpazioDigital',
-    images: ['https://spazio-digital.vercel.app/imagenes/spazio-preview.png'],
+    site: '@WipeApp',
+    creator: '@WipeApp',
+    images: ['https://wipe-app.vercel.app/imagenes/wipe-preview.png'],
   },
   robots: {
     index: true,
@@ -73,17 +73,17 @@ export const metadata: Metadata = {
     google: 'google-site-verification-code',
   },
   alternates: {
-    canonical: 'https://spazio-digital.vercel.app',
+    canonical: 'https://wipe-app.vercel.app',
     languages: {
-      'es-AR': 'https://spazio-digital.vercel.app',
+      'es-AR': 'https://wipe-app.vercel.app',
     },
   },
-  authors: [{ name: 'Spazio Digital Solutions' }],
-  generator: 'Spazio Digital Solutions',
-  applicationName: 'Spazio Digital',
+  authors: [{ name: 'Wipe Commercial Agility' }],
+  generator: 'Wipe Commercial Agility',
+  applicationName: 'Wipe App',
   referrer: 'origin-when-cross-origin',
-  creator: 'Spazio Digital Solutions',
-  publisher: 'Spazio Digital Solutions',
+  creator: 'Wipe Commercial Agility',
+  publisher: 'Wipe Commercial Agility',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

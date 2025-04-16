@@ -212,7 +212,7 @@ const Bienvenidos = () => {
 
                 {!showForm ? (
                     <animated.div style={welcomeAnimation} className={styles.welcome}>
-                        <h1>Ya estamos creando tu Spazio.</h1>
+                        <h1>Ya estamos creando tu Wipe.</h1>
                         <p>Mientras tanto, necesitamos unos datos de tu negocio para ayudarte de la mejor manera.</p>
                         <button onClick={handleContinueClick}>Continuar</button>
                     </animated.div>
