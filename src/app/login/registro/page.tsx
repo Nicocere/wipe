@@ -189,8 +189,10 @@ export default function Register() {
         .insert([{ 
           nombre: barName.trim(),
           propietario_id: user.id,
-          created_at: new Date().toISOString(),
-          created_by: user.id
+          creado_en: new Date().toISOString(),
+          page_name: barName.trim().toLowerCase().replace(/\s+/g, '-'),
+
+          // created_by: user.id
         }])
         .select()
         .single();

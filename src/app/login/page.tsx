@@ -1,16 +1,17 @@
 "use client";
 import { useState } from "react";
 import { supabase } from "@/config/supabaseClient";
-
-
+import styles from './login.module.css';
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleLogin = async () => {
     setLoading(true);
+    setErrorMsg("");
 
     const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
       email,
@@ -19,6 +20,7 @@ export default function Login() {
 
     if (authError) {
       console.error("Error en login:", authError.message);
+      setErrorMsg(authError.message);
       setLoading(false);
       return;
     }
@@ -27,6 +29,7 @@ export default function Login() {
 
     if (!user) {
       console.error("No se pudo obtener el usuario.");
+      setErrorMsg("No se pudo obtener el usuario.");
       setLoading(false);
       return;
     }
@@ -40,40 +43,56 @@ export default function Login() {
 
     if (profileError) {
       console.error("Error al obtener perfil:", profileError.message);
+      setErrorMsg("Error al obtener perfil de usuario.");
       setLoading(false);
       return;
     }
 
     console.log("Usuario logueado con éxito:", profileData);
-
-    alert("Inicio de sesión exitoso.");
     setLoading(false);
+    alert("Inicio de sesión exitoso.");
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <h2 className="text-xl font-bold">Iniciar Sesión</h2>
+    <div className={styles.loginContainer}>
+      <h2 className={styles.title}>Iniciar Sesión</h2>
       <input
         type="email"
         placeholder="Correo"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="p-2 border rounded"
+        className={styles.inputField}
       />
       <input
         type="password"
         placeholder="Contraseña"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="p-2 border rounded"
+        className={styles.inputField}
       />
+      {errorMsg && <p className={styles.errorMessage}>{errorMsg}</p>}
       <button
+        type="button"
         onClick={handleLogin}
         disabled={loading}
-        className="p-2 bg-green-500 text-white rounded"
+        className={styles.loginButton}
       >
-        {loading ? "Ingresando..." : "Ingresar"}
+        {loading ? <span className={styles.loadingDots}>Ingresando</span> : "Ingresar"}
       </button>
+
+      <p className={styles.registerPrompt}>
+        ¿No tienes una cuenta? <a href="/login/registro" className={styles.registerLink}>Regístrate</a>
+      </p>
+      {/* <p className={styles.forgotPasswordPrompt}>
+        ¿Olvidaste tu contraseña? <a href="/forgot-password" className={styles.forgotPasswordLink}>Recuperar</a>
+      </p>
+      <p className={styles.termsPrompt}>
+        Al iniciar sesión, aceptas nuestros <a href="/terms" className={styles.termsLink}>Términos de Servicio</a> y <a href="/privacy" className={styles.privacyLink}>Política de Privacidad</a>.
+      </p>
+    <p className={styles.supportPrompt}>
+        Si necesitas ayuda, contacta a nuestro <a href="/support" className={styles.supportLink}>Soporte Técnico</a>.
+      </p> */}
+
     </div>
   );
 }
