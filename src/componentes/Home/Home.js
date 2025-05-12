@@ -10,6 +10,7 @@ const Home = () => {
     const presentationRef = useRef(null);
     const [qrValue] = useState('https://barapp.vercel.app/?tenant_id=856d5c03-2335-4556-829a-86b22af307a4');
     const isPresentationInView = useInView(presentationRef, { once: true, margin: "-100px" });
+    console.log(isPresentationInView);
 
     const handleButtonClick = () => {
         router.push('/comienza-ya');
