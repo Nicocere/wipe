@@ -2,6 +2,7 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
 import style from './contadorsesiones.module.css';
+import styles from '../QueOfrecemos/QueOfrecemos.module.css';
 import { useMediaQuery } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useThemeContext } from '@/context/ThemeSwitchContext';
@@ -10,9 +11,9 @@ const Contador = () => {
     // Usamos correctamente isMobileScreen para ajustar diseño responsivo
     const isMobileScreen = useMediaQuery('(max-width:650px)');
     const { isDarkMode } = useThemeContext();
-    const { ref, inView } = useInView({ 
-        threshold: isMobileScreen ? 0.3 : 0.5, 
-        triggerOnce: false 
+    const { ref, inView } = useInView({
+        threshold: isMobileScreen ? 0.3 : 0.5,
+        triggerOnce: false
     });
 
     // Datos actualizados para estadísticas
@@ -48,36 +49,79 @@ const Contador = () => {
 
     // Configuración responsiva para el diseño
     const gridStyle = {
+        display: 'grid',
         gridTemplateColumns: isMobileScreen ? '1fr' : 'repeat(3, 1fr)',
-        gap: isMobileScreen ? '1.5rem' : '2.5rem'
+        gap: isMobileScreen ? '1.5rem' : '2.5rem',
+        justifyItems: 'center',
+        alignItems: 'stretch',
+        width: '100%',
+        margin: isMobileScreen ? '2rem 0 1rem 0' : '3rem auto 2rem auto',
+        maxWidth: isMobileScreen ? '100%' : '900px',
+        background: 'transparent',
     };
-
+    const statCardStyle = {
+        minWidth: isMobileScreen ? '90vw' : '260px',
+        maxWidth: isMobileScreen ? '95vw' : '320px',
+        width: '100%',
+        margin: '0 auto',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#181818',
+        borderRadius: '1.5rem',
+        boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)',
+        border: '1.5px solid #222',
+        padding: isMobileScreen ? '2rem 1rem 1.5rem 1rem' : '2.5rem 1.5rem 2rem 1.5rem',
+        textAlign: 'center',
+        transition: 'box-shadow 0.22s, transform 0.22s, background 0.22s',
+        minHeight: isMobileScreen ? '220px' : '260px',
+        boxSizing: 'border-box',
+    };
+    const statValueStyle = {
+        color: '#00e676',
+        fontSize: isMobileScreen ? '2.5rem' : '3.5rem',
+        fontWeight: 800,
+        marginBottom: '0.5rem',
+        lineHeight: 1,
+        background: 'none',
+        WebkitTextFillColor: 'unset',
+        textAlign: 'center',
+    };
+    const statLabelStyle = {
+        color: '#fff',
+        fontSize: isMobileScreen ? '1rem' : '1.125rem',
+        maxWidth: '180px',
+        margin: '0 auto',
+        lineHeight: 1.4,
+        textAlign: 'center',
+    };
     return (
-        <div className={`${style.container}`}>
-            <section className={style.trustSection}>
-                <motion.h2 
-                    className={!isDarkMode ? style.darkTitle : style.lightTitle}
+        <div className={styles.ventajasSection} style={{ padding: isMobileScreen ? '2.5rem 0 1.2rem 0' : '5rem 0 3.5rem 0', minHeight: isMobileScreen ? 'auto' : '480px' }}>
+            <section style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <motion.h2
+                    className={styles.ventajasTitle}
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
+                    style={{ textAlign: 'center', marginBottom: isMobileScreen ? '1.2rem' : '2.2rem' }}
                 >
                     Resultados que marcan la diferencia
                 </motion.h2>
-                
-                <motion.p 
-                    className={`${style.trustDescription} ${!isDarkMode ? style.darkDescription : style.lightDescription}`}
+                <motion.p
+                    className={styles.ventajaText}
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                     viewport={{ once: true }}
+                    style={{ textAlign: 'center', margin: isMobileScreen ? '0 0 1.5rem 0' : '0 0 2.5rem 0', maxWidth: 600 }}
                 >
-                    Nuestro sistema de compra mediante QR ha transformado la experiencia comercial 
+                    Nuestro sistema de compra mediante QR ha transformado la experiencia comercial
                     de nuestros clientes, generando impactos positivos medibles en sus negocios.
                 </motion.p>
-
-                <motion.div 
-                    className={style.statsGrid} 
+                <motion.div
+                    className={styles.statsGrid}
                     ref={ref}
                     style={gridStyle}
                     initial="hidden"
@@ -88,21 +132,26 @@ const Contador = () => {
                     {statsData.map((stat) => (
                         <motion.div
                             key={stat.id}
-                            className={`${style.statCard} ${!isDarkMode ? style.darkStatCard : style.lightStatCard}`}
+                            className={styles.statCard}
+                            style={statCardStyle}
                             variants={cardVariants}
-                            transition={{ 
+                            transition={{
                                 duration: 0.5,
-                                type: "spring", 
-                                stiffness: isMobileScreen ? 50 : 80 
+                                type: "spring",
+                                stiffness: isMobileScreen ? 50 : 80
                             }}
-                            whileHover={{ 
+                            whileHover={{
                                 scale: isMobileScreen ? 1.02 : 1.05,
-                                boxShadow: "0 10px 25px rgba(0,0,0,0.1)"
+                                boxShadow: "0 12px 40px 0 rgba(0,230,118,0.18)",
+                                borderColor: "#00e676"
                             }}
                         >
-                            <div className={`${style.statValue} ${!isDarkMode ? style.darkStatValue : style.lightStatValue}`}>
+                            <div className={styles.ventajaIcon} style={{ color: '#00e676', marginBottom: '1.1rem' }}>
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00e676" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M8 12l2 2 4-4" /></svg>
+                            </div>
+                            <div className={styles.statValue} style={statValueStyle}>
                                 <span>{stat.prefix}</span>
-                                {inView && (
+                                {typeof stat.value === 'number' && inView && (
                                     <CountUp
                                         start={0}
                                         end={stat.value}
@@ -110,29 +159,25 @@ const Contador = () => {
                                         separator="."
                                         delay={0.2}
                                         decimals={0}
-                                        enableScrollSpy
-                                        scrollSpyDelay={0}
                                     />
                                 )}
                                 <span>{stat.suffix}</span>
                             </div>
-                            <p className={!isDarkMode ? style.darkStatLabel : style.lightStatLabel}>
+                            <p className={styles.ventajaText} style={statLabelStyle}>
                                 {stat.label}
                             </p>
                         </motion.div>
                     ))}
                 </motion.div>
-                
-                {/* CTA móvil condicional */}
                 {isMobileScreen && (
                     <motion.div
-                        className={style.mobileCta}
+                        className={styles.ventajasCta}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        <button className={`${style.ctaButton} ${!isDarkMode ? style.darkButton : style.lightButton}`}>
+                        <button className={styles.ventajasCta} style={{ background: '#00e676', color: '#111' }}>
                             Ver más estadísticas
                         </button>
                     </motion.div>

@@ -10,7 +10,7 @@ import { useMediaQuery } from '@mui/material';
 
 const Footer = () => {
   const isMobileScreen = useMediaQuery('(max-width: 768px)');
-  const logo = "https://firebasestorage.googleapis.com/v0/b/empativa-psicologia.appspot.com/o/develops%2Fspazio-logo-dark.png?alt=media&token=cb764ca3-75fd-4796-9eef-8eea5bfc8b0c";
+  const logo = "/quickmenulogo.png";
 
   const currentYear = new Date().getFullYear();
 
@@ -31,7 +31,7 @@ const Footer = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         type: "spring",
         stiffness: 100,
         damping: 12
@@ -46,9 +46,25 @@ const Footer = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
+      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}
     >
+      {/* CTA Footer destacado */}
+      <motion.div className={styles.ctaFooter} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.1 }}>
+        <h2>¡Hablemos!</h2>
+        <p>
+          ¿Listo para transformar tu negocio? <br />
+          Escribinos, agendá una demo o consultá por WhatsApp. <br />
+          <span style={{ color: '#00e676', fontWeight: 700 }}>¡Queremos ayudarte a crecer!</span>
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.2rem', marginBottom: '1.5rem' }}>
+          <a href="mailto:spazio.digitalsolutions@gmail.com" className={styles.ctaButton} style={{ textDecoration: 'none' }}>Email</a>
+          <a href="https://wa.me/+5491131408060" className={styles.ctaButton} style={{ textDecoration: 'none' }}>WhatsApp</a>
+        </div>
+        <span style={{ fontSize: '1.1rem', color: '#bdbdbd' }}>QuickMenú</span>
+      </motion.div>
+
       <div className={styles.footerContent}>
-        <motion.div 
+        <motion.div
           className={styles.logoColumn}
           variants={itemVariants}
         >
@@ -77,7 +93,6 @@ const Footer = () => {
               <li><Link href="/proyectos">Proyectos</Link></li>
             </ul>
           </div>
-          
           <div className={styles.linksGroup}>
             <h4>Contacto</h4>
             <ul>
@@ -109,10 +124,11 @@ const Footer = () => {
           </div>
         </motion.div>
       </div>
-      
-      <motion.div 
+
+      <motion.div
         className={styles.footerBottom}
         variants={itemVariants}
+        style={{ zIndex: 2, position: 'relative' }}
       >
         <div className={styles.divider}></div>
         <div className={styles.copyrightRow}>

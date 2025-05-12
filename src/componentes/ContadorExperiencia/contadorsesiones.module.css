@@ -45,10 +45,10 @@
   border-radius: 30px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 1rem 1.5rem;
   font-family: var(--font-sans);
-  background: #f7fafc;
-  color: #121826;
+  background: #111;
+  color: #fff;
 }
 
 
@@ -60,6 +60,7 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  background: #111;
 }
 
 /* Decoración de fondo */
@@ -145,6 +146,7 @@
   gap: 2.5rem;
   width: 100%;
   margin-bottom: 3rem;
+  background: transparent;
 }
 
 /* ===== Tarjeta de Estadística ===== */
@@ -160,9 +162,9 @@
   transition: all var(--transition-normal);
   overflow: hidden;
   isolation: isolate;
-  background-color: var(--color-light-card);
+  background: #181818;
+  color: #fff;
   border: 1px solid var(--color-light-card-border);
-  color: #0036B9;
 }
 
 
@@ -321,6 +323,45 @@
 }
 
 /* ===== Media Queries ===== */
+@media (max-width: 900px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  .trustSection {
+    padding: 0.7rem 0 1.5rem;
+  }
+  .trustSection h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+  }
+  .trustSection h2::after {
+    width: 30px;
+    height: 2px;
+  }
+  .trustDescription {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    max-width: 100%;
+  }
+  .statCard {
+    padding: 1rem 0.5rem;
+    min-width: 100px;
+  }
+  .statValue {
+    font-size: 1.2rem;
+  }
+  .ctaButton {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 3rem 1.25rem;
@@ -368,6 +409,37 @@
   .ctaButton {
     width: 100%;
     max-width: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0.5rem 0.1rem;
+  }
+  .trustSection {
+    padding: 0.3rem 0 0.7rem;
+  }
+  .trustSection h2 {
+    font-size: 0.9rem;
+  }
+  .trustSection h2::after {
+    width: 18px;
+    height: 1px;
+  }
+  .trustDescription {
+    font-size: 0.8rem;
+  }
+  .statCard {
+    padding: 0.5rem 0.2rem;
+    min-width: 60px;
+  }
+  .statValue {
+    font-size: 0.7rem;
+  }
+  .ctaButton {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.4rem;
   }
 }
 
