@@ -269,48 +269,92 @@
 @media (max-width: 900px) {
   .heroSectionFixed {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.2rem;
     align-items: center;
+    padding: 0 0.5rem;
   }
   .leftBlock {
     align-items: center;
     max-width: 100%;
+    gap: 0.5rem;
   }
   .ctaQrRow {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.7rem;
+    margin-top: 0.5rem;
   }
   .astronautWrapperFixed {
     margin-left: 0;
-    min-width: 120px;
-    max-width: 180px;
-    height: 180px;
-    padding: 0.7rem 0.2rem;
+    min-width: 90px;
+    max-width: 120px;
+    height: 120px;
+    padding: 0.3rem 0.1rem;
   }
   .astronautImageFixed {
-    max-height: 140px;
+    max-height: 100px;
+  }
+  .title {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 0.7rem;
+  }
+  .btnSpazio {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.7rem;
+    margin-top: 0.2rem;
+  }
+  .qrFrameCompact {
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+  }
+  .extraSection {
+    margin-top: 0.7rem;
+    border-radius: 0.7rem;
+    padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+    max-width: 100%;
+  }
+  .extraTitle {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .extraDesc {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 600px) {
   .heroSectionFixed {
-    padding: 0 0.5rem;
+    gap: 0.7rem;
+    padding: 0 0.1rem;
   }
-  .astronautWrapperFixed {
-    min-width: 90px;
-    max-width: 120px;
-    height: 100px;
+  .leftBlock {
+    gap: 0.3rem;
   }
-  .astronautImageFixed {
-    max-height: 80px;
+  .btnSpazio {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
   }
-  .title {
-    font-size: 2rem;
-    text-align: center;
+  .qrFrameCompact {
+    padding: 0.1rem;
+    border-radius: 0.3rem;
   }
-  .subtitle {
-    text-align: center;
+  .extraSection {
+    padding: 0.5rem 0.1rem 0.5rem 0.1rem;
+    border-radius: 0.5rem;
+  }
+  .extraTitle {
+    font-size: 0.8rem;
+  }
+  .extraDesc {
+    font-size: 0.75rem;
   }
 }
 

@@ -300,33 +300,167 @@
   box-shadow: 0 2px 8px 0 rgba(0,230,118,0.08);
 }
 @media (max-width: 900px) {
+  .container {
+    padding: 1.2rem 0.5rem;
+  }
   .benefitsDarkGrid {
     grid-template-columns: 1fr;
-    gap: 1.2rem;
-    padding: 0 0.5rem;
+    gap: 1rem;
+    padding: 0 0.2rem;
   }
   .benefitsDarkImgCol {
-    margin-top: 1.2rem;
+    margin-top: 1rem;
     order: 1;
   }
   .benefitsDarkTextCol {
     order: 2;
     align-items: center;
     text-align: center;
-    gap: 0.7rem;
+    gap: 0.5rem;
   }
   .benefitsDarkTitle, .benefitsDarkSubtitle {
     text-align: center;
   }
   .benefitsDarkImgWrapper {
     max-width: 100%;
-    padding: 0.5rem;
+    padding: 0.3rem;
   }
   .benefitsDarkTitle {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+  }
+  .ventajasGrid {
+    gap: 0.7rem;
+    padding: 0 0.2rem;
+  }
+  .ventajaCard {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    min-height: 120px;
+  }
+  .ventajaIcon {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+  .ventajasCta {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+  }
+  .aboutWipeGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .aboutWipeSection {
+    padding: 1.2rem 0.2rem;
+  }
+  .aboutWipeItem {
+    padding: 1rem 0.5rem;
+  }
+  .aboutWipeTitle {
+    font-size: 1.1rem;
+  }
+  .statsGrid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .statCard {
+    padding: 1rem 0.5rem;
+    min-width: 120px;
+  }
+  .statValue {
+    font-size: 2rem;
+  }
+  .ctaSection {
+    padding: 1.2rem 0;
+    border-radius: 1rem;
+    margin: 1rem 0;
+  }
+  .ctaTitle {
+    font-size: 1.2rem;
+  }
+  .ctaText {
+    font-size: 1rem;
+  }
+  .ctaButton {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.7rem;
   }
 }
-
+@media (max-width: 600px) {
+  .container {
+    padding: 0.7rem 0.1rem;
+  }
+  .benefitsDarkGrid {
+    gap: 0.5rem;
+  }
+  .benefitsDarkImgWrapper {
+    padding: 0.1rem;
+    border-radius: 0.5rem;
+  }
+  .benefitsDarkImg {
+    border-radius: 0.5rem;
+  }
+  .ventajasSection {
+    padding: 1rem 0 0.7rem 0;
+    border-radius: 0.7rem;
+  }
+  .ventajasTitle {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .ventajaCard {
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+    min-height: 80px;
+  }
+  .ventajaIcon {
+    font-size: 1rem;
+    padding: 0.3rem;
+  }
+  .ventajasCta {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+  }
+  .aboutWipeSection {
+    padding: 0.7rem 0.1rem;
+    border-radius: 0.7rem;
+  }
+  .aboutWipeTitle {
+    font-size: 0.9rem;
+  }
+  .aboutWipeItem {
+    padding: 0.7rem 0.3rem;
+    border-radius: 0.7rem;
+  }
+  .aboutWipeIcon {
+    font-size: 1.2rem;
+    padding: 0.3rem;
+  }
+  .statCard {
+    padding: 0.7rem 0.3rem;
+    min-width: 80px;
+  }
+  .statValue {
+    font-size: 1.2rem;
+  }
+  .ctaSection {
+    padding: 0.7rem 0;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  .ctaTitle {
+    font-size: 0.9rem;
+  }
+  .ctaText {
+    font-size: 0.85rem;
+  }
+  .ctaButton {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+  }
+}
 /* Industries Section */
 .industriesSection {
   padding: 5rem 0;
