@@ -13,6 +13,7 @@
   transition: all 0.5s ease;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border-radius: 0px; /* Comienza con border-radius 0 */
+  height: 4rem;
 }
 
 .navBar.atTop {
@@ -150,6 +151,73 @@
 .closeIcon {
   color: #c6bbb9;
   font-size: 1.8rem;
+}
+
+@media (max-width: 1100px) {
+  .navBar {
+    padding: 0.8rem 1.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .navBar {
+    padding: 0.8rem 0.5rem;
+  }
+  .brandText {
+    font-size: 1.3rem;
+  }
+  .logoImg {
+    width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navBar {
+    padding: 0.8rem 1rem;
+    height: 3.5rem;
+  }
+  .menu {
+    gap: 1.2rem;
+  }
+  .logoImg {
+    width: 90px;
+    height: auto;
+    max-width: 90px;
+  }
+  .brandText {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navBar {
+    padding: 0.5rem 0.5rem;
+    height: 3rem;
+  }
+  .logoImg {
+    width: 70px;
+    max-width: 70px;
+  }
+  .menu {
+    gap: 0.5rem;
+  }
+  .brandText {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navBar {
+    padding: 0.3rem 0.2rem;
+    height: 2.5rem;
+  }
+  .logoImg {
+    width: 50px;
+    max-width: 50px;
+  }
+  .brandText {
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 768px) {

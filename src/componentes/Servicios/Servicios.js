@@ -11,64 +11,48 @@ const Servicios = () => {
     const isServicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
 
     return (
-        <div className={styles.container}>
-        
+        <div className={styles.darkContainer}>
             <section className={styles.servicesSection} ref={servicesRef}>
-
-
-                <div className={styles.servicesGrid}>
-                    {[
-                        {
-                            icon: <FaUtensils />,
-                            title: "Gastronomía",
-                            description: "Pide y paga desde tu mesa sin esperar"
-                        }, {
-                            icon: <FaTshirt />,
-                            title: "Indumentaria",
-                            description: "Compra ropa sin hacer filas en caja"
-                        }, {
-                            icon: <FaMobileAlt />,
-                            title: "Compra Móvil",
-                            description: "Todo desde tu teléfono en segundos"
-                        }, {
-                            icon: <FaClock />,
-                            title: "Rapidez",
-                            description: "Ahorra tiempo evitando esperas"
-                        }, {
-                            icon: <FaCreditCard />,
-                            title: "Pagos Digitales",
-                            description: "Múltiples opciones de pago integradas"
-                        }, {
-                            icon: <FaShieldAlt />,
-                            title: "Seguridad",
-                            description: "Transacciones protegidas y sin contacto"
-                        }
-                    ].map((service, i) => (
-                        <motion.div
-                            className={styles.serviceCard}
-                            key={i}
-                            initial="hidden"
-                            animate={isServicesInView ? "visible" : "hidden"}
-                            variants={{
-                                hidden: { opacity: 0, y: 20 },
-                                visible: {
-                                    opacity: 1,
-                                    y: 0,
-                                    transition: {
-                                        delay: i * 0.1,
-                                        duration: 0.5
-                                    }
-                                }
-                            }}
-                            whileHover={{ y: -5 }}
-                        >
-                            <div className={styles.serviceIcon}>
-                                {service.icon}
-                            </div>
-                            <h3>{service.title}</h3>
-                            <p>{service.description}</p>
-                        </motion.div>
-                    ))}
+                <h2 className={styles.servicesTitle}>
+                    <span className={styles.highlight}>¿Por qué elegir QuickMenu?</span>
+                </h2>
+                <div className={styles.servicesGridModern}>
+                    {/* Card 1 */}
+                    <motion.div className={styles.serviceCardModern} whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(0,230,118,0.13)" }}>
+                        <div className={styles.serviceIconModern}><FaUtensils /></div>
+                        <h3 className={styles.serviceTitleModern}>Carta digital <span className={styles.highlight}>sin saber diseño</span></h3>
+                        <p className={styles.serviceDescModern}>Creá tu menú visual y textual en minutos, sin conocimientos técnicos.</p>
+                    </motion.div>
+                    {/* Card 2 */}
+                    <motion.div className={styles.serviceCardModern} whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(0,230,118,0.13)" }}>
+                        <div className={styles.serviceIconModern}><FaMobileAlt /></div>
+                        <h3 className={styles.serviceTitleModern}>Menú <span className={styles.highlight}>QR</span> escaneable</h3>
+                        <p className={styles.serviceDescModern}>Tus clientes acceden al menú actualizado escaneando un QR, sin apps ni descargas.</p>
+                    </motion.div>
+                    {/* Card 3 */}
+                    <motion.div className={styles.serviceCardModern} whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(0,230,118,0.13)" }}>
+                        <div className={styles.serviceIconModern}><FaCreditCard /></div>
+                        <h3 className={styles.serviceTitleModern}>Pagos <span className={styles.highlight}>rápidos y seguros</span></h3>
+                        <p className={styles.serviceDescModern}>Tus clientes pagan desde el celular, sin contacto y con total seguridad.</p>
+                    </motion.div>
+                    {/* Card 4 */}
+                    <motion.div className={styles.serviceCardModern} whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(0,230,118,0.13)" }}>
+                        <div className={styles.serviceIconModern}><FaShieldAlt /></div>
+                        <h3 className={styles.serviceTitleModern}>Software <span className={styles.highlight}>intuitivo</span></h3>
+                        <p className={styles.serviceDescModern}>Fácil de usar para comercios y clientes. Pedidos y pagos online en segundos.</p>
+                    </motion.div>
+                    {/* Card 5 */}
+                    <motion.div className={styles.serviceCardModern} whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(0,230,118,0.13)" }}>
+                        <div className={styles.serviceIconModern}><FaClock /></div>
+                        <h3 className={styles.serviceTitleModern}>Sugerencias <span className={styles.highlight}>inteligentes</span></h3>
+                        <p className={styles.serviceDescModern}>El sistema recomienda productos y acelera la toma de pedidos.</p>
+                    </motion.div>
+                    {/* Card 6 */}
+                    <motion.div className={styles.serviceCardModern} whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(0,230,118,0.13)" }}>
+                        <div className={styles.serviceIconModern}><FaTshirt /></div>
+                        <h3 className={styles.serviceTitleModern}>Adaptado a <span className={styles.highlight}>cualquier local</span></h3>
+                        <p className={styles.serviceDescModern}>Funciona para gastronomía, indumentaria, take away, pedidos y pagos online, y más.</p>
+                    </motion.div>
                 </div>
             </section>
         </div>

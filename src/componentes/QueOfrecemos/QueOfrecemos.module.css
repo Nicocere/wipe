@@ -5,8 +5,8 @@
   --color-accent: #0036B9;
   --color-text: #1A202C;
   --color-text-light: #4A5568;
-  --color-background: #FFFFFF;
-  --color-background-alt: #F7FAFC;
+  --color-background: #000;
+  --color-background-alt: #000;
   
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, #2C52C8 100%);
@@ -29,6 +29,9 @@
   margin: 0 auto;
   padding: 2rem 1.5rem;
   overflow: hidden;
+  background: #000 !important;
+  color: #fff;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
 }
 
 /* Hero Section */
@@ -37,7 +40,7 @@
   align-items: center;
   justify-content: space-between;
   min-height: 80vh;
-  padding: 4rem 0;
+  padding: 2rem 0;
   position: relative;
 }
 
@@ -120,8 +123,8 @@
 
 /* Benefits Section */
 .benefitsSection {
-  padding: 5rem 0;
-  background: var(--color-background-alt);
+  padding: 2rem 0;
+  background: #000 !important;
   border-radius: var(--border-radius-lg);
   margin: 2rem 0 4rem;
 }
@@ -200,9 +203,134 @@
   line-height: 1.6;
 }
 
+/* Benefits Dark Section */
+.benefitsDarkSection {
+  background: #000 !important;
+  color: #fff;
+  padding: 2.2rem 0 2.2rem 0;
+  width: 100%;
+}
+.benefitsDarkGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: center;
+  padding: 0 1rem;
+}
+.benefitsDarkTextCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.benefitsDarkTitle {
+  font-size: 2.1rem;
+  font-weight: 900;
+  margin-bottom: 0.7rem;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  text-align: left;
+}
+.benefitsDarkSubtitle {
+  font-size: 1.05rem;
+  color: #e0e0e0;
+  margin-bottom: 1.1rem;
+  font-weight: 400;
+  text-align: left;
+}
+.benefitsDarkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.benefitsDarkItem {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  background: #111 !important;
+  border-radius: 0.8rem;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.13);
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+}
+.benefitsDarkItem:hover, .benefitsDarkItem:active {
+  background: #181818 !important;
+  box-shadow: 0 8px 32px 0 rgba(0,230,118,0.13);
+  color: #00e676;
+  transform: translateY(-2px) scale(1.02);
+  border-left: 4px solid #00e676;
+}
+.benefitsDarkIcon {
+  font-size: 1.4rem;
+  color: #00e676 !important;
+  margin-right: 0.7rem;
+  flex-shrink: 0;
+  transition: transform 0.2s, color 0.2s;
+}
+.benefitsDarkImgCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.benefitsDarkImgWrapper {
+  background: #111 !important;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.13);
+  padding: 0.7rem;
+  max-width: 320px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none !important;
+  transition: box-shadow 0.2s;
+}
+.benefitsDarkImg {
+  width: 100%;
+  height: auto;
+  border-radius: 0.7rem;
+  object-fit: cover;
+  box-shadow: 0 2px 8px 0 rgba(0,230,118,0.08);
+}
+@media (max-width: 900px) {
+  .benefitsDarkGrid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 0 0.5rem;
+  }
+  .benefitsDarkImgCol {
+    margin-top: 1.2rem;
+    order: 1;
+  }
+  .benefitsDarkTextCol {
+    order: 2;
+    align-items: center;
+    text-align: center;
+    gap: 0.7rem;
+  }
+  .benefitsDarkTitle, .benefitsDarkSubtitle {
+    text-align: center;
+  }
+  .benefitsDarkImgWrapper {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+  .benefitsDarkTitle {
+    font-size: 1.3rem;
+  }
+}
+
 /* Industries Section */
 .industriesSection {
   padding: 5rem 0;
+  background: #000 !important;
 }
 
 .industriesContainer {
@@ -288,18 +416,11 @@
 
 /* Stats Section */
 .statsSection {
-  padding: 6rem 0;
-  background: url('/images/stats-bg.svg') center center/cover no-repeat;
+  padding: 3rem 0;
+  background: #000 !important;
   position: relative;
   z-index: 1;
-}
-
-.statsSection::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-  z-index: -1;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
 }
 
 .statsGrid {
@@ -325,6 +446,7 @@
   line-height: 1;
   background: var(--gradient-accent);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -338,34 +460,18 @@
 
 /* CTA Section */
 .ctaSection {
-  padding: 5rem 0;
-  background: linear-gradient(135deg, #0036B9 0%, #4FD3FF 100%);
+  padding: 2rem 0;
+  background: #000 !important;
   border-radius: var(--border-radius-lg);
-  margin: 4rem 0;
+  margin: 2rem 0;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
 }
 
-.ctaSection::before {
-  content: '';
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  top: -100px;
-  right: -100px;
-}
-
+.ctaSection::before,
 .ctaSection::after {
-  content: '';
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  bottom: -50px;
-  left: -50px;
+  display: none !important;
 }
 
 .ctaContent {
@@ -379,7 +485,7 @@
 .ctaTitle {
   font-size: 2.5rem;
   font-weight: 700;
-  color: white;
+  color: #fff !important;
   margin-bottom: 1.5rem;
 }
 
@@ -407,441 +513,249 @@
   box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive styles */
-@media (max-width: 992px) {
-  .heroSection {
-    flex-direction: column;
-    text-align: center;
-    gap: 3rem;
-  }
-  
-  .heroContent {
-    max-width: 100%;
-  }
-  
-  .heroTitle {
-    font-size: 2.8rem;
-  }
-  
-  .heroButtons {
-    justify-content: center;
-  }
-  
-  .heroGraphic {
-    justify-content: center;
-  }
-  
-  .statsGrid {
-    flex-direction: column;
-    align-items: center;
-  }
-  /* filepath: c:\Users\Usuario\Documents\PuntoMesa\src\componentes\QueOfrecemos\QueOfrecemos.module.css */
-/* Variables globales */
-.container {
-  --color-primary: #4FD3FF;
-  --color-primary-dark: #0098D4;
-  --color-accent: #0036B9;
-  --color-text: #1A202C;
-  --color-text-light: #4A5568;
-  --color-background: #FFFFFF;
-  --color-background-alt: #F7FAFC;
-  
-  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, #2C52C8 100%);
-  
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.03);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.04), 0 4px 6px rgba(0,0,0,0.02);
-  --shadow-xl: 0 20px 25px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.02);
-  
-  --border-radius-sm: 0.25rem;
-  --border-radius-md: 0.5rem;
-  --border-radius-lg: 0.75rem;
-  --border-radius-xl: 1rem;
+/* About Wipe Section */
+.aboutWipeSection {
+  background: #000 !important;
+  color: #fff;
+  padding: 2rem 1rem 2rem 1rem;
+  border-radius: 2rem;
+  margin: 3rem 0 4rem 0;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  text-align: center;
 }
 
-/* Estilos base */
-.container {
-  width: -webkit-fill-available;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem .5rem;
-  overflow: hidden;
-}
-
-/* Hero Section */
-.heroSection {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 80vh;
-  padding: 4rem 0;
-  position: relative;
-}
-
-.heroContent {
-  flex: 1;
-  max-width: 600px;
-  z-index: 1;
-}
-
-.heroTitle {
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  color: var(--color-text);
-  position: relative;
-}
-
-.animatedLetter {
-  display: inline-block;
-  opacity: 0;
-}
-
-.heroSubtitle {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: var(--color-text-light);
+.aboutWipeTitle {
+  font-size: 2.8rem;
+  font-weight: 900;
   margin-bottom: 2.5rem;
-  max-width: 540px;
-}
-
-.heroButtons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.primaryButton {
-  background: var(--gradient-primary);
-  color: white;
-  font-weight: 600;
-  padding: 1rem 2rem;
-  border-radius: var(--border-radius-md);
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(79, 211, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-.secondaryButton {
-  background: transparent;
-  color: var(--color-text);
-  font-weight: 600;
-  padding: 0.95rem 2rem;
-  border-radius: var(--border-radius-md);
-  border: 2px solid rgba(26, 32, 44, 0.1);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.secondaryButton:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary-dark);
-}
-
-.heroGraphic {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: relative;
-}
-
-.heroImage {
-  max-width: 100%;
-  height: auto;
-  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.1));
-}
-
-/* Benefits Section */
-.benefitsSection {
-  padding: 5rem 0;
-  background: var(--color-background-alt);
-  border-radius: var(--border-radius-lg);
-  margin: 2rem 0 4rem;
-}
-
-.sectionHeader {
+  letter-spacing: -1px;
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 4rem;
-  padding: 0 1rem;
+  color: #fff !important;
 }
 
-.sectionTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 1rem;
-  position: relative;
+.highlight {
+  color: #00e676 !important;
 }
 
-.sectionTitle::after {
-  content: '';
-  position: absolute;
-  bottom: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  border-radius: 999px;
-  background: var(--gradient-primary);
-}
-
-.sectionSubtitle {
-  font-size: 1.125rem;
-  color: var(--color-text-light);
-  line-height: 1.6;
-}
-
-.benefitsGrid {
+.aboutWipeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 0 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.benefitCard {
-  background: white;
-  border-radius: var(--border-radius-lg);
-  padding: 2.5rem 2rem;
-  text-align: center;
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+.aboutWipeItem {
+  background: #111 !important;
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
-.benefitIconContainer {
-  width: 70px;
-  height: 70px;
+.aboutWipeItem:hover {
+  box-shadow: 0 8px 32px 0 rgba(0,230,118,0.13);
+  transform: translateY(-6px) scale(1.03);
+}
+
+.aboutWipeIcon {
+  font-size: 3.2rem;
+  color: #00e676;
+  margin-bottom: 1.5rem;
+  background: #181818;
   border-radius: 50%;
-  background: rgba(79, 211, 255, 0.1);
+  padding: 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(0,230,118,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 2rem;
-  color: var(--color-primary-dark);
 }
 
-.benefitTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
+.aboutWipeItemTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--color-text);
+  color: #fff;
 }
 
-.benefitDescription {
-  color: var(--color-text-light);
+.aboutWipeItemText {
+  color: #e0e0e0;
+  font-size: 1.08rem;
   line-height: 1.6;
+  margin-bottom: 0;
 }
 
-/* Industries Section */
-.industriesSection {
-  padding: 5rem 0;
+@media (max-width: 900px) {
+  .aboutWipeGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .aboutWipeSection {
+    padding: 2.5rem 0.5rem;
+  }
+  .aboutWipeItem {
+    padding: 2rem 1rem;
+  }
+  .aboutWipeTitle {
+    font-size: 2rem;
+  }
 }
 
-.industriesContainer {
+/* --- VENTAJAS QUICKMENÚ: SECCIÓN MODERNA Y CONVERTIDORA --- */
+.ventajasSection {
+  background: #000 !important;
+  color: #fff;
+  padding: 2rem 0 2rem 0;
+  border-radius: 2rem;
+  margin: 1rem 0 1rem 0;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ventajasTitle {
+  font-size: 2.7rem;
+  font-weight: 900;
+  margin-bottom: 2.2rem;
+  letter-spacing: -1px;
+  color: #fff !important;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.ventajasHighlight {
+  color: #00e676 !important;
+  font-weight: 900;
+}
+
+.ventajasGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.2rem;
+  max-width: 1100px;
+  margin: 0 auto 2.5rem auto;
+  padding: 0 1.5rem;
 }
 
-.industryCard {
-  background: white;
-  border-radius: var(--border-radius-lg);
-  padding: 2.5rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border-top: 4px solid var(--accent-color, var(--color-primary));
-  transition: all 0.3s ease;
+.ventajaCard {
+  background: #111 !important;
+  border-radius: 1.5rem;
+  padding: 2rem 1rem 2rem 1rem;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.22s, transform 0.22s, background 0.22s;
+  border: none !important;
+  min-height: 320px;
+}
+.ventajaCard:hover, .ventajaCard:focus {
+  box-shadow: 0 8px 32px 0 rgba(0,230,118,0.13);
+  background: #181818 !important;
+  transform: translateY(-6px) scale(1.03);
 }
 
-.industryCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+.ventajaIcon {
+  font-size: 2.7rem;
+  color: #00e676;
+  margin-bottom: 1.3rem;
+  background: #181818;
+  border-radius: 50%;
+  padding: 1rem;
+  box-shadow: 0 2px 12px 0 rgba(0,230,118,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.ventajaCard:hover .ventajaIcon, .ventajaCard:focus .ventajaIcon {
+  background: #00e676;
+  color: #111;
+  transform: scale(1.13);
 }
 
-.industryIcon {
-  font-size: 2.5rem;
-  color: var(--accent-color, var(--color-primary));
-  margin-bottom: 1.5rem;
-  display: inline-block;
-}
-
-.industryTitle {
-  font-size: 1.5rem;
+.ventajaTitle {
+  font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--color-text);
+  color: #fff;
 }
 
-.industryDescription {
-  font-size: 1rem;
+.ventajaText {
+  color: #e0e0e0;
+  font-size: 1.08rem;
   line-height: 1.6;
-  color: var(--color-text-light);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
+}
+.ventajaText .ventajasHighlight {
+  font-weight: 900;
 }
 
-.industryBenefits {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
-}
-
-.industryBenefits li {
-  padding-left: 1.5rem;
-  position: relative;
-  margin-bottom: 0.5rem;
-  color: var(--color-text-light);
-}
-
-.industryBenefits li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--accent-color, var(--color-primary));
-  font-weight: bold;
-}
-
-.industryButton {
-  background: transparent;
-  color: var(--accent-color, var(--color-primary));
-  border: 2px solid var(--accent-color, var(--color-primary));
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius-md);
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.industryButton:hover {
-  color: white;
-}
-
-/* Stats Section */
-.statsSection {
-  padding: 6rem 0;
-  background: url('/images/stats-bg.svg') center center/cover no-repeat;
-  position: relative;
-  z-index: 1;
-}
-
-.statsSection::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-  z-index: -1;
-}
-
-.statsGrid {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.statCard {
-  text-align: center;
-  padding: 2rem;
-  min-width: 200px;
-}
-
-.statValue {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: var(--color-accent);
-  margin-bottom: 0.5rem;
-  line-height: 1;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.statLabel {
-  font-size: 1.125rem;
-  color: var(--color-text-light);
-  max-width: 150px;
-  margin: 0 auto;
-  line-height: 1.4;
-}
-
-/* CTA Section */
-.ctaSection {
-  padding: 5rem 20px;
-  background: linear-gradient(135deg, #0036B9 0%, #4FD3FF 100%);
-  border-radius: var(--border-radius-lg);
-  margin: 4rem 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.ctaSection::before {
-  content: '';
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  top: -100px;
-  right: -100px;
-}
-
-.ctaSection::after {
-  content: '';
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  bottom: -50px;
-  left: -50px;
-}
-
-.ctaContent {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.ctaTitle {
-  font-size: 2.5rem;
+.ventajasCta {
+  margin-top: 2.5rem;
+  font-size: 1.18rem;
+  color: #000;
+  background: #00e676;
+  padding: 1.1rem 2.2rem;
+  border-radius: 1.2rem;
   font-weight: 700;
-  color: white;
-  margin-bottom: 1.5rem;
-}
-
-.ctaText {
-  font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.ctaButton {
-  background: white;
-  color: var(--color-accent);
+  display: inline-block;
+  box-shadow: 0 4px 24px 0 rgba(0,230,118,0.13);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  cursor: pointer;
   border: none;
-  padding: 1rem 2.5rem;
-  border-radius: var(--border-radius-md);
-  font-weight: 700;
-  font-size: 1.125rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+}
+.ventajasCta:hover, .ventajasCta:focus {
+  background: #fff;
+  color: #00e676;
+  transform: translateY(-2px) scale(1.04);
 }
 
-.ctaButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+@media (max-width: 900px) {
+  .ventajasSection {
+    padding: 1rem 0 1rem 0;
+  }
+  .ventajasTitle {
+    font-size: 2rem;
+  }
+  .ventajasGrid {
+    gap: 1.2rem;
+    padding: 0 0.5rem;
+  }
+  .ventajaCard {
+    padding: 2rem 1rem 1.5rem 1rem;
+    min-height: 260px;
+  }
+}
+@media (max-width: 600px) {
+  .ventajasSection {
+    padding: 2rem 0 1.2rem 0;
+    border-radius: 1.2rem;
+  }
+  .ventajasTitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.1rem;
+  }
+  .ventajasGrid {
+    gap: 0.7rem;
+  }
+  .ventajaCard {
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    min-height: 180px;
+  }
+  .ventajaIcon {
+    font-size: 1.5rem;
+    padding: 0.7rem;
+  }
+  .ventajasCta {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.7rem;
+  }
 }
 
 /* Responsive styles */
@@ -872,5 +786,4 @@
     flex-direction: column;
     align-items: center;
   }
-}
 }
