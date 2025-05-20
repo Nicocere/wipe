@@ -10,7 +10,7 @@ import { useMediaQuery } from '@mui/material';
 
 const Footer = () => {
   const isMobileScreen = useMediaQuery('(max-width: 768px)');
-  const logo = "/quickmenulogo.png";
+  const logo = "/quickmenublanco.png";
 
   const currentYear = new Date().getFullYear();
 
@@ -40,28 +40,29 @@ const Footer = () => {
   };
 
   return (
-    <motion.footer
-      className={styles.footer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={containerVariants}
-      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}
-    >
+   <>
       {/* CTA Footer destacado */}
       <motion.div className={styles.ctaFooter} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.1 }}>
         <h2>¡Hablemos!</h2>
         <p>
           ¿Listo para transformar tu negocio? <br />
           Escribinos, agendá una demo o consultá por WhatsApp. <br />
-          <span style={{ color: '#00e676', fontWeight: 700 }}>¡Queremos ayudarte a crecer!</span>
+          <span style={{ color: '#00b7a2', fontWeight: 700 }}>¡Queremos ayudarte a crecer!</span>
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.2rem', marginBottom: '1.5rem' }}>
           <a href="mailto:spazio.digitalsolutions@gmail.com" className={styles.ctaButton} style={{ textDecoration: 'none' }}>Email</a>
           <a href="https://wa.me/+5491131408060" className={styles.ctaButton} style={{ textDecoration: 'none' }}>WhatsApp</a>
         </div>
-        <span style={{ fontSize: '1.1rem', color: '#bdbdbd' }}>QuickMenú</span>
+        <span style={{ fontSize: '1.1rem', color: '#003f3c' }}>QuickMenú</span>
       </motion.div>
+    <motion.footer
+      className={styles.footer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={containerVariants}
+      style={{background: '#00b7a2' }}
+    >
 
       <div className={styles.footerContent}>
         <motion.div
@@ -133,7 +134,7 @@ const Footer = () => {
         <div className={styles.divider}></div>
         <div className={styles.copyrightRow}>
           <p className={styles.copyright}>
-            © {currentYear} Spazio. Todos los derechos reservados.
+            © {currentYear} By Spazio. Todos los derechos reservados.
           </p>
           <div className={styles.legalLinks}>
             <Link href="/privacidad">Privacidad</Link>
@@ -142,6 +143,7 @@ const Footer = () => {
         </div>
       </motion.div>
     </motion.footer>
+   </>
   );
 };
 

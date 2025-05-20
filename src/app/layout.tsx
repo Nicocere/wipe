@@ -97,15 +97,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </style> */}
       </Head>
       <body className={`${inter.variable} ${syne.variable}`}>
-      <AuthUserProvider>
-      <ThemeProvider>
-      <TransitionProvider>
-                <ClientLayoutComponent >
-                  {children}
-                </ClientLayoutComponent>
-                <Footer />
-              </TransitionProvider>
-            </ThemeProvider>  
+        <div id="global-gradient-bg">
+          <div className="global-orb global-orb1" />
+          <div className="global-orb global-orb2" />
+          <div className="global-orb global-orb3" />
+        </div>
+        <AuthUserProvider>
+          <ThemeProvider>
+            <TransitionProvider>
+              <ClientLayoutComponent >
+                {children}
+              </ClientLayoutComponent>
+              <Footer />
+            </TransitionProvider>
+          </ThemeProvider>  
         </AuthUserProvider>
       </body>
     </html>

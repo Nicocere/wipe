@@ -56,7 +56,6 @@
 
 /* ===== MODERN DARK THEME OVERRIDES ===== */
 .container {
-  background: #000 !important;
   color: #fff !important;
   min-height: 100vh;
   padding-top: 0;
@@ -65,7 +64,6 @@
 /* HEADER */
 .header {
   width: 100%;
-  background: #000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -126,7 +124,6 @@
 /* ===== SECCIÓN DE PRESENTACIÓN ===== */
 .presentation {
   padding: 5rem 0 3rem 0;
-  background: #000;
   min-height: 70vh;
 }
 
@@ -230,10 +227,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #111;
   border-radius: 1.2rem;
-  border: 2px solid #222;
-  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.25);
   padding: 0.7rem 0.5rem;
   min-width: 360px;
   max-width: 420px;
@@ -243,7 +237,7 @@
 .astronautImageFixed {
   max-width: 100%;
   max-height: 560px;
-  border-radius: 0.8rem;
+  border-radius: 2rem;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
   object-fit: cover;
   background: #222;
@@ -987,6 +981,7 @@
     transform: none;
   }
 }
+
 /* Media queries para responsive */
 @media (max-width: 1100px) {
   .heroSection {
@@ -1038,12 +1033,17 @@
 }
 
 @media (max-width: 600px) {
-  .presentation {
-    padding: var(--spacing-xl) 0;
-  }
   
   .title {
-    font-size: 4.8rem;
+    font-size: 2rem;
+  }
+
+  .subtitle{
+    font-size: 1.5rem;
+  }
+
+  .ctaQrRow{
+    display: none;
   }
   
   .qrFrame {
@@ -1057,6 +1057,10 @@
   
   .astronautImage {
     transform: none;
+  }
+
+  .astronautImageFixed{
+   display: none;
   }
   
   .astronautImage:hover {
@@ -1124,4 +1128,191 @@
   background-size: contain;
   opacity: 0.1;
   pointer-events: none;
+}
+
+/* QUICKMENU LANDING STYLES */
+.homeBg {
+  background: #f7fafc;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.heroSectionQuickmenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80vh;
+  padding: 3rem 0 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.leftContent {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  z-index: 2;
+}
+
+.bigTitle {
+  font-family: 'Inter', 'Cal Sans', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #183642;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.subtitleQuickmenu {
+  font-size: 1.25rem;
+  color: #3a4a5a;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.tryDemoBtn {
+  background: #00e676;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 2.2rem;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.tryDemoBtn:hover {
+  background: #00c853;
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.seeBenefitsBtn {
+  background: #fff;
+  color: #00e676;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: 2px solid #00e676;
+  border-radius: 999px;
+  padding: 0.85rem 2.2rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  cursor: pointer;
+}
+.seeBenefitsBtn:hover {
+  background: #e6fff3;
+  color: #009e60;
+  border-color: #00c853;
+}
+
+.mockupContainer {
+  position: relative;
+  min-width: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockupBgCircle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-40%, -50%);
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #4fd3ff 0%, #b1eaff 80%, #f7fafc 100%);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.45;
+  filter: blur(0.5px);
+}
+
+.mockupPhone {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 2.2rem;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10);
+  padding: 1.2rem 0.7rem;
+  min-width: 260px;
+  max-width: 340px;
+  height: 600px;
+}
+
+.mockupImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 2rem;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  background: #f7fafc;
+}
+
+@media (max-width: 1100px) {
+  .heroSectionQuickmenu {
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0 1rem 0;
+  }
+  .mockupContainer {
+    min-width: 220px;
+  }
+  .mockupBgCircle {
+    width: 260px;
+    height: 260px;
+  }
+  .mockupPhone {
+    min-width: 180px;
+    max-width: 220px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 700px) {
+  .heroSectionQuickmenu {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.2rem 0 0.5rem 0;
+  }
+  .leftContent {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+  .bigTitle {
+    font-size: 2.1rem;
+  }
+  .subtitleQuickmenu {
+    font-size: 1.05rem;
+  }
+  .mockupContainer {
+    min-width: 120px;
+  }
+  .mockupBgCircle {
+    width: 140px;
+    height: 140px;
+  }
+  .mockupPhone {
+    min-width: 90px;
+    max-width: 120px;
+    height: 180px;
+    padding: 0.3rem 0.1rem;
+  }
 }
