@@ -77,17 +77,17 @@ html {
 
 ::selection {
   background: transparent;
-  color: #4FD3FF;
+  color: #00b7a2
 }
 
 ::-moz-selection {
   background: transparent;
-  color: #4FD3FF;
+  color: #00b7a2
 }
 
 ::-webkit-selection {
   background: transparent;
-  color: #4FD3FF;
+  color: #00b7a2
 }
 
 .pin-spacer {
@@ -118,7 +118,7 @@ html {
 body {
   letter-spacing: -1px !important;
   cursor: default !important;
-  color: #4fd3ff !important;
+  color:#00b7a2 !important;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
@@ -197,7 +197,7 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: #4FD3FF;
+  background-color: #00b7a2;
   /* Luz de Estrella Cian */
   border-radius: 10px;
   /* Bordes redondeados */
@@ -222,7 +222,7 @@ button {
   /* Azul Oscuro */
   color: #fff;
   /* Blanco Estelar Tenue */
-  border: 1px solid #4FD3FF;
+  border: 1px solid #00b7a2;
   /* Borde Luz de Estrella Cian */
   padding: 10px 20px;
   border-radius: 5px;
@@ -267,7 +267,7 @@ div, section, article {
 
 /* Bordes */
 .border {
-  border: 1px solid #4FD3FF;
+  border: 1px solid #00b7a2;
   /* Luz de Estrella Cian */
 }
 

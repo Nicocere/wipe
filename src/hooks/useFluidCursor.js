@@ -3,15 +3,15 @@ const useFluidCursor = () => {
   resizeCanvas();
   let config = {
     SIM_RESOLUTION: 128,
-    DYE_RESOLUTION: 1440,
+    DYE_RESOLUTION: 1024, // Reducido de 1440 para mejor rendimiento
     CAPTURE_RESOLUTION: 512,
-    DENSITY_DISSIPATION: 3.5,
-    VELOCITY_DISSIPATION: 2,
+    DENSITY_DISSIPATION: 5, // Aumentado de 3.5 para que desaparezca más rápido
+    VELOCITY_DISSIPATION: 3, // Aumentado de 2 para movimiento más suave
     PRESSURE: 0.1,
     PRESSURE_ITERATIONS: 20,
-    CURL: 3,
-    SPLAT_RADIUS: 0.2,
-    SPLAT_FORCE: 6000,
+    CURL: 2, // Reducido de 3 para menos turbulencia
+    SPLAT_RADIUS: 0.15, // Reducido de 0.2 para efecto más pequeño
+    SPLAT_FORCE: 3000, // Reducido de 6000 para un efecto más sutil
     SHADING: true,
     COLOR_UPDATE_SPEED: 10,
     PAUSED: false,
@@ -992,11 +992,11 @@ const useFluidCursor = () => {
   }
 // Modificar también la función clickSplat para efectos más sutiles
 function clickSplat(pointer) {
-  // Color más suave para efectos de clic
+  // Color #00b7a2 para efectos de clic
   const color = {
-    r: (180/255) * 0.5, 
-    g: (220/255) * 0.5, 
-    b: (250/255) * 0.5
+    r: (0/255) * 0.5, 
+    g: (183/255) * 0.5, 
+    b: (162/255) * 0.5
   };
   
   let dx = 10 * (Math.random() - 0.5);
@@ -1133,29 +1133,26 @@ function clickSplat(pointer) {
     return delta;
   }
   function generateColor() {
-    // Colores definidos según tu paleta
+    // Color principal #00b7a2 (verde azulado) como solicitado
     const colors = [
-      { r: 206, g: 234, b: 255 },     // Celeste muy clarorgb(206, 234, 255)
-      { r: 195, g: 230, b: 252 },     // Celeste suavergb(195, 230, 255)
-      { r: 235, g: 245, b: 255 },     // Casi blanco con toque azulado #EBF5FF
-      { r: 161, g: 198, b: 226 }      // Azul muy pálidorgb(161, 198, 226)
+      { r: 0, g: 183, b: 162 },      // #00b7a2 - Color principal
+      { r: 0, g: 193, b: 172 },      // Variación un poco más clara
+      { r: 0, g: 183, b: 162 }       // #00b7a2 repetido para que sea más frecuente
     ];
-
      
-  // Seleccionar un color aleatorio de la paleta
-  const colorIndex = Math.floor(Math.random() * colors.length);
-  const color = colors[colorIndex];
-  
-  // Modificado: Intensidad más baja para efectos más sutiles
-  const intensity = 0.1 + Math.random() * 0.15; // Intensidad entre 0.1 y 0.25
-  
-  return {
-    r: (color.r/255) * intensity,
-    g: (color.g/255) * intensity,
-    b: (color.b/255) * intensity
-  };
-}
-
+    // Seleccionar un color aleatorio de la paleta
+    const colorIndex = Math.floor(Math.random() * colors.length);
+    const color = colors[colorIndex];
+    
+    // Aumentamos la intensidad para que sea más visible
+    const intensity = 0.2 + Math.random() * 0.2; // Entre 0.2 y 0.4
+    
+    return {
+      r: (color.r/255) * intensity,
+      g: (color.g/255) * intensity,
+      b: (color.b/255) * intensity
+    };
+  }
   
   // Ya no necesitarás la función HSVtoRGB, pero mantenla en el código para evitar errores
   function HSVtoRGB(h, s, v) {
