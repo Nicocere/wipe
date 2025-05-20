@@ -129,6 +129,39 @@ const QueOfrecemos = () => {
 
     return (
         <div className={styles.container}>
+                  {/* CTA Section */}
+            <motion.section
+                className={styles.ctaSection}
+                ref={ctaRef}
+                id="cta"
+                style={{ borderRadius: '2rem', margin: '0', color: '#fff', position: 'relative', overflow: 'hidden', boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
+                initial={{ opacity: 0 }}
+                animate={isCtaInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.8 }}
+            >
+                <motion.div
+                    className={styles.ctaContent}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isCtaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto' }}
+                >
+                    <h2 className={styles.ctaTitle} style={{ color: '#fff', fontWeight: 900, fontSize: '2.5rem', marginBottom: '1.2rem' }}>
+                        Lleva tu negocio al siguiente nivel
+                    </h2>
+                    <p className={styles.ctaText} style={{ color: '#e0e0e0', fontSize: '1.18rem', marginBottom: '2.2rem' }}>
+                        Únete a cientos de empresas que ya están optimizando su proceso de ventas con nuestra solución digital.
+                    </p>
+                    <motion.button
+                        className={styles.ctaButton}
+                        style={{ color: '#111', fontWeight: 700, fontSize: '1.18rem', borderRadius: '1.2rem', padding: '1.1rem 2.2rem', boxShadow: '0 4px 24px 0 rgba(0,230,118,0.13)', border: 'none', transition: 'background 0.2s, color 0.2s, transform 0.2s' }}
+                        whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,230,118,0.25)', background: '#fff', color: '#00e676' }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        Comienza hoy mismo
+                    </motion.button>
+                </motion.div>
+            </motion.section>
             {/* --- ACERCA DE QUICKMENÚ --- */}
             <section className={styles.aboutWipeSection}>
                 <h2 className={styles.aboutWipeTitle}>
@@ -171,13 +204,13 @@ const QueOfrecemos = () => {
                 </div>
             </section>
 
+          
+
             {/* --- BENEFICIOS (NO SE REPITEN CON VENTAJAS/FUNCIONALIDADES) --- */}
-            <section className={styles.benefitsDarkSection}>
+            <section className={styles.benefitsDarkSection} id="beneficios" ref={benefitsRef}>
                 <div className={styles.benefitsDarkGrid}>
                     <div className={styles.benefitsDarkTextCol}>
-                        <h2 className={styles.benefitsDarkTitle}>
-                            Beneficios 
-                        </h2>
+                        <h2 className={styles.benefitsDarkTitle}>Beneficios</h2>
                         <p className={styles.benefitsDarkSubtitle}>
                             <span className={styles.benefitsHighlight}>Digitalizá</span> tu negocio y mejorá la experiencia de tus clientes con tecnología simple, rápida y segura.
                         </p>
@@ -213,7 +246,7 @@ const QueOfrecemos = () => {
             </section>
 
             {/* --- SECCIÓN UNIFICADA: VENTAJAS Y FUNCIONALIDADES --- */}
-            <section className={styles.ventajasSection}>
+            <section className={styles.ventajasSection} id="ventajas">
                 <h2 className={styles.ventajasTitle}>
                     Ventajas y funcionalidades <span className={styles.ventajasHighlight}>QuickMenú</span>
                 </h2>
@@ -241,43 +274,11 @@ const QueOfrecemos = () => {
             <motion.section
                 className={styles.statsSection}
                 ref={statsRef}
-                style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)', background: '#000' }}
             >
                 <Contador />
             </motion.section>
 
-            {/* CTA Section */}
-            <motion.section
-                className={styles.ctaSection}
-                ref={ctaRef}
-                style={{ background: '#000', borderRadius: '2rem', margin: '0', color: '#fff', position: 'relative', overflow: 'hidden', boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
-                initial={{ opacity: 0 }}
-                animate={isCtaInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.8 }}
-            >
-                <motion.div
-                    className={styles.ctaContent}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isCtaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto' }}
-                >
-                    <h2 className={styles.ctaTitle} style={{ color: '#fff', fontWeight: 900, fontSize: '2.5rem', marginBottom: '1.2rem' }}>
-                        Lleva tu negocio al siguiente nivel
-                    </h2>
-                    <p className={styles.ctaText} style={{ color: '#e0e0e0', fontSize: '1.18rem', marginBottom: '2.2rem' }}>
-                        Únete a cientos de empresas que ya están optimizando su proceso de ventas con nuestra solución digital.
-                    </p>
-                    <motion.button
-                        className={styles.ctaButton}
-                        style={{ background: '#00e676', color: '#111', fontWeight: 700, fontSize: '1.18rem', borderRadius: '1.2rem', padding: '1.1rem 2.2rem', boxShadow: '0 4px 24px 0 rgba(0,230,118,0.13)', border: 'none', transition: 'background 0.2s, color 0.2s, transform 0.2s' }}
-                        whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,230,118,0.25)', background: '#fff', color: '#00e676' }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        Comienza hoy mismo
-                    </motion.button>
-                </motion.div>
-            </motion.section>
+        
         </div>
     );
 };

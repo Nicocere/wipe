@@ -1,6 +1,6 @@
 .navBar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0.8rem 2rem;
   position: fixed;
@@ -8,11 +8,12 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: #000 !important;
-  backdrop-filter: none;
-  transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  background: linear-gradient(135deg, #0a0f12 0%, #10181d 60%, #1a2a33 100%) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.18);
   border-radius: 0px;
+  min-height: 64px;
 }
 
 .navBar.atTop {
@@ -25,10 +26,21 @@
   transform: translateY(-100%);
 }
 
+.navBarContent {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
 .logoContainer {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex: 0 0 auto;
+  margin-right: 2rem;
 }
 
 .brandContainer {
@@ -82,6 +94,14 @@
   font-weight: 300;
 }
 
+.menu {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
 .authLinks {
   display: flex;
   align-items: center;
@@ -120,6 +140,27 @@
   box-shadow: 0 5px 15px rgba(26, 109, 255, 0.3);
 }
 
+.ctaBtnNav {
+  margin-left: 2rem;
+  padding: 0.7rem 1.7rem;
+  border-radius: 999px;
+  background: #00e676;
+  color: #000;
+  font-weight: 700;
+  font-size: 1.08rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  border: none;
+  outline: none;
+  flex: 0 0 auto;
+}
+.ctaBtnNav:hover {
+  background: #00c853;
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+
 .drawerLinks {
   padding: 1rem;
   display: flex;
@@ -152,22 +193,19 @@
   font-size: 1.8rem;
 }
 
-@media (max-width: 768px) {
-  .navBar {
-    padding: 0.8rem 1rem;
-  }
-  
-  .brandText {
-    font-size: 1.8rem;
-  }
-  
-  .digital, .solutions {
-    font-size: 0.7rem;
-  }
-}
-
-/* --- SIDEBAR MOBILE --- */
 @media (max-width: 900px) {
+  .navBarContent {
+    padding: 0 0.5rem;
+    gap: 1rem;
+  }
+  .logoContainer {
+    margin-right: 1rem;
+  }
+  .ctaBtnNav {
+    margin-left: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
   .sidebar {
     display: flex !important;
     flex-direction: column;
@@ -238,6 +276,25 @@
     backdrop-filter: blur(2px);
   }
 }
+
+@media (max-width: 768px) {
+  .navBar {
+    padding: 0.8rem 0.5rem;
+  }
+  .navBarContent {
+    gap: 0.5rem;
+  }
+  .menu {
+    gap: 1.2rem;
+  }
+  .brandText {
+    font-size: 1.8rem;
+  }
+  .digital, .solutions {
+    font-size: 0.7rem;
+  }
+}
+
 @keyframes sidebarIn {
   from { transform: translateX(-100%); }
   to { transform: translateX(0); }

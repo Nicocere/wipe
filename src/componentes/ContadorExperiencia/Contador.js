@@ -68,10 +68,8 @@ const Contador = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#181818',
         borderRadius: '1.5rem',
         boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)',
-        border: '1.5px solid #222',
         padding: isMobileScreen ? '2rem 1rem 1.5rem 1rem' : '2.5rem 1.5rem 2rem 1.5rem',
         textAlign: 'center',
         transition: 'box-shadow 0.22s, transform 0.22s, background 0.22s',
@@ -142,7 +140,7 @@ const Contador = () => {
                             }}
                             whileHover={{
                                 scale: isMobileScreen ? 1.02 : 1.05,
-                                boxShadow: "0 12px 40px 0 rgba(0,230,118,0.18)",
+                                boxShadow: "0 8px 32px 0 rgba(0,230,118,0.13)",
                                 borderColor: "#00e676"
                             }}
                         >

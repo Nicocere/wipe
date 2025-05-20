@@ -6,13 +6,13 @@ import QueOfrecemos from '@/componentes/QueOfrecemos/QueOfrecemos';
 import Servicios from '@/componentes/Servicios/Servicios';
 import QuieroMiSpazio from './quiero-mi-spazio/page';
 
-const Home = dynamic(() => import("@/componentes/Home/Home"));
+const HomeBanner = dynamic(() => import("@/componentes/HomeBanner/HomeBanner"));
 
 export default function HomePage() {
   return (
     <div>
-      <main style={{ backgroundColor: "#000" }}>
-        <Home />
+      <main >
+        <HomeBanner />
         <QueOfrecemos />
         {/* <Servicios /> */}
         {/* <QuieroMiSpazio /> */}

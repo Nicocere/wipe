@@ -56,7 +56,6 @@
 
 /* ===== MODERN DARK THEME OVERRIDES ===== */
 .container {
-  background: #000 !important;
   color: #fff !important;
   min-height: 100vh;
   padding-top: 0;
@@ -65,7 +64,6 @@
 /* HEADER */
 .header {
   width: 100%;
-  background: #000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -126,7 +124,6 @@
 /* ===== SECCIÓN DE PRESENTACIÓN ===== */
 .presentation {
   padding: 5rem 0 3rem 0;
-  background: #000;
   min-height: 70vh;
 }
 
@@ -230,10 +227,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #111;
   border-radius: 1.2rem;
-  border: 2px solid #222;
-  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.25);
   padding: 0.7rem 0.5rem;
   min-width: 360px;
   max-width: 420px;
@@ -243,7 +237,7 @@
 .astronautImageFixed {
   max-width: 100%;
   max-height: 560px;
-  border-radius: 0.8rem;
+  border-radius: 2rem;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
   object-fit: cover;
   background: #222;
@@ -1038,12 +1032,17 @@
 }
 
 @media (max-width: 600px) {
-  .presentation {
-    padding: var(--spacing-xl) 0;
-  }
   
   .title {
-    font-size: 4.8rem;
+    font-size: 2rem;
+  }
+
+  .subtitle{
+    font-size: 1.5rem;
+  }
+
+  .ctaQrRow{
+    display: none;
   }
   
   .qrFrame {
@@ -1057,6 +1056,10 @@
   
   .astronautImage {
     transform: none;
+  }
+
+  .astronautImageFixed{
+   display: none;
   }
   
   .astronautImage:hover {
