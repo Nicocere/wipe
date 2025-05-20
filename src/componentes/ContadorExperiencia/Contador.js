@@ -68,8 +68,9 @@ const Contador = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        border: '1px solid #00b7a2',
         borderRadius: '1.5rem',
-        boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)',
+        boxShadow: '0 4px 24px 0 rgba(0,183,162,0.13)',
         padding: isMobileScreen ? '2rem 1rem 1.5rem 1rem' : '2.5rem 1.5rem 2rem 1.5rem',
         textAlign: 'center',
         transition: 'box-shadow 0.22s, transform 0.22s, background 0.22s',
@@ -77,7 +78,7 @@ const Contador = () => {
         boxSizing: 'border-box',
     };
     const statValueStyle = {
-        color: '#00e676',
+        color: '#003f3c',
         fontSize: isMobileScreen ? '2.5rem' : '3.5rem',
         fontWeight: 800,
         marginBottom: '0.5rem',
@@ -87,7 +88,7 @@ const Contador = () => {
         textAlign: 'center',
     };
     const statLabelStyle = {
-        color: '#fff',
+        color: '#00b7a2',
         fontSize: isMobileScreen ? '1rem' : '1.125rem',
         maxWidth: '180px',
         margin: '0 auto',
@@ -140,12 +141,11 @@ const Contador = () => {
                             }}
                             whileHover={{
                                 scale: isMobileScreen ? 1.02 : 1.05,
-                                boxShadow: "0 8px 32px 0 rgba(0,230,118,0.13)",
-                                borderColor: "#00e676"
+                                boxShadow: "0 4px 24px 0 rgba(0,183,162,0.13)",
                             }}
                         >
-                            <div className={styles.ventajaIcon} style={{ color: '#00e676', marginBottom: '1.1rem' }}>
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00e676" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M8 12l2 2 4-4" /></svg>
+                            <div className={styles.ventajaIcon} style={{ background:'#00b7a2', marginBottom: '1.1rem' }}>
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M8 12l2 2 4-4" /></svg>
                             </div>
                             <div className={styles.statValue} style={statValueStyle}>
                                 <span>{stat.prefix}</span>
@@ -167,19 +167,6 @@ const Contador = () => {
                         </motion.div>
                     ))}
                 </motion.div>
-                {isMobileScreen && (
-                    <motion.div
-                        className={styles.ventajasCta}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <button className={styles.ventajasCta} style={{ background: '#00e676', color: '#111' }}>
-                            Ver más estadísticas
-                        </button>
-                    </motion.div>
-                )}
             </section>
         </div>
     );

@@ -128,6 +128,7 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  padding-top: 80px;
 }
 
 body {
@@ -151,7 +152,7 @@ body {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  background: linear-gradient(135deg, #0a0f12 0%, #10181d 60%, #1a2a33 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #E9FAF8 60%, #B8F3EA 100%);
   overflow: hidden;
 }
 .global-orb {
@@ -248,7 +249,7 @@ h5,
 span,
 h6 {
   z-index: 1;
-  color: #fff;
+  color: #002c35 ;
   font-family: var(--font-syne), sans-serif !important;
 }
 
@@ -284,40 +285,36 @@ div, section, article {
 /* Mobile optimización: padding y layout base */
 @media (max-width: 768px) {
   html, body {
-    padding: 0 !important;
-    margin: 0 !important;
     min-width: 100vw;
     min-height: 100vh;
     font-size: 15px;
     overflow-x: hidden;
-  }
-  .container, .footerContent, .ctaFooter, .banner, .heroSection, .benefitsSection, .benefitsDarkSection, .ventajasSection, .aboutWipeSection, .statsSection, .ctaSection {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
-    border-radius: 1.2rem !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
     box-sizing: border-box;
   }
-  .footerContent {
-    grid-template-columns: 1fr !important;
-    gap: 1.2rem !important;
-  }
-  .ctaFooter {
-    padding: 1.2rem 0.5rem 1rem 0.5rem !important;
-    font-size: 1rem !important;
+
+  .container, .footerContent, .ctaFooter, .banner, .heroSection, .benefitsSection, 
+  .benefitsDarkSection, .ventajasSection, .aboutWipeSection, .statsSection, .ctaSection {
+    box-sizing: border-box;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
     border-radius: 1.2rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: calc(100% - 1.5rem) !important;
+    max-width: 100% !important;
   }
-  .ctaFooter h2 {
-    font-size: 1.2rem !important;
+  
+  main > div, main > section {
+    box-sizing: border-box;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
   }
-  .logoColumn, .navLinks, .socialColumn {
-    align-items: center !important;
-    text-align: center !important;
-  }
-  .navLinks {
-    flex-direction: column !important;
-    gap: 1.2rem !important;
+
+  .footerContent {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }
 
