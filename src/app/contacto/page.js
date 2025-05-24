@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Swal from 'sweetalert2';
 import styles from './Contacto.module.css';
 
 const Contacto = () => {
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         // Any additional side effects can be added here
@@ -12,6 +14,7 @@ const Contacto = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
 
@@ -23,10 +26,30 @@ const Contacto = () => {
             body: JSON.stringify(data),
         });
 
+        setLoading(false);
         if (response.ok) {
-            alert('Formulario enviado con éxito');
+            Swal.fire({
+                title: '¡Mensaje enviado!',
+                text: 'Gracias por contactarte. Te responderemos a la brevedad.',
+                icon: 'success',
+                confirmButtonColor: '#00b7a2',
+                customClass: {
+                  popup: styles.sweetalertPopup,
+                  confirmButton: styles.sweetalertButton
+                }
+            });
+            event.target.reset();
         } else {
-            alert('Hubo un error al enviar el formulario');
+            Swal.fire({
+                title: 'Error',
+                text: 'Hubo un error al enviar el formulario. Por favor, intentá nuevamente o escribinos por WhatsApp.',
+                icon: 'error',
+                confirmButtonColor: '#00b7a2',
+                customClass: {
+                  popup: styles.sweetalertPopup,
+                  confirmButton: styles.sweetalertButton
+                }
+            });
         }
     };
 
@@ -37,24 +60,42 @@ const Contacto = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <h1 className={styles.title}>Contacto</h1>
-            <p className={styles.description}>Gracias por contactarnos en nuestro "spazio" digital. Por favor, llena el siguiente formulario y nos pondremos en contacto contigo lo antes posible.</p>
-            <p className={styles.description}>Somos un equipo de desarrolladores dedicados a crear páginas y aplicaciones web de alta calidad. Nos apasiona la tecnología y estamos aquí para ayudarte a llevar tu presencia digital al siguiente nivel.</p>
-            <form className={styles.form} onSubmit={handleSubmit}>
-                <div>
-                    <label className={styles.label} htmlFor="name">Nombre:</label>
-                    <input className={styles.input} type="text" id="name" name="name" required />
+            <motion.h1 className={styles.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>¡Potenciá tu negocio con QuickMenú!</motion.h1>
+            <motion.p className={styles.description} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                Somos el aliado digital de los emprendedores gastronómicos. Te ayudamos a digitalizar tu carta, recibir pedidos y asesorarte para que vendas más y mejor.
+            </motion.p>
+            <motion.p className={styles.description} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                ¿Querés una demo personalizada, tenés dudas o querés que te asesoremos sobre cómo llevar tu restaurante al siguiente nivel? ¡Completá el formulario y te contactamos!
+            </motion.p>
+            <motion.form className={styles.form} onSubmit={handleSubmit} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                <div className={styles.inputGroup}>
+                    <label className={styles.label} htmlFor="name">Nombre y apellido</label>
+                    <input className={styles.input} type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required />
                 </div>
-                <div>
-                    <label className={styles.label} htmlFor="email">Correo Electrónico:</label>
-                    <input className={styles.input} type="email" id="email" name="email" required />
+                <div className={styles.inputGroup}>
+                    <label className={styles.label} htmlFor="email">Correo electrónico</label>
+                    <input className={styles.input} type="email" id="email" name="email" placeholder="tu@email.com" required />
                 </div>
-                <div>
-                    <label className={styles.label} htmlFor="message">Mensaje:</label>
-                    <textarea className={styles.textarea} id="message" name="message" required></textarea>
+                <div className={styles.inputGroup}>
+                    <label className={styles.label} htmlFor="telefono">WhatsApp (opcional)</label>
+                    <input className={styles.input} type="tel" id="telefono" name="telefono" placeholder="Ej: +54 9 11 2345-6789" />
                 </div>
-                <button className={styles.button} type="submit">Enviar</button>
-            </form>
+                <div className={styles.inputGroup}>
+                    <label className={styles.label} htmlFor="message">¿En qué podemos ayudarte?</label>
+                    <textarea className={styles.textarea} id="message" name="message" placeholder="Contanos sobre tu emprendimiento, tus dudas o cómo te gustaría que te ayudemos..." required></textarea>
+                </div>
+                <motion.button whileHover={!loading ? { scale: 1.05 } : {}} whileTap={!loading ? { scale: 0.97 } : {}} className={styles.button} type="submit" disabled={loading}>
+                    {loading ? (
+                        <span className={styles.loader}></span>
+                    ) : (
+                        'Quiero que me contacten'
+                    )}
+                </motion.button>
+            </motion.form>
+            <motion.div className={styles.extraInfo} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+                <p>¿Preferís hablar directo? <a href="https://wa.me/+5491131408060" target="_blank" rel="noopener noreferrer" className={styles.link}>Escribinos por WhatsApp</a> o <a href="mailto:spazio.digitalsolutions@gmail.com" className={styles.link}>mandanos un mail</a>.</p>
+                <p className={styles.miniText}>Te asesoramos sin compromiso y te mostramos cómo QuickMenú puede transformar tu negocio gastronómico.</p>
+            </motion.div>
         </motion.div>
     );
 };

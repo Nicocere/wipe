@@ -38,7 +38,7 @@
     "react-spinners": "^0.14.1",
     "react-spring": "^9.7.4",
     "styled-components": "^6.1.14",
-    "sweetalert2": "^11.14.3",
+    "sweetalert2": "^11.21.2",
     "swiper": "^11.1.14",
     "tailwind-merge": "^2.6.0",
     "three": "^0.173.0"
