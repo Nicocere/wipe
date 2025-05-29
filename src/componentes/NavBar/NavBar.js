@@ -23,9 +23,9 @@ const NavBar = () => {
         </a>
         {/* Menú a la derecha */}
         <div className={styles.menu} style={{ display: isMobile ? 'none' : 'flex', justifyContent: 'flex-end', flex: 1 }}>
-          <a href="#solutions" className={styles.menuLink}>Contacto</a>
-          <a href="#pricing" className={styles.menuLink}>Beneficios</a>
-          <a href="#get-started" className={styles.getStartedBtn}>Empezá ahora</a>
+          <a href="/contacto" className={styles.menuLink}>Contacto</a>
+          <a href="#beneficios" className={styles.menuLink}>Beneficios</a>
+          <a href="https://www.quickmenudigital.app/login" className={styles.getStartedBtn}>Iniciar Sesión</a>
         </div>
         {/* Hamburger Icon for Mobile */}
         <button className={styles.hamburger} style={{ display: isMobile ? 'flex' : 'none' }} onClick={() => setDrawerOpen(true)} aria-label="Open menu">
@@ -41,7 +41,7 @@ const NavBar = () => {
             <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
               <a href="#solutions" className={styles.sidebarLink} onClick={() => setDrawerOpen(false)}>Contacto</a>
               <a href="#pricing" className={styles.sidebarLink} onClick={() => setDrawerOpen(false)}>Beneficios</a>
-              <a href="#get-started" className={styles.sidebarCta} onClick={() => setDrawerOpen(false)}>Empezá Ahora</a>
+              <a href="https://www.quickmenudigital.app/login" className={styles.sidebarCta} onClick={() => setDrawerOpen(false)}>Iniciar Sesión</a>
             </nav>
           </aside>
         </>

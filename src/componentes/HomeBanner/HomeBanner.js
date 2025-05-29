@@ -4,6 +4,7 @@ import styles from "./homeBanner.module.css";
 import { useRef } from 'react';
 import { useInView } from "framer-motion";
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HomeBanner() {
   const containerRef = useRef(null);
@@ -46,11 +47,13 @@ export default function HomeBanner() {
         >
         
         <h1 className={styles.mainTitle}>Más que un menú, una solución digital</h1>
-<p className={styles.bannerText}>Automatizá pedidos y cobros desde cualquier celular</p>
-
-          <div className={styles.buttonRow}>
-            <button className={styles.primaryBtn}>Probá la Demo</button>
-            <button className={styles.secondaryBtn}>Beneficios</button>
+<p className={styles.bannerText}>Automatizá pedidos y cobros desde cualquier celular</p>          <div className={styles.buttonRow}>
+            <Link href="/contacto">
+              <button className={styles.primaryBtn}>Comenzar</button>
+            </Link>
+            <Link href="/#beneficios">
+              <button className={styles.secondaryBtn}>Beneficios</button>
+            </Link>
           </div>
         </motion.div>
         

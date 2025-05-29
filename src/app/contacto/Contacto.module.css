@@ -1,40 +1,74 @@
-/* Contacto.module.css */
+/* Contacto.module.css - Refactorizado para alinear con QueOfrecemos */
 
 .container {
-    margin: 120px auto 30px;
-    background: linear-gradient(135deg, #eafffa 0%, #c6f7f2 100%);
-    padding: 2.5rem 2rem 2rem 2rem;
-    border-radius: 2rem;
-    color: #003f3c;
-    max-width: 540px;
-    box-shadow: 0 8px 32px 0 rgba(0,183,162,0.10);
-    border: none;
-    position: relative;
-    z-index: 2;
+  --color-primary: #00B7A2;
+  --color-primary-dark: #003F3C;
+  --color-accent: #57E6D3;
+  --color-text: #002c35;
+  --color-text-light: #4A5568;
+  --gradient-primary: linear-gradient(135deg, #00B7A2 0%, #57E6D3 100%);
+  --gradient-background: linear-gradient(135deg, #eafffa 0%, #c6f7f2 100%);
+  --shadow-md: 0 8px 32px rgba(0,183,162,0.13);
+  --shadow-sm: 0 4px 16px rgba(0,183,162,0.10);
+  --border-radius-lg: 2rem;
+  --border-radius-md: 1.2rem;
+
+  margin: 120px auto 30px;
+  background: var(--gradient-background);
+  padding: 2.8rem 2.2rem 2.2rem;
+  border-radius: var(--border-radius-lg);
+  color: var(--color-primary-dark);
+  max-width: 600px;
+  box-shadow: var(--shadow-md);
+  border: none;
+  position: relative;
+  z-index: 2;
 }
 
 .title {
-    color: #00b7a2;
-    font-size: 2.2rem;
+    color: var(--color-text);
+    font-size: 2.5rem;
     font-weight: 900;
-    margin-bottom: 0.7rem;
+    margin-bottom: 1rem;
     text-align: center;
     letter-spacing: -1px;
+    position: relative;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    border-radius: 99px;
+    background: var(--gradient-primary);
 }
 
 .description {
-    color: #003f3c;
-    font-size: 1.15rem;
+    color: var(--color-primary-dark);
+    font-size: 1.18rem;
     margin-bottom: 1.1rem;
     text-align: center;
     font-weight: 500;
+    line-height: 1.6;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
-    margin-top: 1.2rem;
+    gap: 1.2rem;
+    margin-top: 2rem;
+    border-radius: var(--border-radius-md);
+    background: rgba(255, 255, 255, 0.4);
+    padding: 1.8rem;
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(2px);
 }
 
 .inputGroup {
@@ -44,7 +78,7 @@
 }
 
 .label {
-    color: #00b7a2;
+    color: var(--color-primary);
     font-weight: 700;
     margin-bottom: 0.2rem;
     font-size: 1rem;
@@ -53,10 +87,10 @@
 .input, .textarea {
     width: 100%;
     padding: 0.85rem 1rem;
-    border: 1.5px solid #00b7a2;
-    border-radius: 1.2rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: var(--border-radius-md);
     background: #fff;
-    color: #003f3c;
+    color: var(--color-primary-dark);
     font-size: 1.05rem;
     font-weight: 500;
     outline: none;
@@ -64,8 +98,8 @@
     box-shadow: 0 2px 8px 0 rgba(0,183,162,0.04);
 }
 .input:focus, .textarea:focus {
-    border: 1.5px solid #57e6d3;
-    box-shadow: 0 4px 16px 0 rgba(0,183,162,0.10);
+    border: 1.5px solid var(--color-accent);
+    box-shadow: var(--shadow-sm);
 }
 
 .textarea {

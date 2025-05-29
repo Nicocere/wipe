@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { FaUtensils, FaTshirt, FaShoppingBag, FaMobileAlt, FaChartLine, FaUserFriends, FaCreditCard, FaClock } from 'react-icons/fa';
 import { RiRestaurantFill, RiShirtFill, RiShoppingBag3Fill, RiTimeFill, RiSecurePaymentFill, RiDashboardFill } from 'react-icons/ri';
+import Link from 'next/link';
 import styles from './QueOfrecemos.module.css';
 import Contador from '../ContadorExperiencia/Contador';
 import QuickmenuDobleFeature from './QuickmenuDobleFeature';
@@ -175,15 +176,16 @@ const QueOfrecemos = () => {
                     </h2>
                     <p className={styles.ctaText} style={{ color: '#002c35', fontSize: '1.18rem', marginBottom: '2.2rem' }}>
                         Únete a cientos de empresas que ya están optimizando su proceso de ventas con nuestra solución digital.
-                    </p>
-                    <motion.button
-                        className={styles.ctaButton}
-                        style={{ color: '#fff', fontWeight: 700, fontSize: '1.18rem', borderRadius: '1.2rem', padding: '1.1rem 2.2rem', boxShadow: '0 4px 24px 0 rgba(0,230,118,0.13)', border: 'none', transition: 'background 0.2s, color 0.2s, transform 0.2s' }}
-                        whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,230,118,0.25)', color: '#002c35', borderColor: '#00b7a2', backgroundColor: '#fff' }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        Comienza hoy mismo
-                    </motion.button>
+                    </p>                    <Link href="/contacto">
+                        <motion.button
+                            className={styles.ctaButton}
+                            style={{ color: '#fff', fontWeight: 700, fontSize: '1.18rem', borderRadius: '1.2rem', padding: '1.1rem 2.2rem', boxShadow: '0 4px 24px 0 rgba(0,230,118,0.13)', border: 'none', transition: 'background 0.2s, color 0.2s, transform 0.2s' }}
+                            whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,230,118,0.25)', color: '#002c35', borderColor: '#00b7a2', backgroundColor: '#fff' }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            Comienza hoy mismo
+                        </motion.button>
+                    </Link>
                 </motion.div>
             </motion.section>
         
@@ -207,15 +209,15 @@ const QueOfrecemos = () => {
                         </h1>
                         <p className={styles.heroPromoDesc}>
                         QuickMenu conecta a tus clientes con tu carta en un clic. Pedidos y pagos desde su celular, sin filas ni confusión.
-                        </p>
-                        <motion.a
-                            href="#contacto"
-                            className={styles.heroPromoBtn}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.97 }}
-                        >
-                            Empezá ahora
-                        </motion.a>
+                        </p>                        <Link href="/contacto">
+                            <motion.button
+                                className={styles.heroPromoBtn}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.97 }}
+                            >
+                                Empezá ahora
+                            </motion.button>
+                        </Link>
                     </motion.div>
                     <motion.div
                         className={styles.heroPromoImgCol}
@@ -329,11 +331,12 @@ const QueOfrecemos = () => {
                             <p className={styles.ventajaText}>{item.description}</p>
                         </motion.div>
                     ))}
-                </div>
-                <div>
-                    <button className={styles.ventajasCta}>
-                        Sumate a la revolución digital con QuickMenú
-                    </button>
+                </div>                <div>
+                    <Link href="/contacto">
+                        <button className={styles.ventajasCta}>
+                            Sumate a la revolución digital con QuickMenú
+                        </button>
+                    </Link>
                 </div>
             </section>
 
