@@ -3,19 +3,19 @@ const useFluidCursor = () => {
   resizeCanvas();
   let config = {
     SIM_RESOLUTION: 128,
-    DYE_RESOLUTION: 1024, // Reducido de 1440 para mejor rendimiento
+    DYE_RESOLUTION: 1024, // Mantener resolución alta para suavidad
     CAPTURE_RESOLUTION: 512,
-    DENSITY_DISSIPATION: 5, // Aumentado de 3.5 para que desaparezca más rápido
-    VELOCITY_DISSIPATION: 3, // Aumentado de 2 para movimiento más suave
+    DENSITY_DISSIPATION: 10, // Mucho más rápido
+    VELOCITY_DISSIPATION: 6, // Mucho más rápido
     PRESSURE: 0.1,
     PRESSURE_ITERATIONS: 20,
-    CURL: 2, // Reducido de 3 para menos turbulencia
-    SPLAT_RADIUS: 0.15, // Reducido de 0.2 para efecto más pequeño
-    SPLAT_FORCE: 3000, // Reducido de 6000 para un efecto más sutil
+    CURL: 2, // Mantener
+    SPLAT_RADIUS: 0.28, // Más grande para que el efecto sea más visible
+    SPLAT_FORCE: 4200, // Un poco más fuerte para que el trazo sea más notorio
     SHADING: true,
-    COLOR_UPDATE_SPEED: 10,
+    COLOR_UPDATE_SPEED: 30, // Mucho más rápido
     PAUSED: false,
-    BACK_COLOR: { r: 0.5, g: 0, b: 0 },
+    BACK_COLOR: { r: 1, g: 1, b: 1 }, // Fondo blanco puro
     TRANSPARENT: true,
   };
   function pointerPrototype() {
@@ -50,7 +50,7 @@ const useFluidCursor = () => {
     if (!isWebGL2)
       gl =
         canvas.getContext('webgl', params) ||
-        canvas.getContext('experimental-webgl', params);
+        canvas.getContext('experimental-web-gl', params);
     let halfFloat;
     let supportLinearFiltering;
     if (isWebGL2) {
@@ -992,13 +992,12 @@ const useFluidCursor = () => {
   }
 // Modificar también la función clickSplat para efectos más sutiles
 function clickSplat(pointer) {
-  // Color #00b7a2 para efectos de clic
+  // Color celeste claro para efectos de clic, visible sobre el fondo
   const color = {
-    r: (0/255) * 0.5, 
-    g: (183/255) * 0.5, 
-    b: (162/255) * 0.5
+    r: 233/255, // #e9faf8
+    g: 250/255,
+    b: 248/255
   };
-  
   let dx = 10 * (Math.random() - 0.5);
   let dy = 30 * (Math.random() - 0.5);
   splat(pointer.texcoordX, pointer.texcoordY, dx, dy, color);
@@ -1133,20 +1132,19 @@ function clickSplat(pointer) {
     return delta;
   }
   function generateColor() {
-    // Color principal #00b7a2 (verde azulado) como solicitado
+    // Paleta de blanco, gris claro y los colores del fondo para máxima visibilidad
     const colors = [
-      { r: 0, g: 183, b: 162 },      // #00b7a2 - Color principal
-      { r: 0, g: 193, b: 172 },      // Variación un poco más clara
-      { r: 0, g: 183, b: 162 }       // #00b7a2 repetido para que sea más frecuente
+      { r: 255, g: 255, b: 255 },      // Blanco puro
+      { r: 161, g: 161, b: 161 },      // rgb(161, 161, 161)
+      { r: 136, g: 136, b: 136 },      //rgb(136, 136, 136)
+      { r: 205, g: 252, b: 255 },      //rgb(205, 252, 255)
+      { r: 245, g: 245, b: 245 }       // Gris casi blanco
     ];
-     
     // Seleccionar un color aleatorio de la paleta
     const colorIndex = Math.floor(Math.random() * colors.length);
     const color = colors[colorIndex];
-    
-    // Aumentamos la intensidad para que sea más visible
-    const intensity = 0.2 + Math.random() * 0.2; // Entre 0.2 y 0.4
-    
+    // Intensidad alta para que se vea bien sobre fondo claro
+    const intensity = 0.8 + Math.random() * 0.2; // Entre 0.8 y 1.0
     return {
       r: (color.r/255) * intensity,
       g: (color.g/255) * intensity,

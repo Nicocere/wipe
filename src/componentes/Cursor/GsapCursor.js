@@ -1,404 +1,210 @@
 "use client";
-
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import gsap from 'gsap';
-import styled from 'styled-components';
+import React, { useRef, useEffect, useCallback } from "react";
+import styled from "styled-components";
+import gsap from "gsap";
 
 const CursorWrapper = styled.div`
-  /* Variables de color */
-  --color-primary: #00b7a2;
-  --color-primary-dark: #00b7a2;
-  --color-primary-light: #00b7a2;
-  --color-accent: #00b7a2;
-  --color-glow: rgba(0, 183, 162, 0.10); /* Menor opacidad */
-  --color-primary-invert: #00b7a2;
-  
-  /* Variables de tamaño */
-  --cursor-size-sm: 20px;
-  --cursor-size-md: 24px;
-  --cursor-size-lg: 40px;
-  --cursor-size-xl: 60px; /* Glow más pequeño */
-  
-  /* Variables de tiempo */
-  --transition-fast: 0.15s;
-  --transition-normal: 0.3s;
-  --transition-slow: 0.5s;
-  
-  * {
-    cursor: none !important;
-  }
-
+  --color-main: #00b7a2;
+  --color-main-light: #7ddfd2;
+  --color-main-lighter: #e8fcfa;
+  --color-white: #fff;
+  --dot-size: 10px;
+  --inner-size: 32px;
+  --outer-size: 60px;
+  --transition-fast: 0.12s;
+  --transition-normal: 0.25s;
+  --transition-slow: 0.4s;
+  * { cursor: none !important; }
   .cursor-dot {
-    width: var(--cursor-size-sm);
-    height: var(--cursor-size-sm);
-    background: var(--color-primary);
+    width: var(--dot-size);
+    height: var(--dot-size);
+    background: linear-gradient(135deg, var(--color-main) 60%, var(--color-white) 100%);
     border-radius: 50%;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     pointer-events: none;
-    z-index: 10001;
-    transform: translate(-50%, -50%);
-    will-change: transform, width, height, opacity;
-    transition: width var(--transition-fast), height var(--transition-fast);
+    z-index: 10003;
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 16px 2px rgba(0,183,162,0.18), 0 0 0 1.5px #fff;
+    mix-blend-mode: lighten;
+    will-change: transform, opacity, background;
+    transition: background 0.2s;
   }
-
-  .cursor-circle {
-    width: var(--cursor-size-md);
-    height: var(--cursor-size-md);
-    border: 1px solid var(--color-primary);
+  .cursor-inner {
+    width: var(--inner-size);
+    height: var(--inner-size);
     border-radius: 50%;
+    border: 1.5px solid var(--color-main-light);
+    background: rgba(255,255,255,0.08);
     position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    will-change: transform, width, height, opacity, border;
-    mix-blend-mode: normal;
-    background: transparent;
-  }
-
-  .cursor-glow {
-    width: var(--cursor-size-xl);
-    height: var(--cursor-size-xl);
-    background: radial-gradient(
-      circle,
-      rgba(0, 183, 162, 0.10) 0%, /* Menor opacidad */
-      rgba(0, 183, 162, 0.02) 40%, /* Más transparente */
-      transparent 70%
-    );
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    will-change: transform, opacity, width, height;
-    opacity: 0.3; /* Menor opacidad general */
-    mix-blend-mode: normal;
-  }
-
-  .cursor-text {
-    position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     pointer-events: none;
     z-index: 10002;
-    transform: translate(-50%, -50%);
-    font-size: 12px;
-    font-weight: 500;
-    color: #00b7a2;
-    opacity: 0;
-    transition: opacity var(--transition-normal);
-    white-space: nowrap;
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 32px 2px var(--color-main-light);
+    mix-blend-mode: lighten;
+    will-change: transform, opacity, border, background;
+    transition: border 0.2s, background 0.2s;
   }
+  .cursor-outer {
+    width: var(--outer-size);
+    height: var(--outer-size);
+    border-radius: 50%;
+    border: 1.5px solid var(--color-main-lighter);
+    background: rgba(255,255,255,0.03);
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 10001;
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 60px 8px var(--color-main-lighter);
+    opacity: 0.35;
+    mix-blend-mode: lighten;
+    will-change: transform, opacity, border, background;
+    transition: border 0.2s, background 0.2s;
+  }
+
 `;
 
+const TRAIL_COUNT = 8;
+
 const GsapCursor = () => {
-    // Referencias a elementos del cursor
-    const dotRef = useRef(null);
-    const circleRef = useRef(null);
-    const glowRef = useRef(null);
-    const textRef = useRef(null);
-    
-    // Estado para texto del cursor
-    const [cursorText, setCursorText] = useState('');
+  const dotRef = useRef(null);
+  const innerRef = useRef(null);
+  const outerRef = useRef(null);
+  const trailsRef = useRef([]);
+  const mouse = useRef({ x: window.innerWidth/2, y: window.innerHeight/2 });
+  const last = useRef({ x: window.innerWidth/2, y: window.innerHeight/2 });
+  const velocity = useRef({ x: 0, y: 0, total: 0 });
+  const rafId = useRef(null);
 
-    // Velocidades para efectos
-    const velocityRef = useRef({ x: 0, y: 0, total: 0 });
-    const positionRef = useRef({ x: 0, y: 0 });
+  // Trail state
+  const trailPositions = useRef(Array(TRAIL_COUNT).fill({ x: window.innerWidth/2, y: window.innerHeight/2 }));
 
-    // Cálculo de magnitud de velocidad para efectos
-    const calculateVelocity = useCallback((mouseX, mouseY, deltaTime) => {
-        const lastX = positionRef.current.x || mouseX;
-        const lastY = positionRef.current.y || mouseY;
-        
-        const deltaX = mouseX - lastX;
-        const deltaY = mouseY - lastY;
-        
-        // Suavizado de velocidad
-        const damping = 0.8;
-        velocityRef.current.x = damping * velocityRef.current.x + (1 - damping) * deltaX;
-        velocityRef.current.y = damping * velocityRef.current.y + (1 - damping) * deltaY;
-        velocityRef.current.total = Math.sqrt(
-            velocityRef.current.x * velocityRef.current.x + 
-            velocityRef.current.y * velocityRef.current.y
-        );
-        
-        // Actualizar posición
-        positionRef.current = { x: mouseX, y: mouseY };
-    }, []);
+  // Main animation loop
+  const animate = useCallback(() => {
+    // Física básica para suavidad
+    last.current.x += (mouse.current.x - last.current.x) * 0.18;
+    last.current.y += (mouse.current.y - last.current.y) * 0.18;
+    velocity.current.x = mouse.current.x - last.current.x;
+    velocity.current.y = mouse.current.y - last.current.y;
+    velocity.current.total = Math.sqrt(velocity.current.x**2 + velocity.current.y**2);
 
-    // Actualización principal del cursor
-    const updateCursor = useCallback((e) => {
-        const { clientX: mouseX, clientY: mouseY } = e;
-        const deltaTime = 16; // ~60fps
-        
-        // Actualizar velocidad
-        calculateVelocity(mouseX, mouseY, deltaTime);
-        
-        // Factores de escala basados en velocidad
-        const velocityFactor = Math.min(velocityRef.current.total * 0.05, 1);
-        const dotScale = 1 + velocityFactor * 0.3;
-        const circleScale = 1 + velocityFactor * 0.5;
-        const circleOpacity = Math.max(0.5, 1 - velocityFactor * 0.5);
-        
-        // Movimiento del punto central (inmediato)
-        gsap.to(dotRef.current, {
-            x: mouseX,
-            y: mouseY,
-            scale: dotScale,
-            duration: 0.1,
-            ease: "power1.out",
-            overwrite: "auto"
-        });
-        
-        // Movimiento del círculo (ligeramente retrasado)
-        gsap.to(circleRef.current, {
-            x: mouseX,
-            y: mouseY,
-            scale: circleScale,
-            opacity: circleOpacity,
-            duration: 0.35,
-            ease: "power2.out",
-            overwrite: "auto"
-        });
-        
-        // Movimiento del resplandor (más retrasado)
-        gsap.to(glowRef.current, {
-            x: mouseX,
-            y: mouseY,
-            opacity: 0.6 - velocityFactor * 0.3,
-            duration: 0.5,
-            ease: "power3.out",
-            overwrite: "auto"
-        });
-        
-        // Texto del cursor (si existe)
-        if (textRef.current) {
-            gsap.to(textRef.current, {
-                x: mouseX,
-                y: mouseY - 30,
-                duration: 0.3,
-                ease: "power3.out",
-                overwrite: "auto"
-            });
-        }
-    }, [calculateVelocity]);
+    // Dot
+    gsap.set(dotRef.current, {
+      x: mouse.current.x,
+      y: mouse.current.y,
+      scale: 1 + Math.min(velocity.current.total * 0.04, 0.25),
+      opacity: 1
+    });
+    // Inner
+    gsap.to(innerRef.current, {
+      x: last.current.x,
+      y: last.current.y,
+      scale: 1 + Math.min(velocity.current.total * 0.02, 0.12),
+      border: `1.5px solid #7ddfd2`,
+      background: `rgba(255,255,255,${0.08 + Math.min(velocity.current.total * 0.01, 0.08)})`,
+      duration: 0.18,
+      ease: "expo.out"
+    });
+    // Outer
+    gsap.to(outerRef.current, {
+      x: last.current.x,
+      y: last.current.y,
+      scale: 1 + Math.min(velocity.current.total * 0.01, 0.08),
+      border: `1.5px solid #e8fcfa`,
+      background: `rgba(255,255,255,${0.03 + Math.min(velocity.current.total * 0.01, 0.04)})`,
+      opacity: 0.35 + Math.min(velocity.current.total * 0.01, 0.1),
+      duration: 0.22,
+      ease: "expo.out"
+    });
+    // Trails
+    for (let i = 0; i < TRAIL_COUNT; i++) {
+      const t = (i + 1) / TRAIL_COUNT;
+      trailPositions.current[i] = {
+        x: trailPositions.current[i].x + (last.current.x - trailPositions.current[i].x) * (0.12 + t * 0.12),
+        y: trailPositions.current[i].y + (last.current.y - trailPositions.current[i].y) * (0.12 + t * 0.12)
+      };
+      gsap.set(trailsRef.current[i], {
+        x: trailPositions.current[i].x,
+        y: trailPositions.current[i].y,
+        opacity: 0.12 + t * 0.12,
+        scale: 1 + t * 0.2
+      });
+    }
+    rafId.current = requestAnimationFrame(animate);
+  }, []);
 
-    // Estados del cursor para diferentes elementos
-    const cursorStates = {
-        default: {
-            dot: { mixBlendMode:'initial', scale: 1, background: 'var(--color-primary)' },
-            circle: { 
-                width: 'var(--cursor-size-md)', 
-                height: 'var(--cursor-size-md)', 
-                border: '1px solid var(--color-primary)',
-                opacity: 1,
-                background: 'transparent'
-            },
-            glow: { 
-                opacity: 0.6, 
-                background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' 
-            },
-            text: { text: '', opacity: 0 }
-        },
-        
-        link: {
-            dot: { scale: 1.2, background: 'var(--color-primary)' },
-            circle: { 
-                width: 'var(--cursor-size-lg)', 
-                height: 'var(--cursor-size-lg)', 
-                border: '1px solid var(--color-primary)',
-                background: 'rgba(0,183,162,0.05)'
-            },
-            glow: { opacity: 0.8, background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' },
-            text: { text: '', opacity: 0 }
-        },
-        
-        button: {
-            dot: { scale: 1.5, background: 'var(--color-primary)' },
-            circle: { 
-                width: 'var(--cursor-size-lg)', 
-                height: 'var(--cursor-size-lg)', 
-                border: '1px solid var(--color-primary)',
-                background: 'rgba(0,183,162,0.1)'
-            },
-            glow: { opacity: 0.9, background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' },
-            text: { text: '', opacity: 0 }
-        },
-        
-        image: {
-            dot: { scale: 1.2, background: 'var(--color-primary)' },
-            circle: { 
-                width: 'calc(var(--cursor-size-lg) + 10px)', 
-                height: 'calc(var(--cursor-size-lg) + 10px)',
-                border: '1px dashed var(--color-primary)',
-                opacity: 0.8
-            },
-            glow: { 
-                opacity: 0.4,
-                background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 30%, transparent 60%)'
-            },
-            text: { text: '', opacity: 0 }
-        },
-        
-        video: {
-            dot: { scale: 1.5, background: 'var(--color-primary)' },
-            circle: { 
-                width: 'var(--cursor-size-sm)', 
-                height: 'var(--cursor-size-sm)',
-                border: '1px solid var(--color-primary)',
-                background: 'rgba(0,183,162,0.1)'
-            },
-            glow: { opacity: 0.5, background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' },
-            text: { text: '', opacity: 0 }
-        },
-        
-        text: {
-            dot: { mixBlendMode:'difference', scale: 0.8, background: 'var(--color-primary)' },
-            circle: { 
-                width: '18px', 
-                height: '18px',
-                border: '1px solid var(--color-primary)',
-                background: 'transparent'
-            },
-            glow: { opacity: 0.3, background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' },
-            text: { text: '', opacity: 0 }
-        }
+  // Mouse move
+  useEffect(() => {
+    const handleMove = (e) => {
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
     };
+    document.addEventListener("mousemove", handleMove);
+    return () => document.removeEventListener("mousemove", handleMove);
+  }, []);
 
-    // Aplicar un estado específico al cursor
-    const applyCursorState = useCallback((state) => {
-        const { dot, circle, glow, text } = state;
-        
-        // Animación para el punto central
-        if (dot) {
-            gsap.to(dotRef.current, {
-                ...dot,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        }
-        
-        // Animación para el círculo
-        if (circle) {
-            gsap.to(circleRef.current, {
-                ...circle,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        }
-        
-        // Animación para el resplandor
-        if (glow) {
-            gsap.to(glowRef.current, {
-                ...glow,
-                duration: 0.4,
-                ease: "power2.out"
-            });
-        }
-        
-        // Texto del cursor
-        if (text) {
-            setCursorText(text.text);
-            gsap.to(textRef.current, {
-                opacity: text.opacity,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        }
-    }, []);
-
-    // Manejadores de eventos para diferentes elementos
-    const handlers = {
-        link: useCallback(() => applyCursorState(cursorStates.link), [applyCursorState]),
-        button: useCallback(() => applyCursorState(cursorStates.button), [applyCursorState]),
-        image: useCallback(() => applyCursorState(cursorStates.image), [applyCursorState]),
-        video: useCallback(() => applyCursorState(cursorStates.video), [applyCursorState]), 
-        text: useCallback(() => applyCursorState(cursorStates.text), [applyCursorState]),
-        reset: useCallback(() => applyCursorState(cursorStates.default), [applyCursorState])
+  // Hover/click states
+  useEffect(() => {
+    const handleEnter = (e) => {
+      if (e.target.closest("a,button,[data-cursor='link'],[data-cursor='button']")) {
+        gsap.to(dotRef.current, { scale: 1.5, background: "linear-gradient(135deg, #00b7a2 60%, #fff 100%)", boxShadow: "0 0 24px 4px #00b7a2, 0 0 0 2px #fff", duration: 0.18 });
+        gsap.to(innerRef.current, { scale: 1.18, border: "2.5px solid #00b7a2", duration: 0.18 });
+        gsap.to(outerRef.current, { scale: 1.12, border: "2.5px solid #e8fcfa", opacity: 0.5, duration: 0.18 });
+      }
     };
+    const handleLeave = (e) => {
+      gsap.to(dotRef.current, { scale: 1, background: "linear-gradient(135deg, #00b7a2 60%, #fff 100%)", boxShadow: "0 0 16px 2px #00b7a2, 0 0 0 1.5px #fff", duration: 0.22 });
+      gsap.to(innerRef.current, { scale: 1, border: "1.5px solid #7ddfd2", duration: 0.22 });
+      gsap.to(outerRef.current, { scale: 1, border: "1.5px solid #e8fcfa", opacity: 0.35, duration: 0.22 });
+    };
+    const handleDown = () => {
+      gsap.to(dotRef.current, { scale: 0.7, duration: 0.12, background: "#fff", boxShadow: "0 0 24px 4px #00b7a2, 0 0 0 2px #fff" });
+      gsap.to(innerRef.current, { scale: 1.3, border: "2.5px solid #00b7a2", duration: 0.12 });
+    };
+    const handleUp = () => {
+      gsap.to(dotRef.current, { scale: 1.5, duration: 0.18, background: "linear-gradient(135deg, #00b7a2 60%, #fff 100%)", boxShadow: "0 0 24px 4px #00b7a2, 0 0 0 2px #fff" });
+      gsap.to(innerRef.current, { scale: 1.18, border: "2.5px solid #00b7a2", duration: 0.18 });
+      setTimeout(() => handleLeave(), 120);
+    };
+    document.addEventListener("mouseover", handleEnter);
+    document.addEventListener("mouseout", handleLeave);
+    document.addEventListener("mousedown", handleDown);
+    document.addEventListener("mouseup", handleUp);
+    return () => {
+      document.removeEventListener("mouseover", handleEnter);
+      document.removeEventListener("mouseout", handleLeave);
+      document.removeEventListener("mousedown", handleDown);
+      document.removeEventListener("mouseup", handleUp);
+    };
+  }, []);
 
-    // Efecto para inicializar y limpiar los listeners
-    useEffect(() => {
-        // Inicializar cursor cuando el DOM esté listo
-        if (typeof window === 'undefined') return;
+  // Init trails
+  useEffect(() => {
+    trailsRef.current = trailsRef.current.slice(0, TRAIL_COUNT);
+  }, []);
 
-        // Registrar el evento principal de movimiento
-        document.addEventListener('mousemove', updateCursor);
-        
-        // Mapeo de selectores a manejadores
-        const elementMappings = [
-            { selector: 'a, button[role="link"], .link, [data-cursor="link"]', handler: handlers.link },
-            { selector: 'button, .button, input[type="submit"], input[type="button"], [data-cursor="button"]', handler: handlers.button },
-            { selector: 'img, .image, picture, [data-cursor="image"]', handler: handlers.image },
-            { selector: 'video, .video, [data-video], [data-cursor="video"]', handler: handlers.video },
-            { selector: 'p, h1, h2, h3, h4, h5, h6, span, .text, [data-cursor="text"]', handler: handlers.text }
-        ];
-        
-        // Registrar todos los listeners
-        elementMappings.forEach(({ selector, handler }) => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(el => {
-                el.addEventListener('mouseenter', handler);
-                el.addEventListener('mouseleave', handlers.reset);
-            });
-        });
-        
-        // Configuración inicial
-        gsap.set([dotRef.current, circleRef.current, glowRef.current], { 
-            xPercent: -50, 
-            yPercent: -50,
-            x: window.innerWidth / 2, 
-            y: window.innerHeight / 2
-        });
+  // Start animation
+  useEffect(() => {
+    rafId.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId.current);
+  }, [animate]);
 
-        // Efecto para cuando el cursor sale de la ventana
-        const handleMouseLeave = () => {
-            gsap.to([dotRef.current, circleRef.current], { 
-                opacity: 0, 
-                duration: 0.3 
-            });
-        };
-
-        // Efecto para cuando el cursor entra a la ventana
-        const handleMouseEnter = () => {
-            gsap.to([dotRef.current, circleRef.current], { 
-                opacity: 1, 
-                duration: 0.3 
-            });
-        };
-
-        document.addEventListener('mouseleave', handleMouseLeave);
-        document.addEventListener('mouseenter', handleMouseEnter);
-
-        // Limpieza al desmontar
-        return () => {
-            document.removeEventListener('mousemove', updateCursor);
-            document.removeEventListener('mouseleave', handleMouseLeave);
-            document.removeEventListener('mouseenter', handleMouseEnter);
-            
-            elementMappings.forEach(({ selector, handler }) => {
-                const elements = document.querySelectorAll(selector);
-                elements.forEach(el => {
-                    el.removeEventListener('mouseenter', handler);
-                    el.removeEventListener('mouseleave', handlers.reset);
-                });
-            });
-        };
-    }, [updateCursor, handlers, applyCursorState]);
-
-    return (
-        <CursorWrapper>
-            <div ref={dotRef} className="cursor-dot" />
-            <div ref={circleRef} className="cursor-circle" />
-            <div ref={glowRef} className="cursor-glow" />
-            <div ref={textRef} className="cursor-text">{cursorText}</div>
-        </CursorWrapper>
-    );
+  return (
+    <CursorWrapper>
+      <div ref={dotRef} className="cursor-dot" />
+      <div ref={innerRef} className="cursor-inner" />
+      <div ref={outerRef} className="cursor-outer" />
+      {Array.from({ length: TRAIL_COUNT }).map((_, i) => (
+        <div
+          key={i}
+          ref={el => trailsRef.current[i] = el}
+          className="cursor-trail"
+        />
+      ))}
+    </CursorWrapper>
+  );
 };
 
 export default GsapCursor;
