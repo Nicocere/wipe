@@ -73,16 +73,32 @@ const GsapCursor = () => {
   const innerRef = useRef(null);
   const outerRef = useRef(null);
   const trailsRef = useRef([]);
-  const mouse = useRef({ x: window?.innerWidth/2, y: window?.innerHeight/2 });
-  const last = useRef({ x: window?.innerWidth/2, y: window?.innerHeight/2 });
+  // Inicialización segura para SSR
+  const mouse = useRef({ x: 0, y: 0 });
+  const last = useRef({ x: 0, y: 0 });
   const velocity = useRef({ x: 0, y: 0, total: 0 });
   const rafId = useRef(null);
-
+  const [initialized, setInitialized] = React.useState(false);
   // Trail state
-  const trailPositions = useRef(Array(TRAIL_COUNT).fill({ x: window?.innerWidth/2, y: window?.innerHeight/2 }));
+  const trailPositions = useRef([]);
+
+  // Inicializar posiciones cuando hay window
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+      mouse.current = { ...center };
+      last.current = { ...center };
+      trailPositions.current = Array(TRAIL_COUNT).fill({ ...center });
+      setInitialized(true);
+    }
+  }, []);
 
   // Main animation loop
   const animate = useCallback(() => {
+    if (!initialized) {
+      rafId.current = requestAnimationFrame(animate);
+      return;
+    }
     // Física básica para suavidad
     last.current.x += (mouse.current.x - last.current.x) * 0.18;
     last.current.y += (mouse.current.y - last.current.y) * 0.18;
@@ -133,7 +149,7 @@ const GsapCursor = () => {
       });
     }
     rafId.current = requestAnimationFrame(animate);
-  }, []);
+  }, [initialized]);
 
   // Mouse move
   useEffect(() => {
