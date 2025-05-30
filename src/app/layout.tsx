@@ -26,25 +26,25 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://wipe-app.vercel.app'),
+  metadataBase: new URL('https://quickmenudigital.com'),
   title: {
     template: '%s | Wipe.',
-    default: 'Wipe. | Commercial Agility'
+    default: 'QuickMenu'
   },
   description: 'Wipe - Agiliza la dinámica comercial con cartas virtuales y QR para bares y restaurantes. Optimiza procesos de atención, compra y venta con soluciones digitales únicas para comercios y clientes.',
   keywords: ['cartas virtuales', 'QR', 'restaurantes', 'bares', 'gastronomía', 'entretenimiento', 'indumentaria', 'pedidos online', 'gestión de negocio', 'métricas', 'administración comercial', 'agilidad comercial', 'soluciones digitales'],
   openGraph: {
     type: 'website',
-    title: 'Wipe. | Commercial Agility',
+    title: 'QuickMenu',
     description: 'Wipe - Agiliza la dinámica comercial con cartas virtuales y QR para bares y restaurantes. Soluciones digitales únicas que optimizan procesos de atención, compra y venta.',
-    url: 'https://wipe-app.vercel.app',
-    siteName: 'Wipe Commercial Agility',
+    url: 'https://quickmenudigital.com',
+    siteName: 'QuickMenu',
     locale: 'es_AR',
     images: [{
       url: 'https://wipe-app.vercel.app/imagenes/wipe-preview.png',
       width: 800,
       height: 600,
-      alt: 'Wipe - Soluciones digitales para agilizar la dinámica comercial',
+      alt: 'QuickMenu - La solución digital para bares y restaurantes',
     }],
   },
   twitter: {
@@ -73,17 +73,17 @@ export const metadata: Metadata = {
     google: 'google-site-verification-code',
   },
   alternates: {
-    canonical: 'https://wipe-app.vercel.app',
+    canonical: 'https://quickmenudigital.com',
     languages: {
-      'es-AR': 'https://wipe-app.vercel.app',
+      'es-AR': 'https://quickmenudigital.com',
     },
   },
-  authors: [{ name: 'Wipe Commercial Agility' }],
-  generator: 'Wipe Commercial Agility',
-  applicationName: 'Wipe App',
+  authors: [{ name: 'QuickMenu' }],
+  generator: 'QuickMenu',
+  applicationName: 'QuickMenu Web',
   referrer: 'origin-when-cross-origin',
-  creator: 'Wipe Commercial Agility',
-  publisher: 'Wipe Commercial Agility',
+  creator: 'QuickMenu',
+  publisher: 'QuickMenu',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -97,15 +97,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </style> */}
       </Head>
       <body className={`${inter.variable} ${syne.variable}`}>
-      <AuthUserProvider>
-      <ThemeProvider>
-      <TransitionProvider>
-                <ClientLayoutComponent >
-                  {children}
-                </ClientLayoutComponent>
-                <Footer />
-              </TransitionProvider>
-            </ThemeProvider>  
+        <div id="global-gradient-bg">
+          <div className="global-orb global-orb1" />
+          <div className="global-orb global-orb2" />
+          <div className="global-orb global-orb3" />
+        </div>
+        <AuthUserProvider>
+          <ThemeProvider>
+            <TransitionProvider>
+              <ClientLayoutComponent >
+                {children}
+              </ClientLayoutComponent>
+              <Footer />
+            </TransitionProvider>
+          </ThemeProvider>  
         </AuthUserProvider>
       </body>
     </html>

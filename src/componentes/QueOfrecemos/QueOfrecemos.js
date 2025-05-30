@@ -3,8 +3,10 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { FaUtensils, FaTshirt, FaShoppingBag, FaMobileAlt, FaChartLine, FaUserFriends, FaCreditCard, FaClock } from 'react-icons/fa';
 import { RiRestaurantFill, RiShirtFill, RiShoppingBag3Fill, RiTimeFill, RiSecurePaymentFill, RiDashboardFill } from 'react-icons/ri';
+import Link from 'next/link';
 import styles from './QueOfrecemos.module.css';
 import Contador from '../ContadorExperiencia/Contador';
+import QuickmenuDobleFeature from './QuickmenuDobleFeature';
 
 const QueOfrecemos = () => {
     // Referencias para detectar cuando los elementos están en el viewport
@@ -127,8 +129,121 @@ const QueOfrecemos = () => {
         }
     ];
 
+    const beneficios = [
+        {
+            icon: <FaClock className={styles.benefitsDarkAccentIcon} />,
+            text: <><span className={styles.benefitsDarkAccent}>Elimina largas esperas</span> y mejora la experiencia del cliente</>,
+        },
+        {
+            icon: <FaUtensils className={styles.benefitsDarkAccentIcon} />,
+            text: <><span className={styles.benefitsDarkAccent}>Más rotación de mesas</span> y aumento de ventas</>,
+        },
+        {
+            icon: <FaChartLine className={styles.benefitsDarkAccentIcon} />,
+            text: <>Mayor valor de ticket gracias a <span className={styles.benefitsDarkAccent}>sugerencias inteligentes</span></>,
+        },
+        {
+            icon: <FaMobileAlt className={styles.benefitsDarkAccentIcon} />,
+            text: <><span className={styles.benefitsDarkAccent}>Pedidos y pagos</span> en tiempo real</>,
+        },
+        {
+            icon: <FaCreditCard className={styles.benefitsDarkAccentIcon} />,
+            text: <>Disminución de <span className={styles.benefitsDarkAccent}>errores</span> en pedidos</>,
+        },
+    ];
+
     return (
         <div className={styles.container}>
+                  {/* CTA Section */}
+            <motion.section
+                className={styles.ctaSection}
+                ref={ctaRef}
+                id="cta"
+                style={{ borderRadius: '2rem', margin: '0', color: '#002c35', position: 'relative', overflow: 'hidden' }}
+                initial={{ opacity: 0 }}
+                animate={isCtaInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.8 }}
+            >
+                <motion.div
+                    className={styles.ctaContent}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isCtaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto' }}
+                >
+                    <h2 className={styles.ctaTitle} style={{ color: '#002c35', fontWeight: 900, fontSize: '2.5rem', marginBottom: '1.2rem' }}>
+                        Lleva tu negocio al siguiente nivel
+                    </h2>
+                    <p className={styles.ctaText} style={{ color: '#002c35', fontSize: '1.18rem', marginBottom: '2.2rem' }}>
+                        Únete a cientos de empresas que ya están optimizando su proceso de ventas con nuestra solución digital.
+                    </p>                    <Link href="/contacto">
+                        <motion.button
+                            className={styles.ctaButton}
+                            style={{ color: '#fff', fontWeight: 700, fontSize: '1.18rem', borderRadius: '1.2rem', padding: '1.1rem 2.2rem', boxShadow: '0 4px 24px 0 rgba(0,230,118,0.13)', border: 'none', transition: 'background 0.2s, color 0.2s, transform 0.2s' }}
+                            whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,230,118,0.25)', color: '#002c35', borderColor: '#00b7a2', backgroundColor: '#fff' }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            Comienza hoy mismo
+                        </motion.button>
+                    </Link>
+                </motion.div>
+            </motion.section>
+        
+
+            <motion.section
+                className={styles.heroPromoSection}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+            >
+                <div className={styles.heroPromoGrid}>
+                    <motion.div
+                        className={styles.heroPromoTextCol}
+                        initial={{ opacity: 0, x: -60 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.6 }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                    >
+                        <h1 className={styles.heroPromoTitle}>
+                        Modernizá tu atención sin complicaciones
+                        </h1>
+                        <p className={styles.heroPromoDesc}>
+                        QuickMenu conecta a tus clientes con tu carta en un clic. Pedidos y pagos desde su celular, sin filas ni confusión.
+                        </p>                        <Link href="/contacto">
+                            <motion.button
+                                className={styles.heroPromoBtn}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.97 }}
+                            >
+                                Empezá ahora
+                            </motion.button>
+                        </Link>
+                    </motion.div>
+                    <motion.div
+                        className={styles.heroPromoImgCol}
+                        initial={{ opacity: 0, x: 60 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.6 }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                    >
+                        <div className={styles.heroPromoImgWrapper}>
+                            <img
+                                src="/qrscan.png"
+                                alt="Quickmenu app demo"
+                                className={styles.heroPromoImg}
+                            />
+                        </div>
+                    </motion.div>
+                </div>
+            </motion.section>
+
+
+
+
+
+
+            
+
             {/* --- ACERCA DE QUICKMENÚ --- */}
             <section className={styles.aboutWipeSection}>
                 <h2 className={styles.aboutWipeTitle}>
@@ -171,37 +286,24 @@ const QueOfrecemos = () => {
                 </div>
             </section>
 
+          
+    <QuickmenuDobleFeature />
+
             {/* --- BENEFICIOS (NO SE REPITEN CON VENTAJAS/FUNCIONALIDADES) --- */}
-            <section className={styles.benefitsDarkSection}>
+            <section className={styles.benefitsDarkSection} id="beneficios" ref={benefitsRef}>
+                <h2 className={styles.benefitsDarkTitle}>Beneficios</h2>
+                <p className={styles.benefitsDarkSubtitle}>
+                    <span className={styles.benefitsHighlight}>Digitalizá</span> tu negocio y mejorá la experiencia de tus clientes con tecnología simple, rápida y segura.
+                </p>
                 <div className={styles.benefitsDarkGrid}>
                     <div className={styles.benefitsDarkTextCol}>
-                        <h2 className={styles.benefitsDarkTitle}>
-                            Beneficios 
-                        </h2>
-                        <p className={styles.benefitsDarkSubtitle}>
-                            <span className={styles.benefitsHighlight}>Digitalizá</span> tu negocio y mejorá la experiencia de tus clientes con tecnología simple, rápida y segura.
-                        </p>
                         <ul className={styles.benefitsDarkList}>
-                            <li className={styles.benefitsDarkItem}>
-                                <span className={styles.benefitsDarkIcon}><FaClock /></span>
-                                Elimina largas <span className={styles.benefitsHighlight}>esperas</span> y mejora la experiencia del cliente
-                            </li>
-                            <li className={styles.benefitsDarkItem}>
-                                <span className={styles.benefitsDarkIcon}><FaUtensils /></span>
-                                Más <span className={styles.benefitsHighlight}>rotación de mesas</span> y aumento de ventas
-                            </li>
-                            <li className={styles.benefitsDarkItem}>
-                                <span className={styles.benefitsDarkIcon}><FaChartLine /></span>
-                                Mayor valor de ticket gracias a <span className={styles.benefitsHighlight}>sugerencias inteligentes</span>
-                            </li>
-                            <li className={styles.benefitsDarkItem}>
-                                <span className={styles.benefitsDarkIcon}><FaMobileAlt /></span>
-                                <span className={styles.benefitsHighlight}>Pedidos y pagos</span> en tiempo real
-                            </li>
-                            <li className={styles.benefitsDarkItem}>
-                                <span className={styles.benefitsDarkIcon}><FaCreditCard /></span>
-                                Disminución de <span className={styles.benefitsHighlight}>errores</span> en pedidos
-                            </li>
+                            {beneficios.map((item, idx) => (
+                                <li className={styles.benefitsDarkItem} key={idx}>
+                                    {item.icon}
+                                    <span className={styles.benefitsText} >{item.text}</span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className={styles.benefitsDarkImgCol}>
@@ -213,7 +315,7 @@ const QueOfrecemos = () => {
             </section>
 
             {/* --- SECCIÓN UNIFICADA: VENTAJAS Y FUNCIONALIDADES --- */}
-            <section className={styles.ventajasSection}>
+            <section className={styles.ventajasSection} id="ventajas">
                 <h2 className={styles.ventajasTitle}>
                     Ventajas y funcionalidades <span className={styles.ventajasHighlight}>QuickMenú</span>
                 </h2>
@@ -229,11 +331,12 @@ const QueOfrecemos = () => {
                             <p className={styles.ventajaText}>{item.description}</p>
                         </motion.div>
                     ))}
-                </div>
-                <div>
-                    <button className={styles.ventajasCta}>
-                        Sumate a la revolución digital con QuickMenú
-                    </button>
+                </div>                <div>
+                    <Link href="/contacto">
+                        <button className={styles.ventajasCta}>
+                            Sumate a la revolución digital con QuickMenú
+                        </button>
+                    </Link>
                 </div>
             </section>
 
@@ -241,43 +344,11 @@ const QueOfrecemos = () => {
             <motion.section
                 className={styles.statsSection}
                 ref={statsRef}
-                style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)', background: '#000' }}
             >
                 <Contador />
             </motion.section>
 
-            {/* CTA Section */}
-            <motion.section
-                className={styles.ctaSection}
-                ref={ctaRef}
-                style={{ background: '#000', borderRadius: '2rem', margin: '0', color: '#fff', position: 'relative', overflow: 'hidden', boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)' }}
-                initial={{ opacity: 0 }}
-                animate={isCtaInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.8 }}
-            >
-                <motion.div
-                    className={styles.ctaContent}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isCtaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto' }}
-                >
-                    <h2 className={styles.ctaTitle} style={{ color: '#fff', fontWeight: 900, fontSize: '2.5rem', marginBottom: '1.2rem' }}>
-                        Lleva tu negocio al siguiente nivel
-                    </h2>
-                    <p className={styles.ctaText} style={{ color: '#e0e0e0', fontSize: '1.18rem', marginBottom: '2.2rem' }}>
-                        Únete a cientos de empresas que ya están optimizando su proceso de ventas con nuestra solución digital.
-                    </p>
-                    <motion.button
-                        className={styles.ctaButton}
-                        style={{ background: '#00e676', color: '#111', fontWeight: 700, fontSize: '1.18rem', borderRadius: '1.2rem', padding: '1.1rem 2.2rem', boxShadow: '0 4px 24px 0 rgba(0,230,118,0.13)', border: 'none', transition: 'background 0.2s, color 0.2s, transform 0.2s' }}
-                        whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(0,230,118,0.25)', background: '#fff', color: '#00e676' }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        Comienza hoy mismo
-                    </motion.button>
-                </motion.div>
-            </motion.section>
+        
         </div>
     );
 };

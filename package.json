@@ -39,7 +39,7 @@
     "react-spring": "^9.7.4",
     "styled-components": "^6.1.14",
     "supabase": "^2.22.12",
-    "sweetalert2": "^11.14.3",
+    "sweetalert2": "^11.21.2",
     "swiper": "^11.1.14",
     "tailwind-merge": "^2.6.0",
     "three": "^0.173.0"

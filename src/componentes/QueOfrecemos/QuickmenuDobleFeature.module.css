@@ -1,0 +1,162 @@
+.dobleFeatureSection {
+  width: 100%;
+  max-width: 1200px;
+  margin: 4rem auto 4rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}
+.dobleFeatureCard {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 2.2rem;
+  box-shadow: 0 8px 32px 0 rgba(0,183,162,0.10);
+  overflow: hidden;
+  align-items: stretch;
+  justify-content: center;
+}
+.featureCol {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  background: #fff;
+  min-width: 0;
+  min-height: 380px;
+  border-radius: 0;
+  box-shadow: none;
+}
+.featureTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #002c35;
+  margin-bottom: 1.1rem;
+  line-height: 1.13;
+}
+.accent {
+  color: #00b7a2;
+}
+.featureText {
+  font-size: 1.13rem;
+  color: #222;
+  margin-bottom: 2.2rem;
+  line-height: 1.6;
+}
+.extraText {
+  color: #00b7a2;
+  font-weight: 600;
+  font-size: 1.01em;
+  display: block;
+  margin-top: 0.7rem;
+}
+.featureImgBox {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  min-height: 120px;
+  margin-top: 1.2rem;
+}
+.featureImg {
+  width: 90%;
+  max-width: 320px;
+  min-width: 160px;
+  height: auto;
+  border-radius: 1.1rem;
+  box-shadow: 0 8px 32px 0 rgba(0,183,162,0.10);
+  background: #f6f6f6;
+}
+.mercadoPagoBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2.2rem;
+}
+.mercadoPagoLogo {
+  width: 180px;
+  max-width: 90%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 12px #00b7a233);
+}
+@media (max-width: 900px) {
+  .dobleFeatureCard {
+    flex-direction: column;
+    border-radius: 1.2rem;
+  }
+  .featureCol {
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.2rem 2rem 1.2rem;
+  }
+  .featureImgBox, .mercadoPagoBox {
+    justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .dobleFeatureSection {
+    padding: 0 1.5rem;
+    margin: 2.5rem auto;
+    width: calc(100% - 2rem);
+    box-sizing: border-box;
+  }
+  .dobleFeatureCard {
+    flex-direction: column;
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 16px 0 rgba(0,183,162,0.10);
+    overflow: hidden;
+    width: 100%;
+  }
+  .featureCol {
+    padding: 2rem 1.5rem;
+    margin-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: auto;
+  }
+  .featureCol:last-child {
+    margin-bottom: 0;
+  }
+  .featureTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .featureText {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+  .extraText {
+    font-size: 1.1rem;
+    margin-top: 0.8rem;
+  }
+  .featureImgBox {
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+    min-height: auto;
+    width: 100%;
+  }
+  .featureImg {
+    min-width: 120px;
+    max-width: 85%;
+    border-radius: 1rem;
+  }
+  .mercadoPagoBox {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  .mercadoPagoLogo {
+    width: 140px;
+    max-width: 70%;
+  }
+}

@@ -6,18 +6,18 @@ import styled from 'styled-components';
 
 const CursorWrapper = styled.div`
   /* Variables de color */
-  --color-primary: #4FD3FF;
-  --color-primary-dark: #0098D4;
-  --color-primary-light: #B1EAFF;
-  --color-accent: #0036B9;
-  --color-glow: rgba(79, 211, 255, 0.2);
-  --color-primary-invert: #B02C00;
+  --color-primary: #00b7a2;
+  --color-primary-dark: #00b7a2;
+  --color-primary-light: #00b7a2;
+  --color-accent: #00b7a2;
+  --color-glow: rgba(0, 183, 162, 0.10); /* Menor opacidad */
+  --color-primary-invert: #00b7a2;
   
   /* Variables de tamaño */
   --cursor-size-sm: 20px;
   --cursor-size-md: 24px;
   --cursor-size-lg: 40px;
-  --cursor-size-xl: 80px;
+  --cursor-size-xl: 60px; /* Glow más pequeño */
   
   /* Variables de tiempo */
   --transition-fast: 0.15s;
@@ -41,13 +41,12 @@ const CursorWrapper = styled.div`
     transform: translate(-50%, -50%);
     will-change: transform, width, height, opacity;
     transition: width var(--transition-fast), height var(--transition-fast);
-    // mix-blend-mode: ;
   }
 
   .cursor-circle {
     width: var(--cursor-size-md);
     height: var(--cursor-size-md);
-    border: 1px solid var(--color-primary-light);
+    border: 1px solid var(--color-primary);
     border-radius: 50%;
     position: fixed;
     top: 0;
@@ -57,6 +56,7 @@ const CursorWrapper = styled.div`
     transform: translate(-50%, -50%);
     will-change: transform, width, height, opacity, border;
     mix-blend-mode: normal;
+    background: transparent;
   }
 
   .cursor-glow {
@@ -64,8 +64,8 @@ const CursorWrapper = styled.div`
     height: var(--cursor-size-xl);
     background: radial-gradient(
       circle,
-      var(--color-glow) 0%,
-      rgba(79, 211, 255, 0.05) 40%,
+      rgba(0, 183, 162, 0.10) 0%, /* Menor opacidad */
+      rgba(0, 183, 162, 0.02) 40%, /* Más transparente */
       transparent 70%
     );
     border-radius: 50%;
@@ -76,7 +76,7 @@ const CursorWrapper = styled.div`
     z-index: 9999;
     transform: translate(-50%, -50%);
     will-change: transform, opacity, width, height;
-    opacity: 0.6;
+    opacity: 0.3; /* Menor opacidad general */
     mix-blend-mode: normal;
   }
 
@@ -89,11 +89,10 @@ const CursorWrapper = styled.div`
     transform: translate(-50%, -50%);
     font-size: 12px;
     font-weight: 500;
-    color: var(--color-primary-dark);
+    color: #00b7a2;
     opacity: 0;
     transition: opacity var(--transition-normal);
     white-space: nowrap;
-    mix-blend-mode: difference;
   }
 `;
 
@@ -196,43 +195,43 @@ const GsapCursor = () => {
             circle: { 
                 width: 'var(--cursor-size-md)', 
                 height: 'var(--cursor-size-md)', 
-                border: '1px solid var(--color-primary-light)',
+                border: '1px solid var(--color-primary)',
                 opacity: 1,
                 background: 'transparent'
             },
             glow: { 
                 opacity: 0.6, 
-                background: 'radial-gradient(circle, var(--color-glow) 0%, rgba(79, 211, 255, 0.05) 40%, transparent 70%)' 
+                background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' 
             },
             text: { text: '', opacity: 0 }
         },
         
         link: {
-            dot: { scale: 1.2, background: 'var(--color-accent)' },
+            dot: { scale: 1.2, background: 'var(--color-primary)' },
             circle: { 
                 width: 'var(--cursor-size-lg)', 
                 height: 'var(--cursor-size-lg)', 
                 border: '1px solid var(--color-primary)',
-                background: 'rgba(79, 211, 255, 0.05)'
+                background: 'rgba(0,183,162,0.05)'
             },
-            glow: { opacity: 0.8 },
+            glow: { opacity: 0.8, background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' },
             text: { text: '', opacity: 0 }
         },
         
         button: {
-            dot: { scale: 1.5, background: 'var(--color-primary-dark)' },
+            dot: { scale: 1.5, background: 'var(--color-primary)' },
             circle: { 
                 width: 'var(--cursor-size-lg)', 
                 height: 'var(--cursor-size-lg)', 
-                border: '1px solid var(--color-primary-dark)',
-                background: 'rgba(79, 211, 255, 0.1)'
+                border: '1px solid var(--color-primary)',
+                background: 'rgba(0,183,162,0.1)'
             },
-            glow: { opacity: 0.9 },
+            glow: { opacity: 0.9, background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' },
             text: { text: '', opacity: 0 }
         },
         
         image: {
-            dot: { scale: 1.2, background: 'var(--color-primary-light)' },
+            dot: { scale: 1.2, background: 'var(--color-primary)' },
             circle: { 
                 width: 'calc(var(--cursor-size-lg) + 10px)', 
                 height: 'calc(var(--cursor-size-lg) + 10px)',
@@ -241,32 +240,32 @@ const GsapCursor = () => {
             },
             glow: { 
                 opacity: 0.4,
-                background: 'radial-gradient(circle, rgba(177, 234, 255, 0.2) 0%, rgba(177, 234, 255, 0.05) 30%, transparent 60%)'
+                background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 30%, transparent 60%)'
             },
             text: { text: '', opacity: 0 }
         },
         
         video: {
-            dot: { scale: 1.5, background: 'var(--color-accent)' },
+            dot: { scale: 1.5, background: 'var(--color-primary)' },
             circle: { 
                 width: 'var(--cursor-size-sm)', 
                 height: 'var(--cursor-size-sm)',
-                border: '1px solid var(--color-primary-dark)',
-                background: 'rgba(0, 54, 185, 0.1)'
+                border: '1px solid var(--color-primary)',
+                background: 'rgba(0,183,162,0.1)'
             },
-            glow: { opacity: 0.5 },
+            glow: { opacity: 0.5, background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' },
             text: { text: '', opacity: 0 }
         },
         
         text: {
-            dot: { mixBlendMode:'difference', scale: 0.8, background: 'var(--color-primary-invert)' },
+            dot: { mixBlendMode:'difference', scale: 0.8, background: 'var(--color-primary)' },
             circle: { 
                 width: '18px', 
                 height: '18px',
-                border: '1px solid var(--color-primary-light)',
+                border: '1px solid var(--color-primary)',
                 background: 'transparent'
             },
-            glow: { opacity: 0.3 },
+            glow: { opacity: 0.3, background: 'radial-gradient(circle, rgba(0,183,162,0.2) 0%, rgba(0,183,162,0.05) 40%, transparent 70%)' },
             text: { text: '', opacity: 0 }
         }
     };

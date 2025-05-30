@@ -1,59 +1,256 @@
-/* Contacto.module.css */
+/* Contacto.module.css - Refactorizado para alinear con QueOfrecemos */
 
 .container {
-    margin: 150px 80px 30px;
-    background-color: #011C26; /* Fondo azul oscuro */
-    padding: 20px;
-    border: 1px solid #4FD3FF; /* Borde Luz de Estrella Cian */
-    border-radius: 8px;
-    color: #fff; /* Blanco Estelar Tenue */
+  --color-primary: #00B7A2;
+  --color-primary-dark: #003F3C;
+  --color-accent: #57E6D3;
+  --color-text: #002c35;
+  --color-text-light: #4A5568;
+  --gradient-primary: linear-gradient(135deg, #00B7A2 0%, #57E6D3 100%);
+  --gradient-background: linear-gradient(135deg, #eafffa 0%, #c6f7f2 100%);
+  --shadow-md: 0 8px 32px rgba(0,183,162,0.13);
+  --shadow-sm: 0 4px 16px rgba(0,183,162,0.10);
+  --border-radius-lg: 2rem;
+  --border-radius-md: 1.2rem;
+
+  margin: 120px auto 30px;
+  background: var(--gradient-background);
+  padding: 2.8rem 2.2rem 2.2rem;
+  border-radius: var(--border-radius-lg);
+  color: var(--color-primary-dark);
+  max-width: 600px;
+  box-shadow: var(--shadow-md);
+  border: none;
+  position: relative;
+  z-index: 2;
 }
 
 .title {
-    color: #0F8C8C; /* Verde Magenta */
-    font-size: 2em;
-    margin-bottom: 10px;
+    color: var(--color-text);
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: -1px;
+    position: relative;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    border-radius: 99px;
+    background: var(--gradient-primary);
 }
 
 .description {
-    color: #fff; /* Blanco Estelar Tenue */
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    color: var(--color-primary-dark);
+    font-size: 1.18rem;
+    margin-bottom: 1.1rem;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.6;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .form {
     display: flex;
     flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2rem;
+    border-radius: var(--border-radius-md);
+    background: rgba(255, 255, 255, 0.4);
+    padding: 1.8rem;
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(2px);
 }
 
-.form div {
-    margin-bottom: 15px;
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 }
 
 .label {
-    color: #0F8C8C; /* Verde Magenta */
-    margin-bottom: 5px;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    font-size: 1rem;
 }
 
 .input, .textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #4FD3FF; /* Borde Luz de Estrella Cian */
-    border-radius: 5px;
-    background-color: #021826; /* Fondo azul verdoso oscuro */
-    color: #fff; /* Blanco Estelar Tenue */
+    padding: 0.85rem 1rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: var(--border-radius-md);
+    background: #fff;
+    color: var(--color-primary-dark);
+    font-size: 1.05rem;
+    font-weight: 500;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(0,183,162,0.04);
+}
+.input:focus, .textarea:focus {
+    border: 1.5px solid var(--color-accent);
+    box-shadow: var(--shadow-sm);
+}
+
+.textarea {
+    min-height: 90px;
+    resize: vertical;
 }
 
 .button {
-    background-color: #012840; /* Azul Oscuro */
-    color: #fff; /* Blanco Estelar Tenue */
-    border: 1px solid #4FD3FF; /* Borde Luz de Estrella Cian */
-    padding: 10px 20px;
-    border-radius: 5px;
+    background: linear-gradient(90deg, #00b7a2 60%, #57e6d3 100%);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.13rem;
+    border-radius: 2rem;
+    padding: 0.95rem 0;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 24px 0 rgba(0,183,162,0.13);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    width: 100%;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+.button:hover {
+    background: #fff;
+    color: #00b7a2;
+    border: 1.5px solid #00b7a2;
+    transform: translateY(-2px) scale(1.04);
+}
+.button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
-.button:hover {
-    background-color: #025959; /* Verde Agua */
+.loader {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border: 3px solid #fff;
+    border-top: 3px solid #00b7a2;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.extraInfo {
+    margin-top: 2.2rem;
+    text-align: center;
+    color: #003f3c;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+.link {
+    color: #00b7a2;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+.link:hover {
+    color: #003f3c;
+}
+.miniText {
+    color: #00b7a2;
+    font-size: 0.98rem;
+    margin-top: 0.7rem;
+    font-weight: 600;
+}
+
+.sweetalertPopup {
+  border-radius: 1.5rem !important;
+  padding: 2rem 1.2rem !important;
+  font-family: inherit;
+  background: linear-gradient(135deg, #eafffa 0%, #c6f7f2 100%) !important;
+  color: #003f3c !important;
+}
+.sweetalertButton {
+  background: linear-gradient(90deg, #00b7a2 60%, #57e6d3 100%) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  border-radius: 2rem !important;
+  font-size: 1.1rem !important;
+  padding: 0.7rem 2.2rem !important;
+  box-shadow: 0 4px 24px 0 rgba(0,183,162,0.13) !important;
+  border: none !important;
+  transition: background 0.2s, color 0.2s, transform 0.2s !important;
+}
+.sweetalertButton:focus, .sweetalertButton:hover {
+  background: #fff !important;
+  color: #00b7a2 !important;
+  border: 1.5px solid #00b7a2 !important;
+}
+.swal2-icon.swal2-success {
+  border-color: #00b7a2 !important;
+  color: #00b7a2 !important;
+}
+.swal2-success-ring {
+  border: 4px solid #00b7a2 !important;
+}
+.swal2-title {
+  color: #003f3c !important;
+  font-family: inherit !important;
+  font-weight: 900 !important;
+  font-size: 2rem !important;
+  margin-bottom: 0.5rem !important;
+}
+.swal2-html-container {
+  color: #003f3c !important;
+  font-family: inherit !important;
+  font-weight: 900 !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 90px auto 20px auto;
+        padding: 1.2rem 1rem 1.2rem 1rem;
+        max-width: 98vw;
+        box-sizing: border-box;
+        left: 0;
+        right: 0;
+    }
+    .title {
+        font-size: 1.4rem;
+    }
+    .form {
+        gap: 0.7rem;
+    }
+    .button {
+        font-size: 1rem;
+        padding: 0.8rem 0;
+    }
+    .input, .textarea {
+        font-size: 1rem;
+        padding: 0.75rem 0.9rem;
+        width: 90%;
+    }
+    .inputGroup {
+        gap: 0.15rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: 0.7rem 0.3rem 1rem 0.3rem;
+    }
 }

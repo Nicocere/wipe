@@ -1,154 +1,79 @@
 "use client";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import styles from "./homeBanner.module.css";
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useInView } from "framer-motion";
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HomeBanner() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { threshold: 0.3, triggerOnce: true });
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const containerRef = useRef(null);
+  const inView = useInView(containerRef, { threshold: 0.2, triggerOnce: true });
 
-
-  const videoRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: videoRef,
-    // offset: ["top center", "center end"]
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], ["0deg", "360deg"]);
-
-  
-
-
-  const titulo = ['Transformá', 'tu', 'universo', 'digital'];
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
-      }
-    }
-  };    
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: i => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.2,
-        duration: 0.5,
+  // Variantes de animación para el contenido y la imagen
+  const contentVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        duration: 0.7,
         ease: "easeOut"
       }
-    }),
-    hover: {
-      scale: 1.05,
-      color: "#4FD3FF",
-      transition: { duration: 0.2 }
     }
   };
 
-  const textos = [
-    "Desarrollamos soluciones web personalizadas y potenciamos tu marca con estrategias digitales innovadoras.",
-    "Tu visión encuentra su Spazio en el futuro digital."
-  ];
+  const imageVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        duration: 0.7,
+        ease: "easeOut",
+        delay: 0.2
+      }
+    }
+  };
 
   return (
-    <section ref={ref} className={styles.banner}>
-      <div className={styles.bannerContent}>
-
-
-
-
-      <motion.h1 
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className={styles.mainTitle}
-      >
-        {titulo.map((word, wordIndex) => (
-          <motion.span 
-            key={`word-${wordIndex}`}
-            className={styles.wordWrapper}
-          >
-            {word.split("").map((letter, letterIndex) => (
-              <motion.span
-                key={`letter-${wordIndex}-${letterIndex}`}
-                className={styles.titleLetter}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: (wordIndex * word.length + letterIndex) * 0.03 }}
-                whileHover={{ 
-                  scale: 1.2, 
-                  color: "#4FD3FF",
-                  rotate: [0, 5, -5, 0],
-                  transition: { duration: 0.3 }
-                }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-            {wordIndex < titulo.length - 1 && " "}
-          </motion.span>
-        ))}
-      </motion.h1>
-
-
-
-      <motion.div ref={videoRef}  style={{ scale }}
-  initial={{ opacity: 0, scale: 0.5 }}
-  animate={{ 
-    opacity: 1,
-    scale: 1
-  }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  className={styles.videoContainer}
->
-  <motion.video
-    src="/videos/devices.mp4"
-    autoPlay
-    loop
-    muted
-    className={styles.video}
-    initial={{ filter: "blur(10px)" }}
-    animate={{ 
-      filter: "blur(0px)" ,
-      scale: [1, 1.02, 1]
-    }}
-    transition={{ 
-      duration: 1,
-    }}
-
-  />
-</motion.div>
-
-
-
-        <motion.div
-          variants={container}
+    <section ref={containerRef} className={styles.banner}>
+      <div className={styles.container}>
+        <motion.div 
+          className={styles.bannerContent}
           initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          className={styles.bannerContainer}
+          animate={inView ? "visible" : "hidden"}
+          variants={contentVariants}
         >
-          {textos.map((texto, index) => (
-            <motion.div
-              key={index}
-              className={styles.textWrapper}
-              variants={textVariants}
-              custom={index}
-              whileHover="hover"
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
-            >
-              <motion.p className={styles.bannerText}>
-                {texto}
-              </motion.p>
-            </motion.div>
-          ))}
+        
+        <h1 className={styles.mainTitle}>Más que un menú, una solución digital</h1>
+<p className={styles.bannerText}>Automatizá pedidos y cobros desde cualquier celular</p>          <div className={styles.buttonRow}>
+            <Link href="/contacto">
+              <button className={styles.primaryBtn}>Comenzar</button>
+            </Link>
+            <Link href="/#beneficios">
+              <button className={styles.secondaryBtn}>Beneficios</button>
+            </Link>
+          </div>
+        </motion.div>
+        
+        <motion.div 
+          className={styles.mockupCol}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={imageVariants}
+        >
+          <div className={styles.mockupCircle}></div>
+          <div className={styles.mockupImgContainer}>
+            <Image 
+              src="/example.png" 
+              alt="App mockup" 
+              className={styles.mockupImg} 
+              width={340} 
+              height={680} 
+              priority
+            />
+          </div>
         </motion.div>
       </div>
     </section>
