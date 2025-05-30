@@ -73,13 +73,13 @@ const GsapCursor = () => {
   const innerRef = useRef(null);
   const outerRef = useRef(null);
   const trailsRef = useRef([]);
-  const mouse = useRef({ x: window.innerWidth/2, y: window.innerHeight/2 });
-  const last = useRef({ x: window.innerWidth/2, y: window.innerHeight/2 });
+  const mouse = useRef({ x: window?.innerWidth/2, y: window?.innerHeight/2 });
+  const last = useRef({ x: window?.innerWidth/2, y: window?.innerHeight/2 });
   const velocity = useRef({ x: 0, y: 0, total: 0 });
   const rafId = useRef(null);
 
   // Trail state
-  const trailPositions = useRef(Array(TRAIL_COUNT).fill({ x: window.innerWidth/2, y: window.innerHeight/2 }));
+  const trailPositions = useRef(Array(TRAIL_COUNT).fill({ x: window?.innerWidth/2, y: window?.innerHeight/2 }));
 
   // Main animation loop
   const animate = useCallback(() => {
